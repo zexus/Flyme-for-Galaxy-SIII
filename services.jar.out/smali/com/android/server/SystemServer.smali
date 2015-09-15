@@ -1543,7 +1543,7 @@
     .line 520
     move-object/from16 v0, p0
 
-    move-object/from16 v4, v127
+    move-object/from16 v4, v125
 
     invoke-static {v0, v4}, Lcom/android/server/SystemServer$FlymeInjector;->startFlymeMoveWindowService(Lcom/android/server/SystemServer;Lcom/android/server/wm/WindowManagerService;)V
 
@@ -3191,11 +3191,13 @@
 
     invoke-static {v4, v5}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    new-instance v112, Lcom/android/server/ThemeService;
+    #new-instance v112, Lcom/android/server/ThemeService;
 
-    move-object/from16 v0, v112
+    #move-object/from16 v0, v112
 
-    invoke-direct {v0, v3}, Lcom/android/server/ThemeService;-><init>(Landroid/content/Context;)V
+    #invoke-direct {v0, v3}, Lcom/android/server/ThemeService;-><init>(Landroid/content/Context;)V
+
+    const/16 v112, 0x0
     :try_end_3d
     .catch Ljava/lang/Throwable; {:try_start_3d .. :try_end_3d} :catch_26
 
@@ -3207,7 +3209,7 @@
 
     move-object/from16 v0, v112
 
-    invoke-static {v4, v0}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
+    #invoke-static {v4, v0}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
     :try_end_3e
     .catch Ljava/lang/Throwable; {:try_start_3e .. :try_end_3e} :catch_3a
 
@@ -3685,6 +3687,14 @@
     check-cast v92, Lcom/android/server/MmsServiceBroker;
 
     .restart local v92    # "mmsService":Lcom/android/server/MmsServiceBroker;
+    move-object/from16 v0, p0
+
+    move-object/from16 v4, v125
+
+    move-object/from16 v5, v119
+
+    invoke-static {v0, v4, v5}, Lcom/android/server/SystemServer$FlymeInjector;->startFlymeServices(Lcom/android/server/SystemServer;Lcom/android/server/wm/WindowManagerService;Lcom/android/server/wallpaper/WallpaperManagerService;)V
+
     :try_start_49
     invoke-virtual/range {v116 .. v116}, Lcom/android/server/VibratorService;->systemReady()V
     :try_end_49

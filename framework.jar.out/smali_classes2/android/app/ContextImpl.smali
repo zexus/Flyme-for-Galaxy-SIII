@@ -785,6 +785,8 @@
 
     invoke-static {v0, v1}, Landroid/app/ContextImpl;->registerService(Ljava/lang/String;Landroid/app/ContextImpl$ServiceFetcher;)V
 
+    invoke-static {}, Landroid/app/ContextImpl;->registeFlymeManager()V
+
     return-void
 .end method
 

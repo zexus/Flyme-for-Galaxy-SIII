@@ -19264,6 +19264,8 @@
 
     .line 5414
     :sswitch_0
+    invoke-direct/range {p0 .. p1}, Lcom/android/internal/policy/impl/PhoneWindowManager;->mzInterceptVolumeKeyUpForTelephony(Landroid/view/KeyEvent;)V
+
     if-eqz v13, :cond_17
 
     move-object/from16 v0, p0
@@ -19402,6 +19404,8 @@
     invoke-static/range {v24 .. v25}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     invoke-virtual/range {v22 .. v22}, Landroid/telecom/TelecomManager;->silenceRinger()V
+
+    invoke-direct/range {p0 .. p1}, Lcom/android/internal/policy/impl/PhoneWindowManager;->mzInterceptVolumeKeyDownForTelephony(Landroid/view/KeyEvent;)V
 
     and-int/lit8 v20, v20, -0x2
 
