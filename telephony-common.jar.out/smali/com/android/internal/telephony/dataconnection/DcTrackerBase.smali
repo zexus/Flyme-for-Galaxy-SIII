@@ -3630,7 +3630,7 @@
 
     move-result-object v13
 
-    const v14, 0x1070022
+    const v14, #android:array@config_tether_apndata#t
 
     invoke-virtual {v13, v14}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
 
@@ -3951,6 +3951,8 @@
 
     move-result-object v6
 
+    const-string v6, "mobile_data"
+
     invoke-static {v2, v6}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;)I
     :try_end_0
     .catch Landroid/provider/Settings$SettingNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
@@ -4034,6 +4036,11 @@
 
     :cond_1
     invoke-static {v2, v6, v5}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
+
+    const-string v6, "mobile_data"
+
+    invoke-static {v2, v6, v5}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
+
     :try_end_1
     .catch Landroid/provider/Settings$SettingNotFoundException; {:try_start_1 .. :try_end_1} :catch_1
 
@@ -4104,6 +4111,8 @@
     invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v6
+
+    const-string v6, "data_roaming"
 
     invoke-static {v2, v6}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;)I
     :try_end_0
@@ -4186,6 +4195,11 @@
 
     :goto_2
     invoke-static {v2, v6, v4}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
+
+    const-string v6, "data_roaming"
+
+    invoke-static {v2, v6, v4}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
+
     :try_end_1
     .catch Landroid/provider/Settings$SettingNotFoundException; {:try_start_1 .. :try_end_1} :catch_1
 
@@ -6310,7 +6324,7 @@
 .end method
 
 .method protected onActionIntentReconnectAlarm(Landroid/content/Intent;)V
-    .locals 10
+    .locals 12
     .param p1, "intent"    # Landroid/content/Intent;
 
     .prologue
@@ -6343,11 +6357,13 @@
     .local v5, "phoneSubId":I
     const-string v7, "subscription"
 
-    const/4 v8, -0x1
+    const-wide/16 v10, -0x1
 
-    invoke-virtual {p1, v7, v8}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
+    invoke-virtual {p1, v7, v10, v11}, Landroid/content/Intent;->getLongExtra(Ljava/lang/String;J)J
 
-    move-result v3
+    move-result-wide v3
+
+    long-to-int v3, v3
 
     .line 510
     .local v3, "currSubId":I
@@ -7393,6 +7409,10 @@
     :goto_0
     invoke-static {v3, v4, v0}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
 
+    const-string v4, "mobile_data"
+
+    invoke-static {v3, v4, v0}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
+
     .line 1411
     invoke-virtual {p0}, Lcom/android/internal/telephony/dataconnection/DcTrackerBase;->getDataOnRoamingEnabled()Z
 
@@ -7892,6 +7912,10 @@
     const/4 v1, 0x1
 
     :goto_0
+    invoke-static {v0, v2, v1}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
+
+    const-string v2, "data_roaming"
+
     invoke-static {v0, v2, v1}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
 
     .line 784

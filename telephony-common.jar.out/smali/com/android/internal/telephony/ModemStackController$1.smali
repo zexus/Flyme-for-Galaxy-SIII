@@ -252,24 +252,25 @@
 
     invoke-direct {v7, v3}, Ljava/lang/Integer;-><init>(I)V
 
+    const/16 v11, 0x8
+
     invoke-virtual {v6, v11, v7}, Lcom/android/internal/telephony/ModemStackController;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
 
     move-result-object v2
 
-    .line 210
     .local v2, "msg":Landroid/os/Message;
     sget-object v6, Lcom/android/internal/telephony/ModemStackController$SubscriptionStatus;->SUB_DEACTIVATED:Lcom/android/internal/telephony/ModemStackController$SubscriptionStatus;
 
+    const/4 v12, 0x0
+
     invoke-static {v2, v6, v12}, Landroid/os/AsyncResult;->forMessage(Landroid/os/Message;Ljava/lang/Object;Ljava/lang/Throwable;)Landroid/os/AsyncResult;
 
-    .line 211
     iget-object v6, p0, Lcom/android/internal/telephony/ModemStackController$1;->this$0:Lcom/android/internal/telephony/ModemStackController;
 
     invoke-virtual {v6, v2}, Lcom/android/internal/telephony/ModemStackController;->sendMessage(Landroid/os/Message;)Z
 
     goto/16 :goto_0
 
-    .line 214
     .end local v0    # "column":Ljava/lang/String;
     .end local v1    # "intValue":I
     .end local v2    # "msg":Landroid/os/Message;
@@ -288,14 +289,16 @@
 
     if-eqz v6, :cond_0
 
-    .line 216
     const-string v6, "subscription"
 
-    invoke-virtual {p2, v6, v10}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
+    const-wide/16 v11, -0x1
 
-    move-result v5
+    invoke-virtual {p2, v6, v11, v12}, Landroid/content/Intent;->getLongExtra(Ljava/lang/String;J)J
 
-    .line 218
+    move-result-wide v5
+
+    long-to-int v5, v5
+
     .restart local v5    # "subId":I
     const-string v6, "phone"
 
@@ -375,17 +378,19 @@
 
     invoke-direct {v7, v3}, Ljava/lang/Integer;-><init>(I)V
 
+    const/16 v11, 0x8
+
     invoke-virtual {v6, v11, v7}, Lcom/android/internal/telephony/ModemStackController;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
 
     move-result-object v2
 
-    .line 227
     .restart local v2    # "msg":Landroid/os/Message;
     sget-object v6, Lcom/android/internal/telephony/ModemStackController$SubscriptionStatus;->SUB_ACTIVATED:Lcom/android/internal/telephony/ModemStackController$SubscriptionStatus;
 
+    const/4 v12, 0x0
+
     invoke-static {v2, v6, v12}, Landroid/os/AsyncResult;->forMessage(Landroid/os/Message;Ljava/lang/Object;Ljava/lang/Throwable;)Landroid/os/AsyncResult;
 
-    .line 228
     iget-object v6, p0, Lcom/android/internal/telephony/ModemStackController$1;->this$0:Lcom/android/internal/telephony/ModemStackController;
 
     invoke-virtual {v6, v2}, Lcom/android/internal/telephony/ModemStackController;->sendMessage(Landroid/os/Message;)Z
