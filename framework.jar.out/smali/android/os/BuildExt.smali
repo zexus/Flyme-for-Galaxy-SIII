@@ -1312,6 +1312,8 @@
     .prologue
     const/4 v2, 0x0
 
+    return v2
+
     .line 184
     sget-object v3, Landroid/os/BuildExt;->MANUFACTURER:Ljava/lang/String;
 
