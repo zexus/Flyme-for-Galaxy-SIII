@@ -8667,6 +8667,12 @@
 
     if-ge v7, v10, :cond_b
 
+    invoke-interface {p1}, Landroid/view/WindowManagerPolicy$WindowState;->getAppToken()Landroid/view/IApplicationToken;
+
+    move-result-object v7
+
+    if-eqz v7, :cond_b
+
     move v1, v5
 
     .line 4807
@@ -20808,7 +20814,7 @@
 
     .prologue
     .line 2921
-    invoke-direct {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->isKeyguardShowingAndNotOccluded()Z
+    invoke-direct {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->keyguardIsShowingTq()Z
 
     move-result v0
 
@@ -26744,7 +26750,7 @@
 
     .line 1422
     :cond_0
-    invoke-direct {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->isKeyguardShowingAndNotOccluded()Z
+    invoke-direct {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->keyguardIsShowingTq()Z
 
     move-result v0
 
@@ -28939,4 +28945,29 @@
     move v4, v6
 
     goto :goto_5
+.end method
+
+.method private keyguardIsShowingTq()Z
+    .locals 1
+
+    .prologue
+    .line 4920
+    iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mKeyguardDelegate:Lcom/android/internal/policy/impl/keyguard/KeyguardServiceDelegate;
+
+    if-nez v0, :cond_0
+
+    const/4 v0, 0x0
+
+    .line 4921
+    :goto_0
+    return v0
+
+    :cond_0
+    iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mKeyguardDelegate:Lcom/android/internal/policy/impl/keyguard/KeyguardServiceDelegate;
+
+    invoke-virtual {v0}, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceDelegate;->isShowingAndNotOccluded()Z
+
+    move-result v0
+
+    goto :goto_0
 .end method
