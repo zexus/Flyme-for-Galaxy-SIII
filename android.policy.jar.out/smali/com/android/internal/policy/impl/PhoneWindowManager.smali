@@ -6402,9 +6402,9 @@
     .locals 14
 
     .prologue
-    const/4 v13, 0x7
+    const/4 v13, 0x3
 
-    const/4 v12, 0x3
+    const/4 v12, 0x2
 
     const/4 v11, -0x2
 
@@ -6470,7 +6470,7 @@
 
     .line 1758
     .local v6, "resolver":Landroid/content/ContentResolver;
-    iput v7, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPressOnMenuBehavior:I
+    iput v12, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPressOnMenuBehavior:I
 
     .line 1760
     iget-object v9, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mContext:Landroid/content/Context;
@@ -6497,11 +6497,11 @@
     if-nez v2, :cond_1
 
     .line 1765
-    iput v12, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mLongPressOnMenuBehavior:I
+    iput v13, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mLongPressOnMenuBehavior:I
 
     .line 1767
     :cond_1
-    iput v12, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPressOnAssistBehavior:I
+    iput v13, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPressOnAssistBehavior:I
 
     .line 1768
     const/4 v9, 0x4
@@ -6509,9 +6509,7 @@
     iput v9, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mLongPressOnAssistBehavior:I
 
     .line 1769
-    const/4 v9, 0x2
-
-    iput v9, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPressOnAppSwitchBehavior:I
+    iput v12, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPressOnAppSwitchBehavior:I
 
     .line 1770
     iget-object v9, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mContext:Landroid/content/Context;
@@ -6550,7 +6548,9 @@
 
     iget v9, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mLongPressOnHomeBehavior:I
 
-    if-le v9, v13, :cond_3
+    const/4 v10, 0x7
+
+    if-le v9, v10, :cond_3
 
     .line 1777
     :cond_2
@@ -6579,7 +6579,9 @@
 
     iget v9, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mDoubleTapOnHomeBehavior:I
 
-    if-le v9, v13, :cond_5
+    const/4 v10, 0x7
+
+    if-le v9, v10, :cond_5
 
     .line 1784
     :cond_4
