@@ -80,7 +80,7 @@
     <integer name="config_notificationsBatteryLedOn">125</integer>
     <integer name="config_notificationsBatteryLedOff">2875</integer>
     <integer name="config_notificationServiceArchiveSize">100</integer>
-    <integer name="config_longPressOnHomeBehavior">2</integer>
+    <integer name="config_longPressOnHomeBehavior">3</integer>
     <integer name="config_doubleTapOnHomeBehavior">0</integer>
     <integer name="config_longPressOnMenuBehavior">8</integer>
     <integer name="config_longPressOnAppSwitchBehavior">0</integer>

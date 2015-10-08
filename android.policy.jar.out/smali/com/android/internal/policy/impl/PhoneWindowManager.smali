@@ -4864,7 +4864,7 @@
 
     .line 1483
     :pswitch_3
-    invoke-direct {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->launchAssistAction()V
+    invoke-direct {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->startVoiceAssistant()V
 
     goto :goto_0
 
@@ -28945,6 +28945,37 @@
     move v4, v6
 
     goto :goto_5
+.end method
+
+.method private startVoiceAssistant()V
+    .locals 3
+
+    .prologue
+    .line 6766
+    new-instance v0, Landroid/content/Intent;
+
+    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
+
+    .line 6767
+    .local v0, "intent":Landroid/content/Intent;
+    const-string v1, "com.meizu.voiceassistant"
+
+    const-string v2, "com.meizu.voiceassistant.MainActivity"
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 6768
+    const/high16 v1, 0x10000000
+
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
+
+    .line 6769
+    iget-object v1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v1, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+
+    .line 6770
+    return-void
 .end method
 
 .method private keyguardIsShowingTq()Z
