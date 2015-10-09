@@ -3002,6 +3002,8 @@
 
     if-nez v58, :cond_1e
 
+    goto :goto_flyme_0
+
     .line 963
     :try_start_39
     const-string v4, "SystemServer"
@@ -3011,13 +3013,11 @@
     invoke-static {v4, v5}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 964
-    #new-instance v38, Lcom/android/server/AssetAtlasService;
+    new-instance v38, Lcom/android/server/AssetAtlasService;
 
-    #move-object/from16 v0, v38
+    move-object/from16 v0, v38
 
-    #invoke-direct {v0, v3}, Lcom/android/server/AssetAtlasService;-><init>(Landroid/content/Context;)V
-
-    const/16 v38, 0x0
+    invoke-direct {v0, v3}, Lcom/android/server/AssetAtlasService;-><init>(Landroid/content/Context;)V
     :try_end_39
     .catch Ljava/lang/Throwable; {:try_start_39 .. :try_end_39} :catch_24
 
@@ -3029,7 +3029,7 @@
 
     move-object/from16 v0, v38
 
-    #invoke-static {v4, v0}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
+    invoke-static {v4, v0}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
     :try_end_3a
     .catch Ljava/lang/Throwable; {:try_start_3a .. :try_end_3a} :catch_3c
 
@@ -3040,6 +3040,7 @@
     .restart local v37    # "atlas":Lcom/android/server/AssetAtlasService;
     :cond_1e
     :goto_27
+    :goto_flyme_0
     invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v4
