@@ -200,111 +200,45 @@
 .end method
 
 .method public isInputRestricted()Z
-    .locals 3
+    .locals 1
 
     .prologue
-    .line 72
-    :try_start_0
-    iget-object v1, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceWrapper;->mService:Lcom/android/internal/policy/IKeyguardService;
+    .line 233
+    iget-object v0, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceWrapper;->mKeyguardStateMonitor:Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;
 
-    invoke-interface {v1}, Lcom/android/internal/policy/IKeyguardService;->isInputRestricted()Z
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    invoke-virtual {v0}, Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;->isInputRestricted()Z
 
-    move-result v1
+    move-result v0
 
-    .line 76
-    :goto_0
-    return v1
-
-    .line 73
-    :catch_0
-    move-exception v0
-
-    .line 74
-    .local v0, "e":Landroid/os/RemoteException;
-    iget-object v1, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceWrapper;->TAG:Ljava/lang/String;
-
-    const-string v2, "Remote Exception"
-
-    invoke-static {v1, v2, v0}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    .line 76
-    const/4 v1, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public isSecure()Z
-    .locals 3
+    .locals 1
 
     .prologue
-    .line 54
-    :try_start_0
-    iget-object v1, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceWrapper;->mService:Lcom/android/internal/policy/IKeyguardService;
+    .line 220
+    iget-object v0, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceWrapper;->mKeyguardStateMonitor:Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;
 
-    invoke-interface {v1}, Lcom/android/internal/policy/IKeyguardService;->isSecure()Z
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    invoke-virtual {v0}, Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;->isSecure()Z
 
-    move-result v1
+    move-result v0
 
-    .line 58
-    :goto_0
-    return v1
-
-    .line 55
-    :catch_0
-    move-exception v0
-
-    .line 56
-    .local v0, "e":Landroid/os/RemoteException;
-    iget-object v1, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceWrapper;->TAG:Ljava/lang/String;
-
-    const-string v2, "Remote Exception"
-
-    invoke-static {v1, v2, v0}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    .line 58
-    const/4 v1, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public isShowing()Z
-    .locals 3
+    .locals 1
 
     .prologue
-    .line 45
-    :try_start_0
-    iget-object v1, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceWrapper;->mService:Lcom/android/internal/policy/IKeyguardService;
+    .line 216
+    iget-object v0, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceWrapper;->mKeyguardStateMonitor:Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;
 
-    invoke-interface {v1}, Lcom/android/internal/policy/IKeyguardService;->isShowing()Z
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    invoke-virtual {v0}, Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;->isShowing()Z
 
-    move-result v1
+    move-result v0
 
-    .line 49
-    :goto_0
-    return v1
-
-    .line 46
-    :catch_0
-    move-exception v0
-
-    .line 47
-    .local v0, "e":Landroid/os/RemoteException;
-    iget-object v1, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceWrapper;->TAG:Ljava/lang/String;
-
-    const-string v2, "Remote Exception"
-
-    invoke-static {v1, v2, v0}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    .line 49
-    const/4 v1, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public isShowingAndNotOccluded()Z
