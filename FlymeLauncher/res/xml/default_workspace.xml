@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<favorites
+  xmlns:launcher="http://schemas.android.com/apk/res-auto/com.android.launcher3">
+    <appwidget launcher:className="com.meizu.flyme.notepaper.NotesSmallAppWidgetProvider" launcher:packageName="com.meizu.notepaper" launcher:screen="0" launcher:x="0" launcher:y="0" launcher:spanX="4" launcher:spanY="1" />
+    <favorite launcher:className="com.meizu.customizecenter.CustomizeCenterActivity" launcher:packageName="com.meizu.customizecenter" launcher:screen="0" launcher:x="0" launcher:y="1" />
+    <favorite launcher:className="com.meizu.flyme.weather.WeatherMainActivity" launcher:packageName="com.meizu.flyme.weather" launcher:screen="0" launcher:x="1" launcher:y="1" />
+    <favorite launcher:className="com.meizu.flyme.update.SystemUpdateListActivity" launcher:packageName="com.meizu.flyme.update" launcher:screen="0" launcher:x="2" launcher:y="1" />
+    <folder launcher:screen="0" launcher:x="3" launcher:y="1" launcher:title="@string/system_tools">
+        <favorite launcher:className="com.meizu.flyme.filemanager.activity.FileManagerActivity" launcher:packageName="com.meizu.filemanager" />
+        <favorite launcher:className="com.meizu.flyme.calculator.Calculator" launcher:packageName="com.meizu.flyme.calculator" />
+        <favorite launcher:className="com.meizu.flyme.notepaper.NotePaperActivity" launcher:packageName="com.meizu.notepaper" />
+        <favorite launcher:className="com.android.providers.downloads.ui.DownloadActivity" launcher:packageName="com.android.providers.downloads.ui" />
+        <favorite launcher:className="com.caf.fmradio.FMRadio" launcher:packageName="com.caf.fmradio" />
+        <favorite launcher:className="com.meizu.logreport.MainActivity" launcher:packageName="com.meizu.logreport" />
+        <favorite launcher:className="com.caf.fmradio.FMTransmitterActivity" launcher:packageName="com.caf.fmradio" />
+        <favorite launcher:className="com.meizu.flyme.ui.UseRaidersActivity" launcher:packageName="com.meizu.flyme.usetips" />
+        <favorite launcher:className="com.meizu.feedback.activity.MainActivity" launcher:packageName="com.meizu.feedback" />
+    </folder>
+    <appwidget launcher:className="com.meizu.flyme.weather.WeatherWidgetProvider" launcher:packageName="com.meizu.flyme.weather" launcher:screen="1" launcher:x="0" launcher:y="0" launcher:spanX="4" launcher:spanY="1" />
+    <favorite launcher:className="com.meizu.flyme.calendar.AllInOneActivity" launcher:packageName="com.android.calendar" launcher:screen="1" launcher:x="0" launcher:y="1" />
+    <favorite launcher:className="com.meizu.flyme.alarmclock.AlarmClock" launcher:packageName="com.android.alarmclock" launcher:screen="1" launcher:x="1" launcher:y="1" />
+    <favorite launcher:className="com.android.email.activity.EmailActivity" launcher:packageName="com.android.email" launcher:screen="1" launcher:x="2" launcher:y="1" />
+    <favorite launcher:className="com.meizu.media.reader.ReaderMainActivity" launcher:packageName="com.meizu.media.reader" launcher:screen="1" launcher:x="3" launcher:y="1" />
+    <favorite launcher:className="com.meizu.media.music.MusicActivity" launcher:packageName="com.meizu.media.music" launcher:screen="1" launcher:x="0" launcher:y="2" />
+    <favorite launcher:className="com.android.soundrecorder.MzRecorderActivity" launcher:packageName="com.android.soundrecorder" launcher:screen="1" launcher:x="1" launcher:y="2" />
+    <favorite launcher:className="com.meizu.media.camera.CameraLauncher" launcher:packageName="com.meizu.media.camera" launcher:screen="1" launcher:x="2" launcher:y="2" />
+    <favorite launcher:className="com.meizu.media.gallery.GalleryActivity" launcher:packageName="com.meizu.media.gallery" launcher:screen="1" launcher:x="3" launcher:y="2" />
+    <favorite launcher:className="com.meizu.flyme.appcenter.activitys.AppMainTabActivity" launcher:packageName="com.meizu.mstore" launcher:screen="1" launcher:x="0" launcher:y="3" />
+    <favorite launcher:className="com.meizu.flyme.gamecenter.GameMainTabActivity" launcher:packageName="com.meizu.flyme.gamecenter" launcher:screen="1" launcher:x="1" launcher:y="3" />
+    <favorite launcher:className="com.meizu.safe.SecurityCenterActivity" launcher:packageName="com.meizu.safe" launcher:screen="1" launcher:x="2" launcher:y="3" />
+    <favorite launcher:className="com.android.settings.Settings" launcher:packageName="com.android.settings" launcher:screen="1" launcher:x="3" launcher:y="3" />
+    <favorite launcher:className="com.meizu.media.life.ui.activity.HomeActivity" launcher:packageName="com.meizu.media.life" launcher:screen="2" launcher:x="0" launcher:y="0" />
+    <favorite launcher:className="com.meizu.media.painter.PainterMainActivity" launcher:packageName="com.meizu.media.painter" launcher:screen="2" launcher:x="1" launcher:y="0" />
+    <favorite launcher:className="com.meizu.media.video.VideoMainActivity" launcher:packageName="com.meizu.media.video" launcher:screen="2" launcher:x="2" launcher:y="0" />
+    <favorite launcher:className="com.meizu.voiceassistant.MainActivity" launcher:packageName="com.meizu.voiceassistant" launcher:screen="2" launcher:x="3" launcher:y="0" />
+    <favorite launcher:className="com.android.dialer.DialtactsActivity" launcher:packageName="com.android.dialer" launcher:container="-101" launcher:screen="0" launcher:x="0" launcher:y="0" />
+    <favorite launcher:className="com.android.browser.BrowserActivity" launcher:packageName="com.android.browser" launcher:container="-101" launcher:screen="1" launcher:x="1" launcher:y="0" />
+    <favorite launcher:className="com.android.mms.ui.ConversationList" launcher:packageName="com.android.mms" launcher:container="-101" launcher:screen="2" launcher:x="2" launcher:y="0" />
+</favorites>
