@@ -95,7 +95,7 @@ vendor_modify_jars := android.policy framework services telephony-common wifi-se
 # The default value is nothing.
 # You can configure the board system apk name in the value.
 #-----------------------------------------------------------------------------
-board_remove_apps := LogReport AlarmClock Music
+board_remove_apps := LogReport
 
 ##############################################################################
 # The value decides which apk you want to modify, when the apk is based on the board system apk.
@@ -141,8 +141,7 @@ override_property += \
 # You should configure the property according to your device and your ID with replace the "Nexus-5_Unofficial".
 override_property += \
     ro.flyme.romer=ZBDXY \
-    ro.product.model_romer=GT-I9300_ZBDXY \
-    ro.build.display.id=Flyme OS 4.5.3.1W(体验版)
+    ro.product.model_romer=GT-I9300_ZBDXY
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
