@@ -3853,13 +3853,23 @@
     .end annotation
 
     .prologue
-    .line 504
+    .line 505
     .local p0, "this":Lcom/android/server/IntentResolver;, "Lcom/android/server/IntentResolver<TF;TR;>;"
     .local p1, "results":Ljava/util/List;, "Ljava/util/List<TR;>;"
+    :try_start_0
     sget-object v0, Lcom/android/server/IntentResolver;->mResolvePrioritySorter:Ljava/util/Comparator;
 
     invoke-static {p1, v0}, Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V
+    :try_end_0
+    .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 505
+    .line 508
+    :goto_0
     return-void
+
+    .line 506
+    :catch_0
+    move-exception v0
+
+    goto :goto_0
 .end method
