@@ -10582,6 +10582,8 @@
 
     invoke-virtual {v1, v2}, Landroid/graphics/Rect;->set(Landroid/graphics/Rect;)V
 
+    invoke-direct/range {p0 .. p0}, Landroid/view/ViewRootImpl;->mzAdjustContentInsets()V
+
     .line 1210
     iget-object v1, p0, Landroid/view/ViewRootImpl;->mDispatchStableInsets:Landroid/graphics/Rect;
 
@@ -17290,6 +17292,46 @@
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/view/ViewRootImpl;->mForceLayoutByOrientation:Z
+
+    :cond_0
+    return-void
+.end method
+
+.method private mzAdjustContentInsets()V
+    .locals 3
+
+    .prologue
+    iget-object v0, p0, Landroid/view/ViewRootImpl;->mWindowAttributes:Landroid/view/WindowManager$LayoutParams;
+
+    iget v0, v0, Landroid/view/WindowManager$LayoutParams;->meizuFlags:I
+
+    and-int/lit16 v0, v0, 0x400
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Landroid/view/ViewRootImpl;->mDispatchContentInsets:Landroid/graphics/Rect;
+
+    iget v1, v0, Landroid/graphics/Rect;->bottom:I
+
+    invoke-direct {p0}, Landroid/view/ViewRootImpl;->mzGetImeOffset()I
+
+    move-result v2
+
+    sub-int/2addr v1, v2
+
+    iput v1, v0, Landroid/graphics/Rect;->bottom:I
+
+    iget-object v0, p0, Landroid/view/ViewRootImpl;->mDispatchContentInsets:Landroid/graphics/Rect;
+
+    iget v0, v0, Landroid/graphics/Rect;->bottom:I
+
+    if-gez v0, :cond_0
+
+    iget-object v0, p0, Landroid/view/ViewRootImpl;->mDispatchContentInsets:Landroid/graphics/Rect;
+
+    const/4 v1, 0x0
+
+    iput v1, v0, Landroid/graphics/Rect;->bottom:I
 
     :cond_0
     return-void

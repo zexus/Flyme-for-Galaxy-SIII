@@ -14153,8 +14153,6 @@
 
     iget-object v2, v0, Landroid/net/wifi/WifiConfiguration;->scanResultCache:Ljava/util/HashMap;
 
-    const/4 v2, 0x0
-
     if-eqz v2, :cond_a
 
     move-object/from16 v0, v20
