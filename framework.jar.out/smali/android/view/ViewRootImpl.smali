@@ -17104,9 +17104,26 @@
 .end method
 
 .method public getLastSplitActionBar()Landroid/view/View;
-    .locals 1
+    .locals 2
 
     .prologue
+    iget-object v0, p0, Landroid/view/ViewRootImpl;->mMzLastSplitActionBar:Landroid/view/View;
+
+    if-nez v0, :cond_0
+
+    invoke-virtual {p0}, Landroid/view/ViewRootImpl;->getView()Landroid/view/View;
+
+    move-result-object v0
+
+    const v1, #android:id@split_action_bar#t
+
+    invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    invoke-virtual {p0, v0}, Landroid/view/ViewRootImpl;->setLastSplitActionBar(Landroid/view/View;)V
+
+    :cond_0
     iget-object v0, p0, Landroid/view/ViewRootImpl;->mMzLastSplitActionBar:Landroid/view/View;
 
     return-object v0
