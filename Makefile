@@ -56,7 +56,7 @@ vendor_modify_images := boot
 #-----------------------------------------------------------------------------
 vendor_saved_apps := Bluetooth Nfc KeyChain Tag HTMLViewer UserDictionaryProvider BackupRestoreConfirmation \
                      FusedLocation PrintSpooler SharedStorageBackup  ExternalStorageProvider InputDevices \
-                     ProxyHandler Shell DefaultContainerService WAPPushManager Stk
+                     ProxyHandler Shell DefaultContainerService WAPPushManager Stk CaptivePortalLogin
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.
