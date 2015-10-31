@@ -314,7 +314,7 @@
     const/4 v12, 0x0
 
     .line 21622
-    const/high16 v8, 0x41a00000    # 20.0f
+    const/high16 v8, 0x41700000    # 15.0f
 
     .line 21623
     .local v8, "scaleFactor":F
@@ -367,7 +367,7 @@
     if-eqz v9, :cond_3
 
     .line 21631
-    const/high16 v8, 0x41a00000    # 20.0f
+    const/high16 v8, 0x41700000    # 15.0f
 
     .line 21632
     const/high16 v2, 0x41200000    # 10.0f
@@ -481,7 +481,7 @@
     if-eqz v9, :cond_0
 
     .line 21635
-    const/high16 v8, 0x41a00000    # 20.0f
+    const/high16 v8, 0x41700000    # 15.0f
 
     .line 21636
     const/high16 v2, 0x41000000    # 8.0f
