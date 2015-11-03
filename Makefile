@@ -140,8 +140,8 @@ override_property += \
 # The default value is Nexus-5_Unofficial.
 # You should configure the property according to your device and your ID with replace the "Nexus-5_Unofficial".
 override_property += \
-    ro.flyme.romer=ZBDXY \
-    ro.product.model_romer=GT-I9300_ZBDXY
+    ro.flyme.romer=SiFooYee \
+    ro.product.model_romer=GT-I9300_SiFooYee
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
