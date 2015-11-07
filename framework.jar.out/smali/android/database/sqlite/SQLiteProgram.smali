@@ -329,22 +329,33 @@
     :goto_0
     if-eqz v0, :cond_0
 
-    .line 200
+    .line 201
     add-int/lit8 v1, v0, -0x1
 
+    :try_start_0
     aget-object v1, p1, v1
 
     invoke-virtual {p0, v0, v1}, Landroid/database/sqlite/SQLiteProgram;->bindString(ILjava/lang/String;)V
+    :try_end_0
+    .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 199
+    :goto_1
     add-int/lit8 v0, v0, -0x1
 
     goto :goto_0
 
-    .line 203
+    .line 206
     .end local v0    # "i":I
     :cond_0
     return-void
+
+    .line 202
+    .restart local v0    # "i":I
+    :catch_0
+    move-exception v1
+
+    goto :goto_1
 .end method
 
 .method public bindBlob(I[B)V
