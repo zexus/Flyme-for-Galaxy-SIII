@@ -166,7 +166,7 @@
     .line 453
     new-instance v1, Landroid/content/ContentValues;
 
-    const/16 v2, 0x9
+    const/16 v2, 0x8
 
     invoke-direct {v1, v2}, Landroid/content/ContentValues;-><init>(I)V
 
@@ -210,15 +210,6 @@
     invoke-virtual {v1, v2, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
     .line 458
-    const-string v2, "phone_id"
-
-    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-virtual {v1, v2, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
-
-    .line 459
     const-string v2, "address"
 
     invoke-virtual {v1, v2, p3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
@@ -257,15 +248,6 @@
     invoke-virtual {v1, v2, p4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 466
-    const-string v2, "priority"
-
-    invoke-static/range {p11 .. p11}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-virtual {v1, v2, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
-
-    .line 467
     if-eqz p8, :cond_1
 
     .line 468
