@@ -4,8 +4,8 @@
     <integer name="config_mediumAnimTime">400</integer>
     <integer name="config_longAnimTime">500</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
-    <integer name="config_soundEffectVolumeDb">-6</integer>
-    <integer name="config_lockSoundVolumeDb">-6</integer>
+    <integer name="config_soundEffectVolumeDb">0</integer>
+    <integer name="config_lockSoundVolumeDb">0</integer>
     <integer name="config_activityShortDur">150</integer>
     <integer name="config_activityDefaultDur">220</integer>
     <integer name="config_lowMemoryKillerMinFreeKbytesAbsolute">-1</integer>
