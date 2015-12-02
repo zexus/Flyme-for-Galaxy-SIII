@@ -1162,14 +1162,13 @@
     .prologue
     const/4 v2, 0x0
 
-    if-nez p0, :cond_0
-
-    move-object v1, v2
-
-    :goto_0
-    return-object v1
+    if-nez p0, :cond_1
 
     :cond_0
+    :goto_0
+    return-object v2
+
+    :cond_1
     const/4 v1, 0x0
 
     .local v1, "actualDefaultUri":Landroid/net/Uri;
@@ -1186,15 +1185,24 @@
 
     move-result-object v8
 
+    .line 156
     .local v8, "uriString":Ljava/lang/String;
-    if-eqz v8, :cond_1
+    const-string v3, ""
+
+    invoke-virtual {v3, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_0
+
+    if-eqz v8, :cond_2
 
     invoke-static {v8}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v1
 
     :goto_1
-    if-eqz v1, :cond_2
+    if-eqz v1, :cond_3
 
     invoke-static {v1, p2}, Landroid/media/MzRingtoneManager;->buildUriWithUserId(Landroid/net/Uri;I)Landroid/net/Uri;
 
@@ -1211,35 +1219,41 @@
 
     move-object v5, v2
 
+    .line 160
     invoke-virtual/range {v0 .. v5}, Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
     move-result-object v6
 
-    .line 301
+    .line 161
     .local v6, "c":Landroid/database/Cursor;
-    if-eqz v6, :cond_2
+    if-eqz v6, :cond_3
 
     invoke-interface {v6}, Landroid/database/Cursor;->moveToNext()Z
 
     move-result v2
 
-    if-eqz v2, :cond_2
+    if-eqz v2, :cond_3
 
+    .line 162
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
+
+    move-object v2, v1
 
     goto :goto_0
 
     .end local v0    # "resolver":Landroid/content/ContentResolver;
     .end local v6    # "c":Landroid/database/Cursor;
-    :cond_1
+    :cond_2
     move-object v1, v2
 
     goto :goto_1
 
-    :cond_2
+    :cond_3
     invoke-static {p0, p1, p2}, Landroid/media/MzRingtoneManager;->rollbackToDefault(Landroid/content/Context;II)Landroid/net/Uri;
 
     move-result-object v1
+
+    move-object v2, v1
 
     goto :goto_0
 .end method
