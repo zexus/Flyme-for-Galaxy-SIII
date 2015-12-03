@@ -34,10 +34,6 @@ if [ $1 = "SystemUI" ];then
 	applyPatch $1 $2
 fi
 
-if [ $1 = "TelephonyProvider" ];then
-	applyPatch $1 $2
-fi
-
 if [ "$apkBaseName" = "Keyguard" ];then
         echo ">>> in custom_app for $apkBaseName to adjust the field IccCardConstants$State;->NETWORK_LOCKED with IccCardConstants$State;->PERSO_LOCKED"
         find $tempSmaliDir/ -name "*.smali" | xargs sed -i 's#IccCardConstants$State;->NETWORK_LOCKED#IccCardConstants$State;->PERSO_LOCKED#g'
