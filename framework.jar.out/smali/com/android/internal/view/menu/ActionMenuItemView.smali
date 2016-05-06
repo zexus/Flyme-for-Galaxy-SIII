@@ -3,10 +3,10 @@
 .source "ActionMenuItemView.java"
 
 # interfaces
+.implements Lcom/android/internal/view/menu/MenuView$ItemView;
 .implements Landroid/view/View$OnClickListener;
 .implements Landroid/view/View$OnLongClickListener;
 .implements Landroid/widget/ActionMenuView$ActionMenuChildView;
-.implements Lcom/android/internal/view/menu/MenuView$ItemView;
 
 
 # annotations

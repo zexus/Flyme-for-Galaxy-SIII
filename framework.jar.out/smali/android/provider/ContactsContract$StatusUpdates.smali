@@ -3,8 +3,8 @@
 .source "ContactsContract.java"
 
 # interfaces
-.implements Landroid/provider/ContactsContract$PresenceColumns;
 .implements Landroid/provider/ContactsContract$StatusColumns;
+.implements Landroid/provider/ContactsContract$PresenceColumns;
 
 
 # annotations

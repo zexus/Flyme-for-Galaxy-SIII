@@ -3,8 +3,8 @@
 .source "AnimationDrawable.java"
 
 # interfaces
-.implements Landroid/graphics/drawable/Animatable;
 .implements Ljava/lang/Runnable;
+.implements Landroid/graphics/drawable/Animatable;
 
 
 # annotations

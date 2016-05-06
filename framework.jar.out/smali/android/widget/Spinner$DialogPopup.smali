@@ -3,8 +3,8 @@
 .source "Spinner.java"
 
 # interfaces
-.implements Landroid/content/DialogInterface$OnClickListener;
 .implements Landroid/widget/Spinner$SpinnerPopup;
+.implements Landroid/content/DialogInterface$OnClickListener;
 
 
 # annotations

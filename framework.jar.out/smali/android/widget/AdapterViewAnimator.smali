@@ -3,8 +3,8 @@
 .source "AdapterViewAnimator.java"
 
 # interfaces
-.implements Landroid/widget/Advanceable;
 .implements Landroid/widget/RemoteViewsAdapter$RemoteAdapterConnectionCallback;
+.implements Landroid/widget/Advanceable;
 
 
 # annotations

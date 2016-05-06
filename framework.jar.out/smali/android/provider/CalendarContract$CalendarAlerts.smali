@@ -5,8 +5,8 @@
 # interfaces
 .implements Landroid/provider/BaseColumns;
 .implements Landroid/provider/CalendarContract$CalendarAlertsColumns;
-.implements Landroid/provider/CalendarContract$CalendarColumns;
 .implements Landroid/provider/CalendarContract$EventsColumns;
+.implements Landroid/provider/CalendarContract$CalendarColumns;
 
 
 # annotations

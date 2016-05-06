@@ -20,8 +20,6 @@
 
 
 # instance fields
-.field mAccessControlManager:Lmeizu/security/AccessControlManager;
-
 .field private mAuthorities:[Ljava/lang/String;
 
 .field private mAuthority:Ljava/lang/String;
@@ -2647,13 +2645,4 @@
 .end method
 
 .method public abstract update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
-.end method
-
-.method mzGetMyUid()I
-    .locals 1
-
-    .prologue
-    iget v0, p0, Landroid/content/ContentProvider;->mMyUid:I
-
-    return v0
 .end method

@@ -3,5 +3,5 @@
 .source "ElementListener.java"
 
 # interfaces
-.implements Landroid/sax/EndElementListener;
 .implements Landroid/sax/StartElementListener;
+.implements Landroid/sax/EndElementListener;

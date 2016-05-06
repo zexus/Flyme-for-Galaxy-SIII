@@ -777,14 +777,3 @@
 
     goto :goto_0
 .end method
-
-.method public static hasSmartBar()Z
-    .locals 1
-
-    .prologue
-    invoke-static {}, Landroid/os/BuildExt;->hasSmartBar()Z
-
-    move-result v0
-
-    return v0
-.end method

@@ -3,8 +3,8 @@
 .source "TransitionManager.java"
 
 # interfaces
-.implements Landroid/view/View$OnAttachStateChangeListener;
 .implements Landroid/view/ViewTreeObserver$OnPreDrawListener;
+.implements Landroid/view/View$OnAttachStateChangeListener;
 
 
 # annotations

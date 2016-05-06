@@ -23,20 +23,24 @@
     .prologue
     const/high16 v3, 0x20000
 
-    sget v1, Lcom/flyme/internal/R$style;->Theme_Flyme_Light_Dialog_Alert:I
+    .line 36
+    const v1, 0x1030483
 
     invoke-direct {p0, p1, v1}, Landroid/app/AlertDialog;-><init>(Landroid/content/Context;I)V
 
+    .line 33
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Lcom/android/server/am/BaseErrorDialog;->mConsuming:Z
 
+    .line 76
     new-instance v1, Lcom/android/server/am/BaseErrorDialog$1;
 
     invoke-direct {v1, p0}, Lcom/android/server/am/BaseErrorDialog$1;-><init>(Lcom/android/server/am/BaseErrorDialog;)V
 
     iput-object v1, p0, Lcom/android/server/am/BaseErrorDialog;->mHandler:Landroid/os/Handler;
 
+    .line 38
     invoke-virtual {p0}, Lcom/android/server/am/BaseErrorDialog;->getWindow()Landroid/view/Window;
 
     move-result-object v1
@@ -107,7 +111,8 @@
     .param p1, "enabled"    # Z
 
     .prologue
-    const v1, #android:id@button1#t
+    .line 62
+    const v1, 0x1020019
 
     invoke-virtual {p0, v1}, Lcom/android/server/am/BaseErrorDialog;->findViewById(I)Landroid/view/View;
 
@@ -124,7 +129,7 @@
 
     .line 66
     :cond_0
-    const v1, #android:id@button2#t
+    const v1, 0x102001a
 
     invoke-virtual {p0, v1}, Lcom/android/server/am/BaseErrorDialog;->findViewById(I)Landroid/view/View;
 
@@ -142,7 +147,7 @@
 
     .line 70
     :cond_1
-    const v1, #android:id@button3#t
+    const v1, 0x102001b
 
     invoke-virtual {p0, v1}, Lcom/android/server/am/BaseErrorDialog;->findViewById(I)Landroid/view/View;
 

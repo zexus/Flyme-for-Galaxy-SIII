@@ -3,8 +3,8 @@
 .source "SMSDispatcher.java"
 
 # interfaces
-.implements Landroid/content/DialogInterface$OnCancelListener;
 .implements Landroid/content/DialogInterface$OnClickListener;
+.implements Landroid/content/DialogInterface$OnCancelListener;
 .implements Landroid/widget/CompoundButton$OnCheckedChangeListener;
 
 

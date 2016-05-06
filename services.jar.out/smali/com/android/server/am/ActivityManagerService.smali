@@ -3,8 +3,8 @@
 .source "ActivityManagerService.java"
 
 # interfaces
-.implements Lcom/android/internal/os/BatteryStatsImpl$BatteryCallback;
 .implements Lcom/android/server/Watchdog$Monitor;
+.implements Lcom/android/internal/os/BatteryStatsImpl$BatteryCallback;
 
 
 # annotations
@@ -356,8 +356,6 @@
 
 
 # instance fields
-.field private mMzRecentTaskChanged:Landroid/content/Intent;
-
 .field final GL_ES_VERSION:I
 
 .field mActiveProcessChanges:[Lcom/android/server/am/ActivityManagerService$ProcessChangeItem;
@@ -2380,8 +2378,6 @@
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     invoke-virtual {v0, v1}, Lcom/android/server/Watchdog;->addThread(Landroid/os/Handler;)V
-
-    invoke-static/range {p0 .. p0}, Lcom/android/server/am/InjectorAMS;->setup(Lcom/android/server/am/ActivityManagerService;)V
 
     .line 2269
     return-void
@@ -10122,14 +10118,15 @@
     .param p2, "killProcess"    # Z
 
     .prologue
+    .line 8588
     iget-object v11, p0, Lcom/android/server/am/ActivityManagerService;->mRecentTasks:Ljava/util/ArrayList;
 
     invoke-virtual {v11, p1}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
 
-    invoke-direct/range {p0 .. p0}, Lcom/android/server/am/ActivityManagerService;->mzBroadcastRecentTasksChanged()V
-
+    .line 8589
     invoke-virtual {p1}, Lcom/android/server/am/TaskRecord;->removedFromRecents()V
 
+    .line 8590
     invoke-virtual {p1}, Lcom/android/server/am/TaskRecord;->getBaseIntent()Landroid/content/Intent;
 
     move-result-object v11
@@ -23746,7 +23743,7 @@
 
     .line 11262
     .local v0, "res":Landroid/content/res/Resources;
-    const v1, #android:bool@config_hasRecents#t
+    const v1, 0x1120087
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -23754,7 +23751,8 @@
 
     iput-boolean v1, p0, Lcom/android/server/am/ActivityManagerService;->mHasRecents:Z
 
-    const v1, #android:dimen@thumbnail_width#t
+    .line 11263
+    const v1, 0x1050002
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -23762,7 +23760,8 @@
 
     iput v1, p0, Lcom/android/server/am/ActivityManagerService;->mThumbnailWidth:I
 
-    const v1, #android:dimen@thumbnail_height#t
+    .line 11264
+    const v1, 0x1050001
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -30904,9 +30903,9 @@
 
     iget-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
 
-    const v5, #android:anim@screen_user_exit#t
+    const v5, 0x10a005c
 
-    const v6, #android:anim@screen_user_enter#t
+    const v6, 0x10a005b
 
     invoke-virtual {v4, v5, v6}, Lcom/android/server/wm/WindowManagerService;->startFreezingScreen(II)V
 
@@ -31020,7 +31019,7 @@
 
     const/4 v5, 0x0
 
-    #invoke-virtual {v4, v5}, Lcom/android/server/wm/WindowManagerService;->lockNow(Landroid/os/Bundle;)V
+    invoke-virtual {v4, v5}, Lcom/android/server/wm/WindowManagerService;->lockNow(Landroid/os/Bundle;)V
 
     .line 19329
     :goto_1
@@ -34299,8 +34298,7 @@
     .param p9, "crashInfo"    # Landroid/app/ApplicationErrorReport$CrashInfo;
 
     .prologue
-    invoke-static/range {p1 .. p9}, Lcom/android/server/am/InjectorAMS;->reportApplicationError(Ljava/lang/String;Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Lcom/android/server/am/ActivityRecord;Lcom/android/server/am/ActivityRecord;Ljava/lang/String;Ljava/lang/String;Ljava/io/File;Landroid/app/ApplicationErrorReport$CrashInfo;)V
-
+    .line 12219
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -34341,16 +34339,6 @@
 
     .line 12224
     .local v8, "dbox":Landroid/os/DropBoxManager;
-    invoke-static/range {p1 .. p1}, Lcom/android/server/am/InjectorAMS;->isEventTypeConstraint(Ljava/lang/String;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_flyme_0
-
-    return-void
-
-    :cond_flyme_0
-
     if-eqz v8, :cond_0
 
     invoke-virtual {v8, v7}, Landroid/os/DropBoxManager;->isTagEnabled(Ljava/lang/String;)Z
@@ -34832,43 +34820,53 @@
 
     if-eq v10, v7, :cond_1
 
+    .line 4195
     :cond_4
     iget-object v7, p1, Lcom/android/server/am/TaskRecord;->voiceSession:Landroid/service/voice/IVoiceInteractionSession;
 
     if-nez v7, :cond_1
 
+    .line 4200
     const/4 v2, 0x0
 
+    .line 4204
     .local v2, "needAffiliationFix":Z
     iget-boolean v7, p1, Lcom/android/server/am/TaskRecord;->inRecents:Z
 
     if-eqz v7, :cond_6
 
+    .line 4205
     iget-object v7, p0, Lcom/android/server/am/ActivityManagerService;->mRecentTasks:Ljava/util/ArrayList;
 
     invoke-virtual {v7, p1}, Ljava/util/ArrayList;->indexOf(Ljava/lang/Object;)I
 
     move-result v5
 
+    .line 4206
     .local v5, "taskIndex":I
     if-ltz v5, :cond_7
 
+    .line 4207
     if-nez v1, :cond_5
 
+    .line 4209
     iget-object v7, p0, Lcom/android/server/am/ActivityManagerService;->mRecentTasks:Ljava/util/ArrayList;
 
     invoke-virtual {v7, v5}, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
 
+    .line 4210
     iget-object v7, p0, Lcom/android/server/am/ActivityManagerService;->mRecentTasks:Ljava/util/ArrayList;
 
     invoke-virtual {v7, v8, p1}, Ljava/util/ArrayList;->add(ILjava/lang/Object;)V
 
-    invoke-virtual {p0, p1, v8}, Lcom/android/server/am/ActivityManagerService;->mznotifyTaskPersisterLocked(Lcom/android/server/am/TaskRecord;Z)V
+    .line 4211
+    invoke-virtual {p0, p1, v8}, Lcom/android/server/am/ActivityManagerService;->notifyTaskPersisterLocked(Lcom/android/server/am/TaskRecord;Z)V
 
     goto :goto_1
 
+    .line 4217
     :cond_5
-    invoke-direct {p0, p1, v5}, Lcom/android/server/am/ActivityManagerService;->mzMoveAffiliatedTasksToFront(Lcom/android/server/am/TaskRecord;I)Z
+    invoke-direct {p0, p1, v5}, Lcom/android/server/am/ActivityManagerService;->moveAffiliatedTasksToFront(Lcom/android/server/am/TaskRecord;I)Z
 
     move-result v7
 
@@ -34945,77 +34943,97 @@
 
     invoke-static {v7, v10}, Landroid/util/Slog;->wtf(Ljava/lang/String;Ljava/lang/String;)I
 
+    .line 4228
     const/4 v2, 0x1
 
     goto :goto_2
 
+    .line 4241
     .end local v5    # "taskIndex":I
     :cond_8
     iput-boolean v9, p1, Lcom/android/server/am/TaskRecord;->inRecents:Z
 
+    .line 4242
     if-eqz v1, :cond_9
 
     if-eqz v2, :cond_b
 
+    .line 4245
     :cond_9
     iget-object v7, p0, Lcom/android/server/am/ActivityManagerService;->mRecentTasks:Ljava/util/ArrayList;
 
     invoke-virtual {v7, v8, p1}, Ljava/util/ArrayList;->add(ILjava/lang/Object;)V
 
+    .line 4293
     :cond_a
     :goto_4
-    if-eqz v2, :cond_flyme_0
+    if-eqz v2, :cond_1
 
+    .line 4295
     iget v7, p1, Lcom/android/server/am/TaskRecord;->userId:I
 
     invoke-virtual {p0, v7}, Lcom/android/server/am/ActivityManagerService;->cleanupRecentTasksLocked(I)V
 
     goto/16 :goto_1
 
+    .line 4246
     :cond_b
     if-eqz v1, :cond_a
 
+    .line 4249
     iget-object v3, p1, Lcom/android/server/am/TaskRecord;->mNextAffiliate:Lcom/android/server/am/TaskRecord;
 
+    .line 4250
     .local v3, "other":Lcom/android/server/am/TaskRecord;
     if-nez v3, :cond_c
 
+    .line 4251
     iget-object v3, p1, Lcom/android/server/am/TaskRecord;->mPrevAffiliate:Lcom/android/server/am/TaskRecord;
 
+    .line 4253
     :cond_c
     if-eqz v3, :cond_f
 
+    .line 4254
     iget-object v7, p0, Lcom/android/server/am/ActivityManagerService;->mRecentTasks:Ljava/util/ArrayList;
 
     invoke-virtual {v7, v3}, Ljava/util/ArrayList;->indexOf(Ljava/lang/Object;)I
 
     move-result v4
 
+    .line 4255
     .local v4, "otherIndex":I
     if-ltz v4, :cond_e
 
+    .line 4258
     iget-object v7, p1, Lcom/android/server/am/TaskRecord;->mNextAffiliate:Lcom/android/server/am/TaskRecord;
 
     if-ne v3, v7, :cond_d
 
+    .line 4261
     add-int/lit8 v5, v4, 0x1
 
+    .line 4269
     .restart local v5    # "taskIndex":I
     :goto_5
     iget-object v7, p0, Lcom/android/server/am/ActivityManagerService;->mRecentTasks:Ljava/util/ArrayList;
 
     invoke-virtual {v7, v5, p1}, Ljava/util/ArrayList;->add(ILjava/lang/Object;)V
 
+    .line 4272
     invoke-direct {p0, p1, v5}, Lcom/android/server/am/ActivityManagerService;->moveAffiliatedTasksToFront(Lcom/android/server/am/TaskRecord;I)Z
 
     move-result v7
 
     if-nez v7, :cond_1
 
+    .line 4279
     const/4 v2, 0x1
 
+    .line 4280
     goto :goto_4
 
+    .line 4265
     .end local v5    # "taskIndex":I
     :cond_d
     move v5, v4
@@ -35036,12 +35054,6 @@
     const/4 v2, 0x1
 
     goto :goto_4
-
-    :cond_flyme_0
-
-    invoke-direct/range {p0 .. p0}, Lcom/android/server/am/ActivityManagerService;->mzBroadcastRecentTasksChanged()V
-
-    return-void
 .end method
 
 .method final appDiedLocked(Lcom/android/server/am/ProcessRecord;)V
@@ -79990,8 +80002,6 @@
     .prologue
     .line 2045
     :try_start_0
-    invoke-static {}, Lcom/android/server/am/InjectorAMS;->addServiceFlymeErrorReportManager()V
-
     const-string v3, "activity"
 
     const/4 v4, 0x1
@@ -80638,7 +80648,7 @@
 
     move-result-object v2
 
-    const v3, #android:layout@safe_mode#t
+    const v3, 0x10900b3
 
     const/4 v4, 0x0
 
@@ -87331,7 +87341,7 @@
 
     move-result-object v4
 
-    const v5, #android:string@factorytest_not_system#t
+    const v5, 0x10404ac
 
     invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
 
@@ -87351,7 +87361,7 @@
 
     move-result-object v4
 
-    const v5, #android:string@factorytest_no_action#t
+    const v5, 0x10404ad
 
     invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
 
@@ -94178,153 +94188,4 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
-.end method
-
-.method private mzBroadcastRecentTasksChanged()V
-    .locals 17
-
-    .prologue
-    move-object/from16 v0, p0
-
-    iget-object v1, v0, Lcom/android/server/am/ActivityManagerService;->mMzRecentTaskChanged:Landroid/content/Intent;
-
-    if-nez v1, :cond_0
-
-    new-instance v1, Landroid/content/Intent;
-
-    const-string v2, "com.meizu.recenttask.changed"
-
-    invoke-direct {v1, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
-
-    move-object/from16 v0, p0
-
-    iput-object v1, v0, Lcom/android/server/am/ActivityManagerService;->mMzRecentTaskChanged:Landroid/content/Intent;
-
-    :cond_0
-    const/4 v2, 0x0
-
-    const/4 v3, 0x0
-
-    move-object/from16 v0, p0
-
-    iget-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mMzRecentTaskChanged:Landroid/content/Intent;
-
-    const/4 v5, 0x0
-
-    const/4 v6, 0x0
-
-    const/4 v7, 0x0
-
-    const/4 v8, 0x0
-
-    const/4 v9, 0x0
-
-    const/4 v10, 0x0
-
-    const/4 v11, -0x1
-
-    const/4 v12, 0x0
-
-    const/4 v13, 0x0
-
-    sget v14, Lcom/android/server/am/ActivityManagerService;->MY_PID:I
-
-    const/16 v15, 0x3e8
-
-    const/16 v16, -0x1
-
-    move-object/from16 v1, p0
-
-    invoke-direct/range {v1 .. v16}, Lcom/android/server/am/ActivityManagerService;->broadcastIntentLocked(Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Landroid/content/Intent;Ljava/lang/String;Landroid/content/IIntentReceiver;ILjava/lang/String;Landroid/os/Bundle;Ljava/lang/String;IZZIII)I
-
-    return-void
-.end method
-
-.method private final mzMoveAffiliatedTasksToFront(Lcom/android/server/am/TaskRecord;I)Z
-    .locals 1
-    .param p1, "task"    # Lcom/android/server/am/TaskRecord;
-    .param p2, "taskIndex"    # I
-
-    .prologue
-    invoke-direct {p0, p1, p2}, Lcom/android/server/am/ActivityManagerService;->moveAffiliatedTasksToFront(Lcom/android/server/am/TaskRecord;I)Z
-
-    move-result v0
-
-    .local v0, "taskChanged":Z
-    if-eqz v0, :cond_0
-
-    invoke-direct {p0}, Lcom/android/server/am/ActivityManagerService;->mzBroadcastRecentTasksChanged()V
-
-    :cond_0
-    return v0
-.end method
-
-.method mzShowUserSwitchDialog(ILjava/lang/String;)V
-    .locals 1
-    .param p1, "userId"    # I
-    .param p2, "userName"    # Ljava/lang/String;
-
-    .prologue
-    const/4 v0, 0x1
-
-    invoke-direct {p0, p1, v0}, Lcom/android/server/am/ActivityManagerService;->startUser(IZ)Z
-
-    return-void
-.end method
-
-.method mzappendDropBoxProcessHeaders(Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Ljava/lang/StringBuilder;)V
-    .locals 0
-    .param p1, "process"    # Lcom/android/server/am/ProcessRecord;
-    .param p2, "processName"    # Ljava/lang/String;
-    .param p3, "sb"    # Ljava/lang/StringBuilder;
-
-    .prologue
-    invoke-direct {p0, p1, p2, p3}, Lcom/android/server/am/ActivityManagerService;->appendDropBoxProcessHeaders(Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Ljava/lang/StringBuilder;)V
-
-    return-void
-.end method
-
-.method mznotifyTaskPersisterLocked(Lcom/android/server/am/TaskRecord;Z)V
-    .locals 0
-    .param p1, "task"    # Lcom/android/server/am/TaskRecord;
-    .param p2, "flush"    # Z
-
-    .prologue
-    invoke-virtual {p0, p1, p2}, Lcom/android/server/am/ActivityManagerService;->notifyTaskPersisterLocked(Lcom/android/server/am/TaskRecord;Z)V
-
-    invoke-direct {p0}, Lcom/android/server/am/ActivityManagerService;->mzBroadcastRecentTasksChanged()V
-
-    return-void
-.end method
-
-.method final mzstartProcessLocked(Ljava/lang/String;Landroid/content/pm/ApplicationInfo;ZILjava/lang/String;Landroid/content/ComponentName;ZZZ)Lcom/android/server/am/ProcessRecord;
-    .locals 1
-    .param p1, "processName"    # Ljava/lang/String;
-    .param p2, "info"    # Landroid/content/pm/ApplicationInfo;
-    .param p3, "knownToBeDead"    # Z
-    .param p4, "intentFlags"    # I
-    .param p5, "hostingType"    # Ljava/lang/String;
-    .param p6, "hostingName"    # Landroid/content/ComponentName;
-    .param p7, "allowWhileBooting"    # Z
-    .param p8, "isolated"    # Z
-    .param p9, "keepIfLarge"    # Z
-
-    .prologue
-    invoke-static {}, Lcom/android/server/am/InjectorAMS;->interceptForPermissionControl()Z
-
-    move-result v0
-
-    if-nez v0, :cond_0
-
-    invoke-virtual/range {p0 .. p9}, Lcom/android/server/am/ActivityManagerService;->startProcessLocked(Ljava/lang/String;Landroid/content/pm/ApplicationInfo;ZILjava/lang/String;Landroid/content/ComponentName;ZZZ)Lcom/android/server/am/ProcessRecord;
-
-    move-result-object v0
-
-    :goto_0
-    return-object v0
-
-    :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
 .end method

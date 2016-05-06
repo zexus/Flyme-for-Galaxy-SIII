@@ -3,8 +3,8 @@
 .source "SeekBarVolumizer.java"
 
 # interfaces
-.implements Landroid/os/Handler$Callback;
 .implements Landroid/widget/SeekBar$OnSeekBarChangeListener;
+.implements Landroid/os/Handler$Callback;
 
 
 # annotations

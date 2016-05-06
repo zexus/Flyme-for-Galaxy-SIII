@@ -3,8 +3,8 @@
 .source "UserState.java"
 
 # interfaces
-.implements Lcom/android/server/print/RemotePrintService$PrintServiceCallbacks;
 .implements Lcom/android/server/print/RemotePrintSpooler$PrintSpoolerCallbacks;
+.implements Lcom/android/server/print/RemotePrintService$PrintServiceCallbacks;
 
 
 # annotations

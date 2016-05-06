@@ -3,8 +3,8 @@
 .source "GestureDetector.java"
 
 # interfaces
-.implements Landroid/view/GestureDetector$OnDoubleTapListener;
 .implements Landroid/view/GestureDetector$OnGestureListener;
+.implements Landroid/view/GestureDetector$OnDoubleTapListener;
 
 
 # annotations

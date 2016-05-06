@@ -3,8 +3,8 @@
 .source "ThemeConfig.java"
 
 # interfaces
-.implements Landroid/os/Parcelable;
 .implements Ljava/lang/Cloneable;
+.implements Landroid/os/Parcelable;
 .implements Ljava/lang/Comparable;
 
 

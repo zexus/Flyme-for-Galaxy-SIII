@@ -3,8 +3,8 @@
 .source "CursorJoiner.java"
 
 # interfaces
-.implements Ljava/lang/Iterable;
 .implements Ljava/util/Iterator;
+.implements Ljava/lang/Iterable;
 
 
 # annotations

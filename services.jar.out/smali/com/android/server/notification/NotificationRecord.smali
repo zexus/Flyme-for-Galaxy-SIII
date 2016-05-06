@@ -4,8 +4,6 @@
 
 
 # instance fields
-.field statusBarKey:Landroid/os/IBinder;
-
 .field isCanceled:Z
 
 .field public isUpdate:Z

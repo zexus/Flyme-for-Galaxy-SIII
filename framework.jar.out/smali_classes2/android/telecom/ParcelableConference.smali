@@ -422,14 +422,3 @@
 
     goto :goto_0
 .end method
-
-.method public getCapabilities()I
-    .locals 1
-
-    .prologue
-    invoke-virtual {p0}, Landroid/telecom/ParcelableConference;->getConnectionCapabilities()I
-
-    move-result v0
-
-    return v0
-.end method

@@ -3,12 +3,12 @@
 .source "SpannableStringBuilder.java"
 
 # interfaces
-.implements Landroid/text/Editable;
-.implements Landroid/text/GetChars;
-.implements Landroid/text/GraphicsOperations;
-.implements Landroid/text/Spannable;
-.implements Ljava/lang/Appendable;
 .implements Ljava/lang/CharSequence;
+.implements Landroid/text/GetChars;
+.implements Landroid/text/Spannable;
+.implements Landroid/text/Editable;
+.implements Ljava/lang/Appendable;
+.implements Landroid/text/GraphicsOperations;
 
 
 # static fields

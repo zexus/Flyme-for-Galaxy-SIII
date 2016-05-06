@@ -3,8 +3,8 @@
 .source "VideoView.java"
 
 # interfaces
-.implements Landroid/media/SubtitleController$Anchor;
 .implements Landroid/widget/MediaController$MediaPlayerControl;
+.implements Landroid/media/SubtitleController$Anchor;
 
 
 # static fields

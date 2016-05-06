@@ -3,9 +3,9 @@
 .source "MenuDialogHelper.java"
 
 # interfaces
+.implements Landroid/content/DialogInterface$OnKeyListener;
 .implements Landroid/content/DialogInterface$OnClickListener;
 .implements Landroid/content/DialogInterface$OnDismissListener;
-.implements Landroid/content/DialogInterface$OnKeyListener;
 .implements Lcom/android/internal/view/menu/MenuPresenter$Callback;
 
 

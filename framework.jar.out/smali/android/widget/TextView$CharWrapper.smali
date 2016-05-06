@@ -3,9 +3,9 @@
 .source "TextView.java"
 
 # interfaces
+.implements Ljava/lang/CharSequence;
 .implements Landroid/text/GetChars;
 .implements Landroid/text/GraphicsOperations;
-.implements Ljava/lang/CharSequence;
 
 
 # annotations

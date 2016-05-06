@@ -15,8 +15,6 @@
 
 
 # static fields
-.field public static final DATE_TYPE:I = 0xa
-
 .field public static final ANCHOR_TYPE:I = 0x1
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation

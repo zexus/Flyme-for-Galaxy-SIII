@@ -3,8 +3,8 @@
 .source "HeaderViewListAdapter.java"
 
 # interfaces
-.implements Landroid/widget/Filterable;
 .implements Landroid/widget/WrapperListAdapter;
+.implements Landroid/widget/Filterable;
 
 
 # static fields

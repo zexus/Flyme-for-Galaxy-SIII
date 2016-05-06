@@ -3,9 +3,9 @@
 .source "AnimatedRotateDrawable.java"
 
 # interfaces
-.implements Landroid/graphics/drawable/Animatable;
 .implements Landroid/graphics/drawable/Drawable$Callback;
 .implements Ljava/lang/Runnable;
+.implements Landroid/graphics/drawable/Animatable;
 
 
 # annotations

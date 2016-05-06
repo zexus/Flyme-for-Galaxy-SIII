@@ -3,8 +3,8 @@
 .source "CursorAdapter.java"
 
 # interfaces
-.implements Landroid/widget/CursorFilter$CursorFilterClient;
 .implements Landroid/widget/Filterable;
+.implements Landroid/widget/CursorFilter$CursorFilterClient;
 
 
 # annotations

@@ -3,9 +3,9 @@
 .source "ExpandedMenuView.java"
 
 # interfaces
-.implements Landroid/widget/AdapterView$OnItemClickListener;
 .implements Lcom/android/internal/view/menu/MenuBuilder$ItemInvoker;
 .implements Lcom/android/internal/view/menu/MenuView;
+.implements Landroid/widget/AdapterView$OnItemClickListener;
 
 
 # instance fields

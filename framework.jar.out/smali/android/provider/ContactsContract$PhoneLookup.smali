@@ -4,9 +4,9 @@
 
 # interfaces
 .implements Landroid/provider/BaseColumns;
-.implements Landroid/provider/ContactsContract$ContactOptionsColumns;
-.implements Landroid/provider/ContactsContract$ContactsColumns;
 .implements Landroid/provider/ContactsContract$PhoneLookupColumns;
+.implements Landroid/provider/ContactsContract$ContactsColumns;
+.implements Landroid/provider/ContactsContract$ContactOptionsColumns;
 
 
 # annotations

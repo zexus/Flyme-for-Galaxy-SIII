@@ -3,12 +3,12 @@
 .source "GLWrapperBase.java"
 
 # interfaces
+.implements Ljavax/microedition/khronos/opengles/GL;
 .implements Ljavax/microedition/khronos/opengles/GL10;
 .implements Ljavax/microedition/khronos/opengles/GL10Ext;
 .implements Ljavax/microedition/khronos/opengles/GL11;
 .implements Ljavax/microedition/khronos/opengles/GL11Ext;
 .implements Ljavax/microedition/khronos/opengles/GL11ExtensionPack;
-.implements Ljavax/microedition/khronos/opengles/GL;
 
 
 # instance fields

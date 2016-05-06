@@ -3,8 +3,8 @@
 .source "FindActionModeCallback.java"
 
 # interfaces
-.implements Landroid/text/TextWatcher;
 .implements Landroid/view/ActionMode$Callback;
+.implements Landroid/text/TextWatcher;
 .implements Landroid/view/View$OnClickListener;
 .implements Landroid/webkit/WebView$FindListener;
 

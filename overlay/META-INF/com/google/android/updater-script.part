@@ -1,2 +1,0 @@
-symlink("/system/xbin/su", "/system/bin/su");
-set_metadata("/system/xbin/su", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0");

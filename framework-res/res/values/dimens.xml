@@ -255,4 +255,5 @@
     <dimen name="dialog_padding_material">24.0dip</dimen>
     <dimen name="dialog_padding_top_material">18.0dip</dimen>
     <dimen name="dialog_list_padding_vertical_material">8.0dip</dimen>
+    <item type="dimen" name="APKTOOL_DUMMY_ac">false</item>
 </resources>

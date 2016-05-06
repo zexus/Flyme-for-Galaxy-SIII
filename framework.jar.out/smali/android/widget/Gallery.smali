@@ -9,7 +9,6 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/widget/Gallery$OnScrollListener;,
         Landroid/widget/Gallery$LayoutParams;,
         Landroid/widget/Gallery$FlingRunnable;
     }
@@ -28,10 +27,6 @@
 
 
 # instance fields
-.field private mLastScrollState:I
-
-.field private mOnScrollListener:Landroid/widget/Gallery$OnScrollListener;
-
 .field private mAnimationDuration:I
 
 .field private mContextMenuInfo:Landroid/widget/AdapterView$AdapterContextMenuInfo;
@@ -96,10 +91,12 @@
     .param p2, "attrs"    # Landroid/util/AttributeSet;
 
     .prologue
-    const v0, #android:attr@galleryStyle#t
+    .line 196
+    const v0, 0x1010070
 
     invoke-direct {p0, p1, p2, v0}, Landroid/widget/Gallery;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
+    .line 197
     return-void
 .end method
 
@@ -233,25 +230,28 @@
 
     move-result v4
 
+    .line 229
     .local v4, "unselectedAlpha":F
     invoke-virtual {p0, v4}, Landroid/widget/Gallery;->setUnselectedAlpha(F)V
 
+    .line 231
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
+    .line 235
     iget v5, p0, Landroid/widget/Gallery;->mGroupFlags:I
 
     or-int/lit16 v5, v5, 0x400
 
     iput v5, p0, Landroid/widget/Gallery;->mGroupFlags:I
 
+    .line 237
     iget v5, p0, Landroid/widget/Gallery;->mGroupFlags:I
 
     or-int/lit16 v5, v5, 0x800
 
     iput v5, p0, Landroid/widget/Gallery;->mGroupFlags:I
 
-    invoke-direct/range {p0 .. p0}, Landroid/widget/Gallery;->initExtFlymeFields()V
-
+    .line 238
     return-void
 .end method
 
@@ -1504,8 +1504,7 @@
     .locals 4
 
     .prologue
-    invoke-direct/range {p0 .. p0}, Landroid/widget/Gallery;->mzScrollIntoSlots1()V
-
+    .line 538
     invoke-virtual {p0}, Landroid/widget/Gallery;->getChildCount()I
 
     move-result v3
@@ -1516,10 +1515,12 @@
 
     if-nez v3, :cond_1
 
+    .line 549
     :cond_0
     :goto_0
     return-void
 
+    .line 540
     :cond_1
     iget-object v3, p0, Landroid/widget/Gallery;->mSelectedChild:Landroid/view/View;
 
@@ -1527,25 +1528,28 @@
 
     move-result v1
 
+    .line 541
     .local v1, "selectedCenter":I
     invoke-direct {p0}, Landroid/widget/Gallery;->getCenterOfGallery()I
 
     move-result v2
 
+    .line 543
     .local v2, "targetCenter":I
     sub-int v0, v2, v1
 
+    .line 544
     .local v0, "scrollAmount":I
-    invoke-direct/range {p0 .. p0}, Landroid/widget/Gallery;->mzScrollIntoSlots2()V
-
     if-eqz v0, :cond_2
 
+    .line 545
     iget-object v3, p0, Landroid/widget/Gallery;->mFlingRunnable:Landroid/widget/Gallery$FlingRunnable;
 
     invoke-virtual {v3, v0}, Landroid/widget/Gallery$FlingRunnable;->startUsingDistance(I)V
 
     goto :goto_0
 
+    .line 547
     :cond_2
     invoke-direct {p0}, Landroid/widget/Gallery;->onFinishedMovement()V
 
@@ -1557,15 +1561,16 @@
     .param p1, "childPosition"    # I
 
     .prologue
+    .line 1278
     invoke-virtual {p0, p1}, Landroid/widget/Gallery;->getChildAt(I)Landroid/view/View;
 
     move-result-object v0
 
+    .line 1280
     .local v0, "child":Landroid/view/View;
-    invoke-direct/range {p0 .. p1}, Landroid/widget/Gallery;->mzScrollToChild(I)V
-
     if-eqz v0, :cond_0
 
+    .line 1281
     invoke-direct {p0}, Landroid/widget/Gallery;->getCenterOfGallery()I
 
     move-result v2
@@ -1576,13 +1581,16 @@
 
     sub-int v1, v2, v3
 
+    .line 1282
     .local v1, "distance":I
     iget-object v2, p0, Landroid/widget/Gallery;->mFlingRunnable:Landroid/widget/Gallery$FlingRunnable;
 
     invoke-virtual {v2, v1}, Landroid/widget/Gallery$FlingRunnable;->startUsingDistance(I)V
 
+    .line 1283
     const/4 v2, 0x1
 
+    .line 1286
     .end local v1    # "distance":I
     :goto_0
     return v2
@@ -1597,22 +1605,27 @@
     .locals 10
 
     .prologue
+    .line 575
     iget-object v7, p0, Landroid/widget/Gallery;->mSelectedChild:Landroid/view/View;
 
+    .line 576
     .local v7, "selView":Landroid/view/View;
     iget-object v8, p0, Landroid/widget/Gallery;->mSelectedChild:Landroid/view/View;
 
     if-nez v8, :cond_1
 
+    .line 613
     :cond_0
     :goto_0
     return-void
 
+    .line 578
     :cond_1
     invoke-direct {p0}, Landroid/widget/Gallery;->getCenterOfGallery()I
 
     move-result v3
 
+    .line 581
     .local v3, "galleryCenter":I
     invoke-virtual {v7}, Landroid/view/View;->getLeft()I
 
@@ -1626,12 +1639,15 @@
 
     if-ge v8, v3, :cond_0
 
+    .line 586
     :cond_2
     const v2, 0x7fffffff
 
+    .line 587
     .local v2, "closestEdgeDistance":I
     const/4 v6, 0x0
 
+    .line 588
     .local v6, "newSelectedChildIndex":I
     invoke-virtual {p0}, Landroid/widget/Gallery;->getChildCount()I
 
@@ -1643,10 +1659,12 @@
     :goto_1
     if-ltz v4, :cond_3
 
+    .line 590
     invoke-virtual {p0, v4}, Landroid/widget/Gallery;->getChildAt(I)Landroid/view/View;
 
     move-result-object v0
 
+    .line 592
     .local v0, "child":Landroid/view/View;
     invoke-virtual {v0}, Landroid/view/View;->getLeft()I
 
@@ -1660,27 +1678,34 @@
 
     if-lt v8, v3, :cond_4
 
+    .line 594
     move v6, v4
 
+    .line 606
     .end local v0    # "child":Landroid/view/View;
     :cond_3
     iget v8, p0, Landroid/widget/Gallery;->mFirstPosition:I
 
     add-int v5, v8, v6
 
+    .line 608
     .local v5, "newPos":I
     iget v8, p0, Landroid/widget/Gallery;->mSelectedPosition:I
 
     if-eq v5, v8, :cond_0
 
+    .line 609
     invoke-virtual {p0, v5}, Landroid/widget/Gallery;->setSelectedPositionInt(I)V
 
+    .line 610
     invoke-virtual {p0, v5}, Landroid/widget/Gallery;->setNextSelectedPositionInt(I)V
 
+    .line 611
     invoke-virtual {p0}, Landroid/widget/Gallery;->checkSelectionChanged()V
 
     goto :goto_0
 
+    .line 598
     .end local v5    # "newPos":I
     .restart local v0    # "child":Landroid/view/View;
     :cond_4
@@ -1708,13 +1733,17 @@
 
     move-result v1
 
+    .line 600
     .local v1, "childClosestEdgeDistance":I
     if-ge v1, v2, :cond_5
 
+    .line 601
     move v2, v1
 
+    .line 602
     move v6, v4
 
+    .line 588
     :cond_5
     add-int/lit8 v4, v4, -0x1
 
@@ -1729,15 +1758,18 @@
     .param p4, "fromLeft"    # Z
 
     .prologue
+    .line 893
     invoke-virtual {p1}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
     move-result-object v6
 
     check-cast v6, Landroid/widget/Gallery$LayoutParams;
 
+    .line 894
     .local v6, "lp":Landroid/widget/Gallery$LayoutParams;
     if-nez v6, :cond_0
 
+    .line 895
     invoke-virtual {p0}, Landroid/widget/Gallery;->generateDefaultLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
     move-result-object v6
@@ -1745,6 +1777,7 @@
     .end local v6    # "lp":Landroid/widget/Gallery$LayoutParams;
     check-cast v6, Landroid/widget/Gallery$LayoutParams;
 
+    .line 898
     .restart local v6    # "lp":Landroid/widget/Gallery$LayoutParams;
     :cond_0
     iget-boolean v8, p0, Landroid/widget/Gallery;->mIsRtl:Z
@@ -1758,6 +1791,7 @@
 
     invoke-virtual {p0, p1, v8, v6, v9}, Landroid/widget/Gallery;->addViewInLayout(Landroid/view/View;ILandroid/view/ViewGroup$LayoutParams;Z)Z
 
+    .line 900
     if-nez p2, :cond_2
 
     const/4 v8, 0x1
@@ -1765,6 +1799,7 @@
     :goto_1
     invoke-virtual {p1, v8}, Landroid/view/View;->setSelected(Z)V
 
+    .line 903
     iget v8, p0, Landroid/widget/Gallery;->mHeightMeasureSpec:I
 
     iget-object v9, p0, Landroid/widget/Gallery;->mSpinnerPadding:Landroid/graphics/Rect;
@@ -1783,6 +1818,7 @@
 
     move-result v1
 
+    .line 905
     .local v1, "childHeightSpec":I
     iget v8, p0, Landroid/widget/Gallery;->mWidthMeasureSpec:I
 
@@ -1802,15 +1838,18 @@
 
     move-result v5
 
+    .line 909
     .local v5, "childWidthSpec":I
     invoke-virtual {p1, v5, v1}, Landroid/view/View;->measure(II)V
 
+    .line 915
     const/4 v8, 0x1
 
     invoke-direct {p0, p1, v8}, Landroid/widget/Gallery;->calculateTop(Landroid/view/View;Z)I
 
     move-result v4
 
+    .line 916
     .local v4, "childTop":I
     invoke-virtual {p1}, Landroid/view/View;->getMeasuredHeight()I
 
@@ -1818,25 +1857,32 @@
 
     add-int v0, v4, v8
 
+    .line 918
     .local v0, "childBottom":I
     invoke-virtual {p1}, Landroid/view/View;->getMeasuredWidth()I
 
     move-result v7
 
+    .line 919
     .local v7, "width":I
     if-eqz p4, :cond_3
 
+    .line 920
     move v2, p3
 
+    .line 921
     .local v2, "childLeft":I
     add-int v3, v2, v7
 
+    .line 927
     .local v3, "childRight":I
     :goto_2
     invoke-virtual {p1, v2, v4, v3, v0}, Landroid/view/View;->layout(IIII)V
 
+    .line 928
     return-void
 
+    .line 898
     .end local v0    # "childBottom":I
     .end local v1    # "childHeightSpec":I
     .end local v2    # "childLeft":I
@@ -1849,11 +1895,13 @@
 
     goto :goto_0
 
+    .line 900
     :cond_2
     const/4 v8, 0x0
 
     goto :goto_1
 
+    .line 923
     .restart local v0    # "childBottom":I
     .restart local v1    # "childHeightSpec":I
     .restart local v4    # "childTop":I
@@ -1862,6 +1910,7 @@
     :cond_3
     sub-int v2, p3, v7
 
+    .line 924
     .restart local v2    # "childLeft":I
     move v3, p3
 
@@ -1877,8 +1926,10 @@
 
     const/4 v4, 0x0
 
+    .line 1299
     iget-object v1, p0, Landroid/widget/Gallery;->mSelectedChild:Landroid/view/View;
 
+    .line 1301
     .local v1, "oldSelectedChild":Landroid/view/View;
     iget v2, p0, Landroid/widget/Gallery;->mSelectedPosition:I
 
@@ -1892,33 +1943,42 @@
 
     iput-object v0, p0, Landroid/widget/Gallery;->mSelectedChild:Landroid/view/View;
 
+    .line 1302
     .local v0, "child":Landroid/view/View;
     if-nez v0, :cond_1
 
+    .line 1325
     :cond_0
     :goto_0
     return-void
 
+    .line 1306
     :cond_1
     invoke-virtual {v0, v5}, Landroid/view/View;->setSelected(Z)V
 
+    .line 1307
     invoke-virtual {v0, v5}, Landroid/view/View;->setFocusable(Z)V
 
+    .line 1309
     invoke-virtual {p0}, Landroid/widget/Gallery;->hasFocus()Z
 
     move-result v2
 
     if-eqz v2, :cond_2
 
+    .line 1310
     invoke-virtual {v0}, Landroid/view/View;->requestFocus()Z
 
+    .line 1315
     :cond_2
     if-eqz v1, :cond_0
 
     if-eq v1, v0, :cond_0
 
+    .line 1318
     invoke-virtual {v1, v4}, Landroid/view/View;->setSelected(Z)V
 
+    .line 1322
     invoke-virtual {v1, v4}, Landroid/view/View;->setFocusable(Z)V
 
     goto :goto_0
@@ -1931,6 +1991,7 @@
     .param p1, "p"    # Landroid/view/ViewGroup$LayoutParams;
 
     .prologue
+    .line 330
     instance-of v0, p1, Landroid/widget/Gallery$LayoutParams;
 
     return v0
@@ -1940,6 +2001,7 @@
     .locals 1
 
     .prologue
+    .line 313
     const/4 v0, 0x1
 
     return v0
@@ -1949,6 +2011,7 @@
     .locals 1
 
     .prologue
+    .line 319
     iget v0, p0, Landroid/widget/Gallery;->mSelectedPosition:I
 
     return v0
@@ -1958,6 +2021,7 @@
     .locals 1
 
     .prologue
+    .line 325
     iget v0, p0, Landroid/widget/Gallery;->mItemCount:I
 
     return v0
@@ -1970,6 +2034,7 @@
     .prologue
     const/4 v0, 0x0
 
+    .line 1201
     invoke-virtual {p1, p0, v0, v0}, Landroid/view/KeyEvent;->dispatch(Landroid/view/KeyEvent$Callback;Landroid/view/KeyEvent$DispatcherState;Ljava/lang/Object;)Z
 
     move-result v0
@@ -1982,14 +2047,17 @@
     .param p1, "pressed"    # Z
 
     .prologue
+    .line 1144
     iget-object v0, p0, Landroid/widget/Gallery;->mSelectedChild:Landroid/view/View;
 
     if-eqz v0, :cond_0
 
+    .line 1145
     iget-object v0, p0, Landroid/widget/Gallery;->mSelectedChild:Landroid/view/View;
 
     invoke-virtual {v0, p1}, Landroid/view/View;->setPressed(Z)V
 
+    .line 1147
     :cond_0
     return-void
 .end method
@@ -1999,6 +2067,7 @@
     .param p1, "selected"    # Z
 
     .prologue
+    .line 1138
     return-void
 .end method
 
@@ -2008,6 +2077,7 @@
     .prologue
     const/4 v1, -0x2
 
+    .line 348
     new-instance v0, Landroid/widget/Gallery$LayoutParams;
 
     invoke-direct {v0, v1, v1}, Landroid/widget/Gallery$LayoutParams;-><init>(II)V
@@ -2020,6 +2090,7 @@
     .param p1, "attrs"    # Landroid/util/AttributeSet;
 
     .prologue
+    .line 340
     new-instance v0, Landroid/widget/Gallery$LayoutParams;
 
     invoke-virtual {p0}, Landroid/widget/Gallery;->getContext()Landroid/content/Context;
@@ -2036,6 +2107,7 @@
     .param p1, "p"    # Landroid/view/ViewGroup$LayoutParams;
 
     .prologue
+    .line 335
     new-instance v0, Landroid/widget/Gallery$LayoutParams;
 
     invoke-direct {v0, p1}, Landroid/widget/Gallery$LayoutParams;-><init>(Landroid/view/ViewGroup$LayoutParams;)V
@@ -2049,20 +2121,24 @@
     .param p2, "i"    # I
 
     .prologue
+    .line 1343
     iget v1, p0, Landroid/widget/Gallery;->mSelectedPosition:I
 
     iget v2, p0, Landroid/widget/Gallery;->mFirstPosition:I
 
     sub-int v0, v1, v2
 
+    .line 1346
     .local v0, "selectedIndex":I
     if-gez v0, :cond_1
 
+    .line 1356
     .end local p2    # "i":I
     :cond_0
     :goto_0
     return p2
 
+    .line 1348
     .restart local p2    # "i":I
     :cond_1
     add-int/lit8 v1, p1, -0x1
@@ -2071,11 +2147,14 @@
 
     move p2, v0
 
+    .line 1350
     goto :goto_0
 
+    .line 1351
     :cond_2
     if-lt p2, v0, :cond_0
 
+    .line 1353
     add-int/lit8 p2, p2, 0x1
 
     goto :goto_0
@@ -2086,6 +2165,7 @@
     .param p1, "child"    # Landroid/view/View;
 
     .prologue
+    .line 367
     invoke-virtual {p1}, Landroid/view/View;->getMeasuredHeight()I
 
     move-result v0
@@ -2099,8 +2179,10 @@
     .param p2, "t"    # Landroid/view/animation/Transformation;
 
     .prologue
+    .line 304
     invoke-virtual {p2}, Landroid/view/animation/Transformation;->clear()V
 
+    .line 305
     iget-object v0, p0, Landroid/widget/Gallery;->mSelectedChild:Landroid/view/View;
 
     if-ne p1, v0, :cond_0
@@ -2110,10 +2192,12 @@
     :goto_0
     invoke-virtual {p2, v0}, Landroid/view/animation/Transformation;->setAlpha(F)V
 
+    .line 307
     const/4 v0, 0x1
 
     return v0
 
+    .line 305
     :cond_0
     iget v0, p0, Landroid/widget/Gallery;->mUnselectedAlpha:F
 
@@ -2124,6 +2208,7 @@
     .locals 1
 
     .prologue
+    .line 1151
     iget-object v0, p0, Landroid/widget/Gallery;->mContextMenuInfo:Landroid/widget/AdapterView$AdapterContextMenuInfo;
 
     return-object v0
@@ -2137,6 +2222,7 @@
     .prologue
     const/4 v5, 0x0
 
+    .line 422
     iget-boolean v6, p0, Landroid/widget/Gallery;->mIsRtl:Z
 
     if-eq p1, v6, :cond_1
@@ -2145,6 +2231,7 @@
 
     add-int/lit8 v3, v6, -0x1
 
+    .line 423
     .local v3, "extremeItemPosition":I
     :goto_0
     iget v6, p0, Landroid/widget/Gallery;->mFirstPosition:I
@@ -2155,11 +2242,13 @@
 
     move-result-object v1
 
+    .line 425
     .local v1, "extremeChild":Landroid/view/View;
     if-nez v1, :cond_2
 
     move v5, p2
 
+    .line 448
     :cond_0
     :goto_1
     return v5
@@ -2169,8 +2258,10 @@
     :cond_1
     move v3, v5
 
+    .line 422
     goto :goto_0
 
+    .line 429
     .restart local v1    # "extremeChild":Landroid/view/View;
     .restart local v3    # "extremeItemPosition":I
     :cond_2
@@ -2178,19 +2269,24 @@
 
     move-result v2
 
+    .line 430
     .local v2, "extremeChildCenter":I
     invoke-direct {p0}, Landroid/widget/Gallery;->getCenterOfGallery()I
 
     move-result v4
 
+    .line 432
     .local v4, "galleryCenter":I
     if-eqz p1, :cond_4
 
+    .line 433
     if-le v2, v4, :cond_0
 
+    .line 446
     :cond_3
     sub-int v0, v4, v2
 
+    .line 448
     .local v0, "centerDifference":I
     if-eqz p1, :cond_5
 
@@ -2200,12 +2296,14 @@
 
     goto :goto_1
 
+    .line 439
     .end local v0    # "centerDifference":I
     :cond_4
     if-lt v2, v4, :cond_3
 
     goto :goto_1
 
+    .line 448
     .restart local v0    # "centerDifference":I
     :cond_5
     invoke-static {v0, p2}, Ljava/lang/Math;->min(II)I
@@ -2223,16 +2321,19 @@
     .prologue
     const/4 v6, 0x0
 
+    .line 628
     invoke-virtual {p0}, Landroid/widget/Gallery;->isLayoutRtl()Z
 
     move-result v4
 
     iput-boolean v4, p0, Landroid/widget/Gallery;->mIsRtl:Z
 
+    .line 630
     iget-object v4, p0, Landroid/widget/Gallery;->mSpinnerPadding:Landroid/graphics/Rect;
 
     iget v0, v4, Landroid/graphics/Rect;->left:I
 
+    .line 631
     .local v0, "childrenLeft":I
     iget v4, p0, Landroid/widget/Gallery;->mRight:I
 
@@ -2252,47 +2353,58 @@
 
     sub-int v1, v4, v5
 
+    .line 633
     .local v1, "childrenWidth":I
     iget-boolean v4, p0, Landroid/widget/Gallery;->mDataChanged:Z
 
     if-eqz v4, :cond_0
 
+    .line 634
     invoke-virtual {p0}, Landroid/widget/Gallery;->handleDataChanged()V
 
+    .line 638
     :cond_0
     iget v4, p0, Landroid/widget/Gallery;->mItemCount:I
 
     if-nez v4, :cond_1
 
+    .line 639
     invoke-virtual {p0}, Landroid/widget/Gallery;->resetList()V
 
-    invoke-virtual/range {p0 .. p0}, Landroid/widget/Gallery;->invokeOnItemScrollListener()V
-
+    .line 690
     :goto_0
     return-void
 
+    .line 644
     :cond_1
     iget v4, p0, Landroid/widget/Gallery;->mNextSelectedPosition:I
 
     if-ltz v4, :cond_2
 
+    .line 645
     iget v4, p0, Landroid/widget/Gallery;->mNextSelectedPosition:I
 
     invoke-virtual {p0, v4}, Landroid/widget/Gallery;->setSelectedPositionInt(I)V
 
+    .line 649
     :cond_2
     invoke-virtual {p0}, Landroid/widget/Gallery;->recycleAllViews()V
 
+    .line 653
     invoke-virtual {p0}, Landroid/widget/Gallery;->detachAllViewsFromParent()V
 
+    .line 659
     iput v6, p0, Landroid/widget/Gallery;->mRightMost:I
 
+    .line 660
     iput v6, p0, Landroid/widget/Gallery;->mLeftMost:I
 
+    .line 668
     iget v4, p0, Landroid/widget/Gallery;->mSelectedPosition:I
 
     iput v4, p0, Landroid/widget/Gallery;->mFirstPosition:I
 
+    .line 669
     iget v4, p0, Landroid/widget/Gallery;->mSelectedPosition:I
 
     const/4 v5, 0x1
@@ -2301,6 +2413,7 @@
 
     move-result-object v2
 
+    .line 672
     .local v2, "sel":Landroid/view/View;
     div-int/lit8 v4, v1, 0x2
 
@@ -2318,32 +2431,40 @@
 
     add-int v3, v4, v5
 
+    .line 674
     .local v3, "selectedOffset":I
     invoke-virtual {v2, v3}, Landroid/view/View;->offsetLeftAndRight(I)V
 
+    .line 676
     invoke-direct {p0}, Landroid/widget/Gallery;->fillToGalleryRight()V
 
+    .line 677
     invoke-direct {p0}, Landroid/widget/Gallery;->fillToGalleryLeft()V
 
+    .line 680
     iget-object v4, p0, Landroid/widget/Gallery;->mRecycler:Landroid/widget/AbsSpinner$RecycleBin;
 
     invoke-virtual {v4}, Landroid/widget/AbsSpinner$RecycleBin;->clear()V
 
+    .line 682
     invoke-virtual {p0}, Landroid/widget/Gallery;->invalidate()V
 
+    .line 683
     invoke-virtual {p0}, Landroid/widget/Gallery;->checkSelectionChanged()V
 
+    .line 685
     iput-boolean v6, p0, Landroid/widget/Gallery;->mDataChanged:Z
 
+    .line 686
     iput-boolean v6, p0, Landroid/widget/Gallery;->mNeedSync:Z
 
+    .line 687
     iget v4, p0, Landroid/widget/Gallery;->mSelectedPosition:I
 
     invoke-virtual {p0, v4}, Landroid/widget/Gallery;->setNextSelectedPositionInt(I)V
 
+    .line 689
     invoke-direct {p0}, Landroid/widget/Gallery;->updateSelectedItemMetadata()V
-
-    invoke-virtual/range {p0 .. p0}, Landroid/widget/Gallery;->invokeOnItemScrollListener()V
 
     goto :goto_0
 .end method
@@ -2352,6 +2473,7 @@
     .locals 2
 
     .prologue
+    .line 1269
     iget v0, p0, Landroid/widget/Gallery;->mItemCount:I
 
     if-lez v0, :cond_0
@@ -2364,6 +2486,7 @@
 
     if-ge v0, v1, :cond_0
 
+    .line 1270
     iget v0, p0, Landroid/widget/Gallery;->mSelectedPosition:I
 
     iget v1, p0, Landroid/widget/Gallery;->mFirstPosition:I
@@ -2374,8 +2497,10 @@
 
     invoke-direct {p0, v0}, Landroid/widget/Gallery;->scrollToChild(I)Z
 
+    .line 1271
     const/4 v0, 0x1
 
+    .line 1273
     :goto_0
     return v0
 
@@ -2389,6 +2514,7 @@
     .locals 2
 
     .prologue
+    .line 1260
     iget v0, p0, Landroid/widget/Gallery;->mItemCount:I
 
     if-lez v0, :cond_0
@@ -2397,6 +2523,7 @@
 
     if-lez v0, :cond_0
 
+    .line 1261
     iget v0, p0, Landroid/widget/Gallery;->mSelectedPosition:I
 
     iget v1, p0, Landroid/widget/Gallery;->mFirstPosition:I
@@ -2407,8 +2534,10 @@
 
     invoke-direct {p0, v0}, Landroid/widget/Gallery;->scrollToChild(I)Z
 
+    .line 1262
     const/4 v0, 0x1
 
+    .line 1264
     :goto_0
     return v0
 
@@ -2422,8 +2551,10 @@
     .locals 0
 
     .prologue
+    .line 1090
     invoke-virtual {p0}, Landroid/widget/Gallery;->onUp()V
 
+    .line 1091
     return-void
 .end method
 
@@ -2432,16 +2563,16 @@
     .param p1, "e"    # Landroid/view/MotionEvent;
 
     .prologue
-    invoke-direct/range {p0 .. p0}, Landroid/widget/Gallery;->mzOnDown()V
-
     const/4 v2, 0x1
 
+    .line 1057
     iget-object v0, p0, Landroid/widget/Gallery;->mFlingRunnable:Landroid/widget/Gallery$FlingRunnable;
 
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/widget/Gallery$FlingRunnable;->stop(Z)V
 
+    .line 1060
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
 
     move-result v0
@@ -2460,10 +2591,12 @@
 
     iput v0, p0, Landroid/widget/Gallery;->mDownTouchPosition:I
 
+    .line 1062
     iget v0, p0, Landroid/widget/Gallery;->mDownTouchPosition:I
 
     if-ltz v0, :cond_0
 
+    .line 1063
     iget v0, p0, Landroid/widget/Gallery;->mDownTouchPosition:I
 
     iget v1, p0, Landroid/widget/Gallery;->mFirstPosition:I
@@ -2476,13 +2609,16 @@
 
     iput-object v0, p0, Landroid/widget/Gallery;->mDownTouchView:Landroid/view/View;
 
+    .line 1064
     iget-object v0, p0, Landroid/widget/Gallery;->mDownTouchView:Landroid/view/View;
 
     invoke-virtual {v0, v2}, Landroid/view/View;->setPressed(Z)V
 
+    .line 1068
     :cond_0
     iput-boolean v2, p0, Landroid/widget/Gallery;->mIsFirstScroll:Z
 
+    .line 1071
     return v2
 .end method
 
@@ -2496,20 +2632,24 @@
     .prologue
     const/4 v2, 0x1
 
+    .line 998
     iget-boolean v0, p0, Landroid/widget/Gallery;->mShouldCallbackDuringFling:Z
 
     if-nez v0, :cond_0
 
+    .line 1002
     iget-object v0, p0, Landroid/widget/Gallery;->mDisableSuppressSelectionChangedRunnable:Ljava/lang/Runnable;
 
     invoke-virtual {p0, v0}, Landroid/widget/Gallery;->removeCallbacks(Ljava/lang/Runnable;)Z
 
+    .line 1005
     iget-boolean v0, p0, Landroid/widget/Gallery;->mSuppressSelectionChanged:Z
 
     if-nez v0, :cond_0
 
     iput-boolean v2, p0, Landroid/widget/Gallery;->mSuppressSelectionChanged:Z
 
+    .line 1009
     :cond_0
     iget-object v0, p0, Landroid/widget/Gallery;->mFlingRunnable:Landroid/widget/Gallery$FlingRunnable;
 
@@ -2519,8 +2659,7 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/Gallery$FlingRunnable;->startUsingVelocity(I)V
 
-    invoke-direct/range {p0 .. p0}, Landroid/widget/Gallery;->mzReportScrollStateChange()V
-
+    .line 1011
     return v2
 .end method
 
@@ -2531,24 +2670,29 @@
     .param p3, "previouslyFocusedRect"    # Landroid/graphics/Rect;
 
     .prologue
+    .line 1362
     invoke-super {p0, p1, p2, p3}, Landroid/widget/AbsSpinner;->onFocusChanged(ZILandroid/graphics/Rect;)V
 
+    .line 1369
     if-eqz p1, :cond_0
 
     iget-object v0, p0, Landroid/widget/Gallery;->mSelectedChild:Landroid/view/View;
 
     if-eqz v0, :cond_0
 
+    .line 1370
     iget-object v0, p0, Landroid/widget/Gallery;->mSelectedChild:Landroid/view/View;
 
     invoke-virtual {v0, p2}, Landroid/view/View;->requestFocus(I)Z
 
+    .line 1371
     iget-object v0, p0, Landroid/widget/Gallery;->mSelectedChild:Landroid/view/View;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setSelected(Z)V
 
+    .line 1374
     :cond_0
     return-void
 .end method
@@ -2558,8 +2702,10 @@
     .param p1, "event"    # Landroid/view/accessibility/AccessibilityEvent;
 
     .prologue
+    .line 1378
     invoke-super {p0, p1}, Landroid/widget/AbsSpinner;->onInitializeAccessibilityEvent(Landroid/view/accessibility/AccessibilityEvent;)V
 
+    .line 1379
     const-class v0, Landroid/widget/Gallery;
 
     invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
@@ -2568,6 +2714,7 @@
 
     invoke-virtual {p1, v0}, Landroid/view/accessibility/AccessibilityEvent;->setClassName(Ljava/lang/CharSequence;)V
 
+    .line 1380
     return-void
 .end method
 
@@ -2578,8 +2725,10 @@
     .prologue
     const/4 v0, 0x1
 
+    .line 1384
     invoke-super {p0, p1}, Landroid/widget/AbsSpinner;->onInitializeAccessibilityNodeInfo(Landroid/view/accessibility/AccessibilityNodeInfo;)V
 
+    .line 1385
     const-class v1, Landroid/widget/Gallery;
 
     invoke-virtual {v1}, Ljava/lang/Class;->getName()Ljava/lang/String;
@@ -2588,6 +2737,7 @@
 
     invoke-virtual {p1, v1}, Landroid/view/accessibility/AccessibilityNodeInfo;->setClassName(Ljava/lang/CharSequence;)V
 
+    .line 1386
     iget v1, p0, Landroid/widget/Gallery;->mItemCount:I
 
     if-le v1, v0, :cond_2
@@ -2595,12 +2745,14 @@
     :goto_0
     invoke-virtual {p1, v0}, Landroid/view/accessibility/AccessibilityNodeInfo;->setScrollable(Z)V
 
+    .line 1387
     invoke-virtual {p0}, Landroid/widget/Gallery;->isEnabled()Z
 
     move-result v0
 
     if-eqz v0, :cond_1
 
+    .line 1388
     iget v0, p0, Landroid/widget/Gallery;->mItemCount:I
 
     if-lez v0, :cond_0
@@ -2613,10 +2765,12 @@
 
     if-ge v0, v1, :cond_0
 
+    .line 1389
     const/16 v0, 0x1000
 
     invoke-virtual {p1, v0}, Landroid/view/accessibility/AccessibilityNodeInfo;->addAction(I)V
 
+    .line 1391
     :cond_0
     invoke-virtual {p0}, Landroid/widget/Gallery;->isEnabled()Z
 
@@ -2632,13 +2786,16 @@
 
     if-lez v0, :cond_1
 
+    .line 1392
     const/16 v0, 0x2000
 
     invoke-virtual {p1, v0}, Landroid/view/accessibility/AccessibilityNodeInfo;->addAction(I)V
 
+    .line 1395
     :cond_1
     return-void
 
+    .line 1386
     :cond_2
     const/4 v0, 0x0
 
@@ -2653,8 +2810,10 @@
     .prologue
     const/4 v0, 0x1
 
+    .line 1210
     sparse-switch p1, :sswitch_data_0
 
+    .line 1230
     :cond_0
     :goto_0
     invoke-super {p0, p1, p2}, Landroid/widget/AbsSpinner;->onKeyDown(ILandroid/view/KeyEvent;)Z
@@ -2664,6 +2823,7 @@
     :goto_1
     return v0
 
+    .line 1213
     :sswitch_0
     iget-boolean v1, p0, Landroid/widget/Gallery;->mIsRtl:Z
 
@@ -2675,11 +2835,13 @@
 
     if-eqz v1, :cond_0
 
+    .line 1214
     :goto_2
     invoke-virtual {p0, v0}, Landroid/widget/Gallery;->playSoundEffect(I)V
 
     goto :goto_1
 
+    .line 1213
     :cond_1
     invoke-virtual {p0}, Landroid/widget/Gallery;->moveNext()Z
 
@@ -2689,6 +2851,7 @@
 
     goto :goto_2
 
+    .line 1219
     :sswitch_1
     iget-boolean v1, p0, Landroid/widget/Gallery;->mIsRtl:Z
 
@@ -2700,6 +2863,7 @@
 
     if-eqz v1, :cond_0
 
+    .line 1220
     :goto_3
     const/4 v1, 0x3
 
@@ -2707,6 +2871,7 @@
 
     goto :goto_1
 
+    .line 1219
     :cond_2
     invoke-virtual {p0}, Landroid/widget/Gallery;->movePrevious()Z
 
@@ -2716,11 +2881,13 @@
 
     goto :goto_3
 
+    .line 1226
     :sswitch_2
     iput-boolean v0, p0, Landroid/widget/Gallery;->mReceivedInvokeKeyDown:Z
 
     goto :goto_0
 
+    .line 1210
     nop
 
     :sswitch_data_0
@@ -2738,24 +2905,29 @@
     .param p2, "event"    # Landroid/view/KeyEvent;
 
     .prologue
+    .line 1235
     invoke-static {p1}, Landroid/view/KeyEvent;->isConfirmKey(I)Z
 
     move-result v1
 
     if-eqz v1, :cond_1
 
+    .line 1236
     iget-boolean v1, p0, Landroid/widget/Gallery;->mReceivedInvokeKeyDown:Z
 
     if-eqz v1, :cond_0
 
+    .line 1237
     iget v1, p0, Landroid/widget/Gallery;->mItemCount:I
 
     if-lez v1, :cond_0
 
+    .line 1238
     iget-object v1, p0, Landroid/widget/Gallery;->mSelectedChild:Landroid/view/View;
 
     invoke-direct {p0, v1}, Landroid/widget/Gallery;->dispatchPress(Landroid/view/View;)V
 
+    .line 1239
     new-instance v1, Landroid/widget/Gallery$2;
 
     invoke-direct {v1, p0}, Landroid/widget/Gallery$2;-><init>(Landroid/widget/Gallery;)V
@@ -2768,12 +2940,14 @@
 
     invoke-virtual {p0, v1, v2, v3}, Landroid/widget/Gallery;->postDelayed(Ljava/lang/Runnable;J)Z
 
+    .line 1246
     iget v1, p0, Landroid/widget/Gallery;->mSelectedPosition:I
 
     iget v2, p0, Landroid/widget/Gallery;->mFirstPosition:I
 
     sub-int v0, v1, v2
 
+    .line 1247
     .local v0, "selectedIndex":I
     invoke-virtual {p0, v0}, Landroid/widget/Gallery;->getChildAt(I)Landroid/view/View;
 
@@ -2791,14 +2965,17 @@
 
     invoke-virtual {p0, v1, v2, v4, v5}, Landroid/widget/Gallery;->performItemClick(Landroid/view/View;IJ)Z
 
+    .line 1253
     .end local v0    # "selectedIndex":I
     :cond_0
     const/4 v1, 0x0
 
     iput-boolean v1, p0, Landroid/widget/Gallery;->mReceivedInvokeKeyDown:Z
 
+    .line 1254
     const/4 v1, 0x1
 
+    .line 1256
     :goto_0
     return v1
 
@@ -2821,16 +2998,21 @@
     .prologue
     const/4 v1, 0x0
 
+    .line 354
     invoke-super/range {p0 .. p5}, Landroid/widget/AbsSpinner;->onLayout(ZIIII)V
 
+    .line 360
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/widget/Gallery;->mInLayout:Z
 
+    .line 361
     invoke-virtual {p0, v1, v1}, Landroid/widget/Gallery;->layout(IZ)V
 
+    .line 362
     iput-boolean v1, p0, Landroid/widget/Gallery;->mInLayout:Z
 
+    .line 363
     return-void
 .end method
 
@@ -2839,24 +3021,29 @@
     .param p1, "e"    # Landroid/view/MotionEvent;
 
     .prologue
+    .line 1096
     iget v2, p0, Landroid/widget/Gallery;->mDownTouchPosition:I
 
     if-gez v2, :cond_0
 
+    .line 1103
     :goto_0
     return-void
 
+    .line 1100
     :cond_0
     const/4 v2, 0x0
 
     invoke-virtual {p0, v2}, Landroid/widget/Gallery;->performHapticFeedback(I)Z
 
+    .line 1101
     iget v2, p0, Landroid/widget/Gallery;->mDownTouchPosition:I
 
     invoke-virtual {p0, v2}, Landroid/widget/Gallery;->getItemIdAtPosition(I)J
 
     move-result-wide v0
 
+    .line 1102
     .local v0, "id":J
     iget-object v2, p0, Landroid/widget/Gallery;->mDownTouchView:Landroid/view/View;
 
@@ -2879,24 +3066,29 @@
 
     const/4 v1, 0x1
 
+    .line 1028
     iget-object v0, p0, Landroid/widget/Gallery;->mParent:Landroid/view/ViewParent;
 
     invoke-interface {v0, v1}, Landroid/view/ViewParent;->requestDisallowInterceptTouchEvent(Z)V
 
+    .line 1032
     iget-boolean v0, p0, Landroid/widget/Gallery;->mShouldCallbackDuringFling:Z
 
     if-nez v0, :cond_2
 
+    .line 1033
     iget-boolean v0, p0, Landroid/widget/Gallery;->mIsFirstScroll:Z
 
     if-eqz v0, :cond_1
 
+    .line 1039
     iget-boolean v0, p0, Landroid/widget/Gallery;->mSuppressSelectionChanged:Z
 
     if-nez v0, :cond_0
 
     iput-boolean v1, p0, Landroid/widget/Gallery;->mSuppressSelectionChanged:Z
 
+    .line 1040
     :cond_0
     iget-object v0, p0, Landroid/widget/Gallery;->mDisableSuppressSelectionChangedRunnable:Ljava/lang/Runnable;
 
@@ -2904,20 +3096,22 @@
 
     invoke-virtual {p0, v0, v2, v3}, Landroid/widget/Gallery;->postDelayed(Ljava/lang/Runnable;J)Z
 
+    .line 1047
     :cond_1
     :goto_0
-    invoke-direct/range {p0 .. p0}, Landroid/widget/Gallery;->mzOnScroll()V
-
     float-to-int v0, p3
 
     mul-int/lit8 v0, v0, -0x1
 
     invoke-virtual {p0, v0}, Landroid/widget/Gallery;->trackMotionScroll(I)V
 
+    .line 1049
     iput-boolean v4, p0, Landroid/widget/Gallery;->mIsFirstScroll:Z
 
+    .line 1050
     return v1
 
+    .line 1043
     :cond_2
     iget-boolean v0, p0, Landroid/widget/Gallery;->mSuppressSelectionChanged:Z
 
@@ -2933,6 +3127,7 @@
     .param p1, "e"    # Landroid/view/MotionEvent;
 
     .prologue
+    .line 1109
     return-void
 .end method
 
@@ -2941,10 +3136,12 @@
     .param p1, "e"    # Landroid/view/MotionEvent;
 
     .prologue
+    .line 978
     iget v0, p0, Landroid/widget/Gallery;->mDownTouchPosition:I
 
     if-ltz v0, :cond_2
 
+    .line 981
     iget v0, p0, Landroid/widget/Gallery;->mDownTouchPosition:I
 
     iget v1, p0, Landroid/widget/Gallery;->mFirstPosition:I
@@ -2953,6 +3150,7 @@
 
     invoke-direct {p0, v0}, Landroid/widget/Gallery;->scrollToChild(I)Z
 
+    .line 984
     iget-boolean v0, p0, Landroid/widget/Gallery;->mShouldCallbackOnUnselectedItemClick:Z
 
     if-nez v0, :cond_0
@@ -2963,6 +3161,7 @@
 
     if-ne v0, v1, :cond_1
 
+    .line 985
     :cond_0
     iget-object v0, p0, Landroid/widget/Gallery;->mDownTouchView:Landroid/view/View;
 
@@ -2978,9 +3177,11 @@
 
     invoke-virtual {p0, v0, v1, v2, v3}, Landroid/widget/Gallery;->performItemClick(Landroid/view/View;IJ)Z
 
+    .line 989
     :cond_1
     const/4 v0, 0x1
 
+    .line 992
     :goto_0
     return v0
 
@@ -2995,33 +3196,40 @@
     .param p1, "event"    # Landroid/view/MotionEvent;
 
     .prologue
+    .line 962
     iget-object v2, p0, Landroid/widget/Gallery;->mGestureDetector:Landroid/view/GestureDetector;
 
     invoke-virtual {v2, p1}, Landroid/view/GestureDetector;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
     move-result v1
 
+    .line 964
     .local v1, "retValue":Z
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getAction()I
 
     move-result v0
 
+    .line 965
     .local v0, "action":I
     const/4 v2, 0x1
 
     if-ne v0, v2, :cond_1
 
+    .line 967
     invoke-virtual {p0}, Landroid/widget/Gallery;->onUp()V
 
+    .line 972
     :cond_0
     :goto_0
     return v1
 
+    .line 968
     :cond_1
     const/4 v2, 0x3
 
     if-ne v0, v2, :cond_0
 
+    .line 969
     invoke-virtual {p0}, Landroid/widget/Gallery;->onCancel()V
 
     goto :goto_0
@@ -3031,6 +3239,7 @@
     .locals 1
 
     .prologue
+    .line 1079
     iget-object v0, p0, Landroid/widget/Gallery;->mFlingRunnable:Landroid/widget/Gallery$FlingRunnable;
 
     # getter for: Landroid/widget/Gallery$FlingRunnable;->mScroller:Landroid/widget/Scroller;
@@ -3044,11 +3253,14 @@
 
     if-eqz v0, :cond_0
 
+    .line 1080
     invoke-direct {p0}, Landroid/widget/Gallery;->scrollIntoSlots()V
 
+    .line 1083
     :cond_0
     invoke-direct {p0}, Landroid/widget/Gallery;->dispatchUnpress()V
 
+    .line 1084
     return-void
 .end method
 
@@ -3060,23 +3272,28 @@
     .prologue
     const/4 v1, 0x0
 
+    .line 1399
     invoke-super {p0, p1, p2}, Landroid/widget/AbsSpinner;->performAccessibilityAction(ILandroid/os/Bundle;)Z
 
     move-result v2
 
     if-eqz v2, :cond_1
 
+    .line 1400
     const/4 v1, 0x1
 
+    .line 1416
     :cond_0
     :goto_0
     return v1
 
+    .line 1402
     :cond_1
     sparse-switch p1, :sswitch_data_0
 
     goto :goto_0
 
+    .line 1404
     :sswitch_0
     invoke-virtual {p0}, Landroid/widget/Gallery;->isEnabled()Z
 
@@ -3096,12 +3313,14 @@
 
     if-ge v2, v3, :cond_0
 
+    .line 1405
     iget v1, p0, Landroid/widget/Gallery;->mSelectedPosition:I
 
     iget v2, p0, Landroid/widget/Gallery;->mFirstPosition:I
 
     sub-int v0, v1, v2
 
+    .line 1406
     .local v0, "currentChildIndex":I
     add-int/lit8 v1, v0, 0x1
 
@@ -3111,6 +3330,7 @@
 
     goto :goto_0
 
+    .line 1410
     .end local v0    # "currentChildIndex":I
     :sswitch_1
     invoke-virtual {p0}, Landroid/widget/Gallery;->isEnabled()Z
@@ -3127,12 +3347,14 @@
 
     if-lez v2, :cond_0
 
+    .line 1411
     iget v1, p0, Landroid/widget/Gallery;->mSelectedPosition:I
 
     iget v2, p0, Landroid/widget/Gallery;->mFirstPosition:I
 
     sub-int v0, v1, v2
 
+    .line 1412
     .restart local v0    # "currentChildIndex":I
     add-int/lit8 v1, v0, -0x1
 
@@ -3142,6 +3364,7 @@
 
     goto :goto_0
 
+    .line 1402
     nop
 
     :sswitch_data_0
@@ -3155,12 +3378,15 @@
     .locals 1
 
     .prologue
+    .line 564
     iget-boolean v0, p0, Landroid/widget/Gallery;->mSuppressSelectionChanged:Z
 
     if-nez v0, :cond_0
 
+    .line 565
     invoke-super {p0}, Landroid/widget/AbsSpinner;->selectionChanged()V
 
+    .line 567
     :cond_0
     return-void
 .end method
@@ -3170,8 +3396,10 @@
     .param p1, "animationDurationMillis"    # I
 
     .prologue
+    .line 276
     iput p1, p0, Landroid/widget/Gallery;->mAnimationDuration:I
 
+    .line 277
     return-void
 .end method
 
@@ -3180,8 +3408,10 @@
     .param p1, "shouldCallback"    # Z
 
     .prologue
+    .line 250
     iput-boolean p1, p0, Landroid/widget/Gallery;->mShouldCallbackDuringFling:Z
 
+    .line 251
     return-void
 .end method
 
@@ -3190,8 +3420,10 @@
     .param p1, "shouldCallback"    # Z
 
     .prologue
+    .line 263
     iput-boolean p1, p0, Landroid/widget/Gallery;->mShouldCallbackOnUnselectedItemClick:Z
 
+    .line 264
     return-void
 .end method
 
@@ -3200,14 +3432,18 @@
     .param p1, "gravity"    # I
 
     .prologue
+    .line 1335
     iget v0, p0, Landroid/widget/Gallery;->mGravity:I
 
     if-eq v0, p1, :cond_0
 
+    .line 1336
     iput p1, p0, Landroid/widget/Gallery;->mGravity:I
 
+    .line 1337
     invoke-virtual {p0}, Landroid/widget/Gallery;->requestLayout()V
 
+    .line 1339
     :cond_0
     return-void
 .end method
@@ -3217,10 +3453,13 @@
     .param p1, "position"    # I
 
     .prologue
+    .line 1291
     invoke-super {p0, p1}, Landroid/widget/AbsSpinner;->setSelectedPositionInt(I)V
 
+    .line 1294
     invoke-direct {p0}, Landroid/widget/Gallery;->updateSelectedItemMetadata()V
 
+    .line 1295
     return-void
 .end method
 
@@ -3229,8 +3468,10 @@
     .param p1, "spacing"    # I
 
     .prologue
+    .line 287
     iput p1, p0, Landroid/widget/Gallery;->mSpacing:I
 
+    .line 288
     return-void
 .end method
 
@@ -3239,8 +3480,10 @@
     .param p1, "unselectedAlpha"    # F
 
     .prologue
+    .line 298
     iput p1, p0, Landroid/widget/Gallery;->mUnselectedAlpha:F
 
+    .line 299
     return-void
 .end method
 
@@ -3248,6 +3491,7 @@
     .locals 6
 
     .prologue
+    .line 1169
     invoke-virtual {p0}, Landroid/widget/Gallery;->isPressed()Z
 
     move-result v2
@@ -3258,17 +3502,20 @@
 
     if-ltz v2, :cond_0
 
+    .line 1170
     iget v2, p0, Landroid/widget/Gallery;->mSelectedPosition:I
 
     iget v3, p0, Landroid/widget/Gallery;->mFirstPosition:I
 
     sub-int v0, v2, v3
 
+    .line 1171
     .local v0, "index":I
     invoke-virtual {p0, v0}, Landroid/widget/Gallery;->getChildAt(I)Landroid/view/View;
 
     move-result-object v1
 
+    .line 1172
     .local v1, "v":Landroid/view/View;
     iget v2, p0, Landroid/widget/Gallery;->mSelectedPosition:I
 
@@ -3278,6 +3525,7 @@
 
     move-result v2
 
+    .line 1175
     .end local v0    # "index":I
     .end local v1    # "v":Landroid/view/View;
     :goto_0
@@ -3294,18 +3542,23 @@
     .param p1, "originalView"    # Landroid/view/View;
 
     .prologue
+    .line 1157
     invoke-virtual {p0, p1}, Landroid/widget/Gallery;->getPositionForView(Landroid/view/View;)I
 
     move-result v2
 
+    .line 1158
     .local v2, "longPressPosition":I
     if-gez v2, :cond_0
 
+    .line 1159
     const/4 v3, 0x0
 
+    .line 1163
     :goto_0
     return v3
 
+    .line 1162
     :cond_0
     iget-object v3, p0, Landroid/widget/Gallery;->mAdapter:Landroid/widget/SpinnerAdapter;
 
@@ -3313,6 +3566,7 @@
 
     move-result-wide v0
 
+    .line 1163
     .local v0, "longPressId":J
     invoke-direct {p0, p1, v2, v0, v1}, Landroid/widget/Gallery;->dispatchLongPress(Landroid/view/View;IJ)Z
 
@@ -3328,61 +3582,78 @@
     .prologue
     const/4 v6, 0x0
 
+    .line 378
     invoke-virtual {p0}, Landroid/widget/Gallery;->getChildCount()I
 
     move-result v7
 
     if-nez v7, :cond_0
 
+    .line 419
     :goto_0
     return-void
 
+    .line 382
     :cond_0
     if-gez p1, :cond_3
 
     const/4 v5, 0x1
 
+    .line 384
     .local v5, "toLeft":Z
     :goto_1
     invoke-virtual {p0, v5, p1}, Landroid/widget/Gallery;->getLimitedMotionScrollAmount(ZI)I
 
     move-result v3
 
+    .line 385
     .local v3, "limitedDeltaX":I
     if-eq v3, p1, :cond_1
 
+    .line 387
     iget-object v7, p0, Landroid/widget/Gallery;->mFlingRunnable:Landroid/widget/Gallery$FlingRunnable;
 
     # invokes: Landroid/widget/Gallery$FlingRunnable;->endFling(Z)V
     invoke-static {v7, v6}, Landroid/widget/Gallery$FlingRunnable;->access$100(Landroid/widget/Gallery$FlingRunnable;Z)V
 
+    .line 388
     invoke-direct {p0}, Landroid/widget/Gallery;->onFinishedMovement()V
 
+    .line 391
     :cond_1
     invoke-direct {p0, v3}, Landroid/widget/Gallery;->offsetChildrenLeftAndRight(I)V
 
+    .line 393
     invoke-direct {p0, v5}, Landroid/widget/Gallery;->detachOffScreenChildren(Z)V
 
+    .line 395
     if-eqz v5, :cond_4
 
+    .line 397
     invoke-direct {p0}, Landroid/widget/Gallery;->fillToGalleryRight()V
 
+    .line 404
     :goto_2
     iget-object v7, p0, Landroid/widget/Gallery;->mRecycler:Landroid/widget/AbsSpinner$RecycleBin;
 
     invoke-virtual {v7}, Landroid/widget/AbsSpinner$RecycleBin;->clear()V
 
+    .line 406
     invoke-direct {p0}, Landroid/widget/Gallery;->setSelectionToCenterChild()V
 
+    .line 408
     iget-object v4, p0, Landroid/widget/Gallery;->mSelectedChild:Landroid/view/View;
 
+    .line 409
     .local v4, "selChild":Landroid/view/View;
     if-eqz v4, :cond_2
 
+    .line 410
     invoke-virtual {v4}, Landroid/view/View;->getLeft()I
 
     move-result v1
 
+    .line 411
     .local v1, "childLeft":I
     invoke-virtual {v4}, Landroid/view/View;->getWidth()I
 
@@ -3390,6 +3661,7 @@
 
     div-int/lit8 v0, v7, 0x2
 
+    .line 412
     .local v0, "childCenter":I
     invoke-virtual {p0}, Landroid/widget/Gallery;->getWidth()I
 
@@ -3397,6 +3669,7 @@
 
     div-int/lit8 v2, v7, 0x2
 
+    .line 413
     .local v2, "galleryCenter":I
     add-int v7, v1, v0
 
@@ -3404,14 +3677,14 @@
 
     iput v7, p0, Landroid/widget/Gallery;->mSelectedCenterOffset:I
 
+    .line 416
     .end local v0    # "childCenter":I
     .end local v1    # "childLeft":I
     .end local v2    # "galleryCenter":I
     :cond_2
-    invoke-virtual/range {p0 .. p0}, Landroid/widget/Gallery;->invokeOnItemScrollListener()V
-
     invoke-virtual {p0, v6, v6, v6, v6}, Landroid/widget/Gallery;->onScrollChanged(IIII)V
 
+    .line 418
     invoke-virtual {p0}, Landroid/widget/Gallery;->invalidate()V
 
     goto :goto_0
@@ -3422,223 +3695,14 @@
     :cond_3
     move v5, v6
 
+    .line 382
     goto :goto_1
 
+    .line 400
     .restart local v3    # "limitedDeltaX":I
     .restart local v5    # "toLeft":Z
     :cond_4
     invoke-direct {p0}, Landroid/widget/Gallery;->fillToGalleryLeft()V
 
     goto :goto_2
-.end method
-
-.method private initExtFlymeFields()V
-    .locals 1
-
-    .prologue
-    const/4 v0, 0x0
-
-    iput v0, p0, Landroid/widget/Gallery;->mLastScrollState:I
-
-    return-void
-.end method
-
-.method private mzOnDown()V
-    .locals 2
-
-    .prologue
-    iget v0, p0, Landroid/widget/Gallery;->mLastScrollState:I
-
-    const/4 v1, 0x2
-
-    if-ne v0, v1, :cond_0
-
-    const/4 v0, 0x1
-
-    invoke-virtual {p0, v0}, Landroid/widget/Gallery;->reportScrollStateChange(I)V
-
-    :cond_0
-    return-void
-.end method
-
-.method private mzOnScroll()V
-    .locals 1
-
-    .prologue
-    iget-boolean v0, p0, Landroid/widget/Gallery;->mIsFirstScroll:Z
-
-    if-eqz v0, :cond_0
-
-    const/4 v0, 0x1
-
-    invoke-virtual {p0, v0}, Landroid/widget/Gallery;->reportScrollStateChange(I)V
-
-    :cond_0
-    return-void
-.end method
-
-.method private mzReportScrollStateChange()V
-    .locals 1
-
-    .prologue
-    const/4 v0, 0x2
-
-    invoke-virtual {p0, v0}, Landroid/widget/Gallery;->reportScrollStateChange(I)V
-
-    return-void
-.end method
-
-.method private mzScrollIntoSlots1()V
-    .locals 1
-
-    .prologue
-    .line 538
-    invoke-virtual {p0}, Landroid/widget/Gallery;->getChildCount()I
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Landroid/widget/Gallery;->mSelectedChild:Landroid/view/View;
-
-    if-nez v0, :cond_1
-
-    :cond_0
-    iget v0, p0, Landroid/widget/Gallery;->mLastScrollState:I
-
-    if-eqz v0, :cond_1
-
-    const/4 v0, 0x0
-
-    invoke-virtual {p0, v0}, Landroid/widget/Gallery;->reportScrollStateChange(I)V
-
-    :cond_1
-    return-void
-.end method
-
-.method private mzScrollIntoSlots2()V
-    .locals 5
-
-    .prologue
-    const/4 v4, 0x2
-
-    iget-object v3, p0, Landroid/widget/Gallery;->mSelectedChild:Landroid/view/View;
-
-    invoke-static {v3}, Landroid/widget/Gallery;->getCenterOfView(Landroid/view/View;)I
-
-    move-result v1
-
-    .local v1, "selectedCenter":I
-    invoke-direct {p0}, Landroid/widget/Gallery;->getCenterOfGallery()I
-
-    move-result v2
-
-    .local v2, "targetCenter":I
-    sub-int v0, v2, v1
-
-    .local v0, "scrollAmount":I
-    if-eqz v0, :cond_1
-
-    iget v3, p0, Landroid/widget/Gallery;->mLastScrollState:I
-
-    if-eq v3, v4, :cond_0
-
-    invoke-virtual {p0, v4}, Landroid/widget/Gallery;->reportScrollStateChange(I)V
-
-    .line 549
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 540
-    :cond_1
-    iget v3, p0, Landroid/widget/Gallery;->mLastScrollState:I
-
-    if-eqz v3, :cond_0
-
-    const/4 v3, 0x0
-
-    invoke-virtual {p0, v3}, Landroid/widget/Gallery;->reportScrollStateChange(I)V
-
-    goto :goto_0
-.end method
-
-.method private mzScrollToChild(I)V
-    .locals 2
-    .param p1, "childPosition"    # I
-
-    .prologue
-    invoke-virtual {p0, p1}, Landroid/widget/Gallery;->getChildAt(I)Landroid/view/View;
-
-    move-result-object v0
-
-    .local v0, "child":Landroid/view/View;
-    if-eqz v0, :cond_0
-
-    const/4 v1, 0x1
-
-    invoke-virtual {p0, v1}, Landroid/widget/Gallery;->reportScrollStateChange(I)V
-
-    :cond_0
-    return-void
-.end method
-
-.method invokeOnItemScrollListener()V
-    .locals 4
-
-    .prologue
-    iget-object v0, p0, Landroid/widget/Gallery;->mOnScrollListener:Landroid/widget/Gallery$OnScrollListener;
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Landroid/widget/Gallery;->mOnScrollListener:Landroid/widget/Gallery$OnScrollListener;
-
-    iget v1, p0, Landroid/widget/Gallery;->mFirstPosition:I
-
-    invoke-virtual {p0}, Landroid/widget/Gallery;->getChildCount()I
-
-    move-result v2
-
-    iget v3, p0, Landroid/widget/Gallery;->mItemCount:I
-
-    invoke-interface {v0, p0, v1, v2, v3}, Landroid/widget/Gallery$OnScrollListener;->onScroll(Landroid/widget/Gallery;III)V
-
-    :cond_0
-    return-void
-.end method
-
-.method reportScrollStateChange(I)V
-    .locals 1
-    .param p1, "newState"    # I
-
-    .prologue
-    iget v0, p0, Landroid/widget/Gallery;->mLastScrollState:I
-
-    if-eq p1, v0, :cond_0
-
-    iput p1, p0, Landroid/widget/Gallery;->mLastScrollState:I
-
-    iget-object v0, p0, Landroid/widget/Gallery;->mOnScrollListener:Landroid/widget/Gallery$OnScrollListener;
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Landroid/widget/Gallery;->mOnScrollListener:Landroid/widget/Gallery$OnScrollListener;
-
-    invoke-interface {v0, p0, p1}, Landroid/widget/Gallery$OnScrollListener;->onScrollStateChanged(Landroid/widget/Gallery;I)V
-
-    :cond_0
-    return-void
-.end method
-
-.method public setOnScrollListener(Landroid/widget/Gallery$OnScrollListener;)V
-    .locals 0
-    .param p1, "l"    # Landroid/widget/Gallery$OnScrollListener;
-
-    .prologue
-    iput-object p1, p0, Landroid/widget/Gallery;->mOnScrollListener:Landroid/widget/Gallery$OnScrollListener;
-
-    invoke-virtual {p0}, Landroid/widget/Gallery;->invokeOnItemScrollListener()V
-
-    .line 1380
-    return-void
 .end method
