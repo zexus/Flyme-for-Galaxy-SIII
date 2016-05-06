@@ -1,1 +1,1 @@
-# Flyme for Galaxy SIII 2016.4.27
+# Flyme4 for Galaxy SIII
