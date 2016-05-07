@@ -10134,6 +10134,16 @@
 
     .line 1821
     .local v12, "sanitizedRequest":Landroid/location/LocationRequest;
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/LocationManagerService;->isFlymePermissionGranted()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
+
     sget-boolean v2, Lcom/android/server/LocationManagerService;->D:Z
 
     if-eqz v2, :cond_1

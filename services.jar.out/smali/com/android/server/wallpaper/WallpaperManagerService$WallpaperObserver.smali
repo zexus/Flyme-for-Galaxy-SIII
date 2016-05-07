@@ -15,6 +15,8 @@
 
 
 # instance fields
+.field mFlymeLockWallpaperFile:Ljava/io/File;
+
 .field final mKeyguardWallpaper:Lcom/android/server/wallpaper/WallpaperManagerService$KeyguardWallpaperData;
 
 .field final mKeyguardWallpaperFile:Ljava/io/File;
@@ -287,6 +289,8 @@
     .line 181
     :cond_7
     :goto_1
+    invoke-direct {p0, v7}, Lcom/android/server/wallpaper/WallpaperManagerService$WallpaperObserver;->flymeNotifyLockWallpaperChanged(Ljava/io/File;)V
+
     monitor-exit v11
 
     goto :goto_0
@@ -356,7 +360,6 @@
 
     goto :goto_1
 .end method
-
 
 .method private flymeNotifyLockWallpaperChanged(Ljava/io/File;)V
     .locals 2

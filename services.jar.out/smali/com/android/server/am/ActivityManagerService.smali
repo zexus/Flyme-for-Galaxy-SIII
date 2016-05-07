@@ -18,6 +18,7 @@
         Lcom/android/server/am/ActivityManagerService$NeededUriGrants;,
         Lcom/android/server/am/ActivityManagerService$IntentFirewallInterface;,
         Lcom/android/server/am/ActivityManagerService$PermissionController;,
+        Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;,
         Lcom/android/server/am/ActivityManagerService$ProcessInfoService;,
         Lcom/android/server/am/ActivityManagerService$Lifecycle;,
         Lcom/android/server/am/ActivityManagerService$CpuBinder;,

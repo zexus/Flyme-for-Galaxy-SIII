@@ -11318,6 +11318,16 @@
     .param p2, "keyguardShowingMedia"    # Z
 
     .prologue
+    if-nez p1, :cond_flyme_0
+
+    invoke-static/range {p0 .. p0}, Lcom/android/internal/policy/impl/PhoneWindowManager$FlymeInjector;->getForceHideWallpaperExitAnimation(Lcom/android/internal/policy/impl/PhoneWindowManager;)Landroid/view/animation/Animation;
+
+    move-result-object v0
+
+    return-object v0
+
+    :cond_flyme_0
+
     .line 2882
     if-eqz p1, :cond_0
 
@@ -15841,6 +15851,9 @@
     .end local v8    # "loader":Ldalvik/system/DexClassLoader;
     :cond_3
     :goto_2
+
+    invoke-static/range {p0 .. p1}, Lcom/android/internal/policy/impl/PhoneWindowManager$FlymeInjector;->initFlymeExtraFields(Lcom/android/internal/policy/impl/PhoneWindowManager;Landroid/content/Context;)V
+
     return-void
 
     .line 1585

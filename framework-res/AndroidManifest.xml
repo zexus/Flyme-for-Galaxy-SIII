@@ -581,6 +581,8 @@
     <permission android:description="@string/permdesc_readInstallSessions" android:label="@string/permlab_readInstallSessions" android:name="android.permission.READ_INSTALL_SESSIONS"/>
     <permission android:description="@string/permdesc_removeDrmCertificates" android:label="@string/permlab_removeDrmCertificates" android:name="android.permission.REMOVE_DRM_CERTIFICATES" android:protectionLevel="system|signature"/>
     <permission android:description="@string/permdesc_bindCarrierMessagingService" android:label="@string/permlab_bindCarrierMessagingService" android:name="android.permission.BIND_CARRIER_MESSAGING_SERVICE" android:protectionLevel="system|signature"/>
+    <permission android:name="android.permission.MEIZU_CONTROL_PACKAGE_PERMISSIONS" android:protectionLevel="signatureOrSystem"/>
+    <permission android:name="android.permission.MEIZU_SMART_LOCK" android:protectionLevel="signatureOrSystem"/>
     <eat-comment/>
     <permission-group android:description="@string/permgroupdesc_security" android:icon="@drawable/perm_group_security" android:label="@string/permgrouplab_security" android:name="android.permission-group.SECURITY" android:priority="400"/>
     <permission android:description="@string/permdesc_readPhoneBlacklist" android:label="@string/permlab_readPhoneBlacklist" android:name="android.permission.READ_PHONE_BLACKLIST" android:permissionGroup="android.permission-group.SECURITY" android:protectionLevel="system|signature" androidprv:allowViaWhitelist="true"/>

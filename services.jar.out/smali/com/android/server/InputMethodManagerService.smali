@@ -9367,6 +9367,9 @@
 
     invoke-direct {v0, v5}, Lcom/android/server/InputMethodManagerService;->publishImeSelectorCustomTile(Landroid/view/inputmethod/InputMethodInfo;)V
 
+    :cond_flyme_0
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/InputMethodManagerService;->showFlymeImeSwitcherNotificationIfNeeded()V
+
     .end local v9    # "summary":Ljava/lang/CharSequence;
     .end local v10    # "title":Ljava/lang/CharSequence;
     :goto_3
