@@ -7446,17 +7446,17 @@
 
     move-object/from16 v0, p0
 
-    move-object/from16 v1, p1
+    move-object/from16 v3, p1
 
-    move-object/from16 v2, p2
+    move-object/from16 v4, p2
 
-    move/from16 v3, p3
+    move/from16 v5, p3
 
-    move/from16 v4, p5
+    move/from16 v6, p5
 
-    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/server/pm/PackageManagerService$FlymePackageManagerServiceInjector;->getResolveInfo(Lcom/android/server/pm/PackageManagerService;Landroid/content/Intent;Ljava/lang/String;II)Landroid/content/pm/ResolveInfo;
+    invoke-static {v0, v3, v4, v5, v6}, Lcom/android/server/pm/PackageManagerService$FlymePackageManagerServiceInjector;->getResolveInfo(Lcom/android/server/pm/PackageManagerService;Landroid/content/Intent;Ljava/lang/String;II)Landroid/content/pm/ResolveInfo;
 
-    move-result-object v1
+    move-result-object v3
 
     goto/16 :goto_0
 .end method
