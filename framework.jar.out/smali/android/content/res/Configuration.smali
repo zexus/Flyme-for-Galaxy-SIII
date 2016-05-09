@@ -910,6 +910,10 @@
 
     or-int/2addr v0, v1
 
+    const/high16 v1, 0x100000
+
+    or-int/2addr v0, v1
+
     and-int/2addr v0, p0
 
     if-eqz v0, :cond_0
@@ -2997,6 +3001,8 @@
     .end local v2    # "fontPkgName":Ljava/lang/String;
     :cond_15
     invoke-static {p0, p1, v0}, Landroid/content/res/Configuration$FlymeInjector;->diff(Landroid/content/res/Configuration;Landroid/content/res/Configuration;I)I
+
+    move-result v0
 
     return v0
 .end method
@@ -5319,6 +5325,8 @@
     .end local v2    # "fontPkgName":Ljava/lang/String;
     :cond_1d
     invoke-static {p0, p1, v0}, Landroid/content/res/Configuration$FlymeInjector;->updateFrom(Landroid/content/res/Configuration;Landroid/content/res/Configuration;I)I
+
+    move-result v0
 
     return v0
 

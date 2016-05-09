@@ -1040,7 +1040,7 @@
 
     move-result-object v6
 
-    const-string v7, "mzThemeColor"
+    const-string/jumbo v7, "mzThemeColor"
 
     const-string v8, "attr"
 
