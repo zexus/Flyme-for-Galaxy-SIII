@@ -2301,6 +2301,20 @@
     return-void
 .end method
 
+.method public getRadioAccessFamily()I
+    .locals 1
+
+    .prologue
+    .line 1484
+    iget-object v0, p0, Lcom/android/internal/telephony/PhoneProxy;->mActivePhone:Lcom/android/internal/telephony/Phone;
+
+    invoke-interface {v0}, Lcom/android/internal/telephony/Phone;->getRadioAccessFamily()I
+
+    move-result v0
+
+    return v0
+.end method
+
 .method public getRingingCall()Lcom/android/internal/telephony/Call;
     .locals 1
 

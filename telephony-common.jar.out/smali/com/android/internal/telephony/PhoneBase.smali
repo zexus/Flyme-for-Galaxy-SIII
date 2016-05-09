@@ -198,6 +198,8 @@
 
 .field protected final mPreciseCallStateRegistrants:Landroid/os/RegistrantList;
 
+.field protected mRadioAccessFamily:I
+
 .field protected final mRadioOffOrNotAvailableRegistrants:Landroid/os/RegistrantList;
 
 .field protected final mServiceStateRegistrants:Landroid/os/RegistrantList;
@@ -4161,6 +4163,16 @@
 
     .line 1455
     return-void
+.end method
+
+.method public getRadioAccessFamily()I
+    .locals 1
+
+    .prologue
+    .line 2121
+    iget v0, p0, Lcom/android/internal/telephony/PhoneBase;->mRadioAccessFamily:I
+
+    return v0
 .end method
 
 .method public getServiceStateTracker()Lcom/android/internal/telephony/ServiceStateTracker;
