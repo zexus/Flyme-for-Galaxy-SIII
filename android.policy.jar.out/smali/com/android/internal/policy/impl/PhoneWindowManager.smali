@@ -4854,7 +4854,7 @@
 
     .line 1483
     :pswitch_3
-    invoke-direct {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->launchAssistAction()V
+    invoke-direct {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->startVoiceAssistant()V
 
     goto :goto_0
 
@@ -6392,9 +6392,9 @@
     .locals 14
 
     .prologue
-    const/4 v13, 0x7
+    const/4 v13, 0x3
 
-    const/4 v12, 0x3
+    const/4 v12, 0x2
 
     const/4 v11, -0x2
 
@@ -6460,7 +6460,7 @@
 
     .line 1758
     .local v6, "resolver":Landroid/content/ContentResolver;
-    iput v7, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPressOnMenuBehavior:I
+    iput v12, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPressOnMenuBehavior:I
 
     .line 1760
     iget-object v9, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mContext:Landroid/content/Context;
@@ -6487,11 +6487,11 @@
     if-nez v2, :cond_1
 
     .line 1765
-    iput v12, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mLongPressOnMenuBehavior:I
+    iput v13, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mLongPressOnMenuBehavior:I
 
     .line 1767
     :cond_1
-    iput v12, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPressOnAssistBehavior:I
+    iput v13, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPressOnAssistBehavior:I
 
     .line 1768
     const/4 v9, 0x4
@@ -6499,9 +6499,7 @@
     iput v9, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mLongPressOnAssistBehavior:I
 
     .line 1769
-    const/4 v9, 0x2
-
-    iput v9, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPressOnAppSwitchBehavior:I
+    iput v12, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPressOnAppSwitchBehavior:I
 
     .line 1770
     iget-object v9, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mContext:Landroid/content/Context;
@@ -6540,7 +6538,9 @@
 
     iget v9, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mLongPressOnHomeBehavior:I
 
-    if-le v9, v13, :cond_3
+    const/4 v10, 0x7
+
+    if-le v9, v10, :cond_3
 
     .line 1777
     :cond_2
@@ -6569,7 +6569,9 @@
 
     iget v9, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mDoubleTapOnHomeBehavior:I
 
-    if-le v9, v13, :cond_5
+    const/4 v10, 0x7
+
+    if-le v9, v10, :cond_5
 
     .line 1784
     :cond_4
@@ -28745,4 +28747,35 @@
     move v4, v6
 
     goto :goto_5
+.end method
+
+.method private startVoiceAssistant()V
+    .locals 3
+
+    .prologue
+    .line 6766
+    new-instance v0, Landroid/content/Intent;
+
+    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
+
+    .line 6767
+    .local v0, "intent":Landroid/content/Intent;
+    const-string v1, "com.meizu.voiceassistant"
+
+    const-string v2, "com.meizu.voiceassistant.MainActivity"
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 6768
+    const/high16 v1, 0x10000000
+
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
+
+    .line 6769
+    iget-object v1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v1, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+
+    .line 6770
+    return-void
 .end method
