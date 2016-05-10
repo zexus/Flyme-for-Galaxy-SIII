@@ -131,7 +131,8 @@ board_modify_apps := TeleService SystemUI FlymeLauncher
 # If 1, hide the soft mainkeys. If 0, display the soft mainkeys.
 # You should configure the property according to your device.
 override_property += \
-    qemu.hw.mainkeys=1
+    qemu.hw.mainkeys=1 \
+    persist.sys.root_access=3
 
 
 # The value of the property ro.flyme.romer will be contained in the ota package name.
