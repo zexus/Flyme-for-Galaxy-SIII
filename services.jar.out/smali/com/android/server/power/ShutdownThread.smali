@@ -1140,35 +1140,29 @@
 .end method
 
 .method public static reboot(Landroid/content/Context;Ljava/lang/String;Z)V
-    .locals 2
+    .locals 1
     .param p0, "context"    # Landroid/content/Context;
     .param p1, "reason"    # Ljava/lang/String;
     .param p2, "confirm"    # Z
 
     .prologue
-    .line 304
-    invoke-static {p0}, Lcom/android/server/power/ShutdownThread;->getUiContext(Landroid/content/Context;)Landroid/content/Context;
+    .line 303
+    const/4 v0, 0x1
 
-    move-result-object v0
+    sput-boolean v0, Lcom/android/server/power/ShutdownThread;->mReboot:Z
+
+    .line 304
+    const/4 v0, 0x0
+
+    sput-boolean v0, Lcom/android/server/power/ShutdownThread;->mRebootSafeMode:Z
 
     .line 305
-    .local v0, "uiContext":Landroid/content/Context;
-    const/4 v1, 0x1
-
-    sput-boolean v1, Lcom/android/server/power/ShutdownThread;->mReboot:Z
-
-    .line 306
-    const/4 v1, 0x0
-
-    sput-boolean v1, Lcom/android/server/power/ShutdownThread;->mRebootSafeMode:Z
-
-    .line 307
     sput-object p1, Lcom/android/server/power/ShutdownThread;->mRebootReason:Ljava/lang/String;
 
-    .line 308
-    invoke-static {v0, p2}, Lcom/android/server/power/ShutdownThread;->shutdownInner(Landroid/content/Context;Z)V
+    .line 306
+    invoke-static {p0, p2}, Lcom/android/server/power/ShutdownThread;->shutdownInner(Landroid/content/Context;Z)V
 
-    .line 309
+    .line 307
     return-void
 .end method
 
@@ -1334,29 +1328,23 @@
 .end method
 
 .method public static shutdown(Landroid/content/Context;Z)V
-    .locals 2
+    .locals 1
     .param p0, "context"    # Landroid/content/Context;
     .param p1, "confirm"    # Z
 
     .prologue
-    const/4 v1, 0x0
+    const/4 v0, 0x0
 
     .line 142
-    invoke-static {p0}, Lcom/android/server/power/ShutdownThread;->getUiContext(Landroid/content/Context;)Landroid/content/Context;
-
-    move-result-object v0
+    sput-boolean v0, Lcom/android/server/power/ShutdownThread;->mReboot:Z
 
     .line 143
-    .local v0, "uiContext":Landroid/content/Context;
-    sput-boolean v1, Lcom/android/server/power/ShutdownThread;->mReboot:Z
+    sput-boolean v0, Lcom/android/server/power/ShutdownThread;->mRebootSafeMode:Z
 
     .line 144
-    sput-boolean v1, Lcom/android/server/power/ShutdownThread;->mRebootSafeMode:Z
+    invoke-static {p0, p1}, Lcom/android/server/power/ShutdownThread;->shutdownInner(Landroid/content/Context;Z)V
 
     .line 145
-    invoke-static {v0, p1}, Lcom/android/server/power/ShutdownThread;->shutdownInner(Landroid/content/Context;Z)V
-
-    .line 146
     return-void
 .end method
 
