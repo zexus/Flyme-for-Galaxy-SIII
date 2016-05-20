@@ -14894,7 +14894,7 @@
     const/4 v3, -0x1
 
     .local v3, "position":I
-    if-eqz p1, :cond_4
+    if-eqz p1, :cond_3
 
     const/4 v2, 0x0
 
@@ -14923,7 +14923,7 @@
 
     iget v5, v5, Landroid/graphics/Rect;->top:I
 
-    if-le v4, v5, :cond_3
+    if-le v4, v5, :cond_2
 
     iget v4, p0, Landroid/widget/ListView;->mFirstPosition:I
 
@@ -14936,29 +14936,22 @@
 
     move-result v4
 
-    if-nez v4, :cond_1
+    if-eqz v4, :cond_1
 
-    invoke-virtual {p0, v3}, Landroid/widget/ListView;->mzIsItemSelectable(I)Z
-
-    move-result v4
-
-    if-nez v4, :cond_2
-
-    :cond_1
     const/4 v3, -0x1
 
-    :cond_2
+    :cond_1
     return v3
 
     .restart local v0    # "child":Landroid/view/View;
-    :cond_3
+    :cond_2
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
     .end local v0    # "child":Landroid/view/View;
     .end local v2    # "index":I
-    :cond_4
+    :cond_3
     add-int/lit8 v2, v1, -0x1
 
     .restart local v2    # "index":I
@@ -14992,7 +14985,7 @@
 
     sub-int/2addr v5, v6
 
-    if-ge v4, v5, :cond_5
+    if-ge v4, v5, :cond_4
 
     iget v4, p0, Landroid/widget/ListView;->mFirstPosition:I
 
@@ -15000,7 +14993,7 @@
 
     goto :goto_1
 
-    :cond_5
+    :cond_4
     add-int/lit8 v2, v2, -0x1
 
     goto :goto_2
