@@ -12,6 +12,7 @@
         Lcom/android/server/notification/NotificationManagerService$FilterCacheInfo;,
         Lcom/android/server/notification/NotificationManagerService$RankingWorkerHandler;,
         Lcom/android/server/notification/NotificationManagerService$WorkerHandler;,
+        Lcom/android/server/notification/NotificationManagerService$FlymeInjector;,
         Lcom/android/server/notification/NotificationManagerService$SettingsObserver;,
         Lcom/android/server/notification/NotificationManagerService$NotificationLedValues;,
         Lcom/android/server/notification/NotificationManagerService$ToastRecord;,
@@ -125,6 +126,12 @@
 
 
 # instance fields
+.field mFlymePowerManager:Landroid/os/PowerManager;
+
+.field mFlymeWakeLock:Landroid/os/PowerManager$WakeLock;
+
+.field mFlymeWakeUpScreenRunnable:Ljava/lang/Runnable;
+
 .field private mActiveMedia:Z
 
 .field private mAm:Landroid/app/IActivityManager;
@@ -2241,6 +2248,8 @@
 
     .line 2348
     invoke-virtual/range {p0 .. p0}, Lcom/android/server/notification/NotificationManagerService;->updateLightsLocked()V
+
+    invoke-static/range {p0 .. p1}, Lcom/android/server/notification/NotificationManagerService$FlymeInjector;->notifyWakeupScreen(Lcom/android/server/notification/NotificationManagerService;Lcom/android/server/notification/NotificationRecord;)V
 
     .line 2349
     move-object/from16 v0, p0
@@ -9555,6 +9564,8 @@
 
     invoke-virtual {v0, v2, v3}, Lcom/android/server/notification/NotificationManagerService;->publishLocalService(Ljava/lang/Class;Ljava/lang/Object;)V
 
+    invoke-static/range {p0 .. p0}, Lcom/android/server/notification/NotificationManagerService$FlymeInjector;->initFlymeExtraFields(Lcom/android/server/notification/NotificationManagerService;)V
+
     .line 1098
     return-void
 .end method
@@ -10201,4 +10212,31 @@
 
     .restart local v3    # "ledOffMS":I
     goto :goto_5
+.end method
+
+.method flymeGetFieldHandler()Lcom/android/server/notification/NotificationManagerService$WorkerHandler;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mHandler:Lcom/android/server/notification/NotificationManagerService$WorkerHandler;
+
+    return-object v0
+.end method
+
+.method flymeGetFieldInCall()Z
+    .locals 1
+
+    .prologue
+    iget-boolean v0, p0, Lcom/android/server/notification/NotificationManagerService;->mInCall:Z
+
+    return v0
+.end method
+
+.method flymeGetFieldScreenOn()Z
+    .locals 1
+
+    .prologue
+    iget-boolean v0, p0, Lcom/android/server/notification/NotificationManagerService;->mScreenOn:Z
+
+    return v0
 .end method
