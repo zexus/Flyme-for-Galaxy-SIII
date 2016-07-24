@@ -1,0 +1,8 @@
+.method public static onSpecialActivityQuit(Landroid/content/Context;)V
+    .locals 1
+    .param p0, "context"    # Landroid/content/Context;
+
+    .prologue
+
+    return-void
+.end method
