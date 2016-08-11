@@ -56,7 +56,7 @@ vendor_remove_files := lib/libchrome.2214.89.so
 #-----------------------------------------------------------------------------
 vendor_saved_apps := Bluetooth Nfc KeyChain Tag HTMLViewer UserDictionaryProvider BackupRestoreConfirmation \
                      FusedLocation PrintSpooler SharedStorageBackup  ExternalStorageProvider InputDevices \
-                     ProxyHandler Shell DefaultContainerService WAPPushManager Stk CaptivePortalLogin
+                     ProxyHandler Shell DefaultContainerService WAPPushManager Stk CaptivePortalLogin webview
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.
