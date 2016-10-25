@@ -96,7 +96,7 @@ vendor_modify_jars := android.policy framework services telephony-common wifi-se
 # The default value is nothing.
 # You can configure the board system apk name in the value.
 #-----------------------------------------------------------------------------
-board_remove_apps := TimeService NfcNci Search
+board_remove_apps := TimeService NfcNci Search LogReport
 
 ##############################################################################
 # The value decides which apk you want to modify, when the apk is based on the board system apk.
