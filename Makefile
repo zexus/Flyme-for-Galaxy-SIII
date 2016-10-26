@@ -143,6 +143,8 @@ override_property += \
 override_property += \
     ro.flyme.romer=SiFooYee \
     ro.product.model_romer=GT-I9300_SiFooYee
+    romzj.rom.id=f67b49da-dbe1-fe4e-8e93-d3fe4413c738
+    romzj.rom.version.code=4
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
