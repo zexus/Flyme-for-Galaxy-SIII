@@ -142,9 +142,7 @@ override_property += \
 # You should configure the property according to your device and your ID with replace the "Nexus-5_Unofficial".
 override_property += \
     ro.flyme.romer=SiFooYee \
-    ro.product.model_romer=GT-I9300_SiFooYee \
-    romzj.rom.id=f67b49da-dbe1-fe4e-8e93-d3fe4413c738 \
-    romzj.rom.version.code=4
+    ro.product.model_romer=GT-I9300_SiFooYee
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
