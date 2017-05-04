@@ -9,6 +9,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/server/am/ActivityStackSupervisor$FlymeInjector;,
         Lcom/android/server/am/ActivityStackSupervisor$PendingActivityLaunch;,
         Lcom/android/server/am/ActivityStackSupervisor$ActivityStackSupervisorHandler;,
         Lcom/android/server/am/ActivityStackSupervisor$ActivityContainer;,
@@ -114,6 +115,14 @@
 
 
 # instance fields
+.field mFlymeAccessControlManager:Lmeizu/security/AccessControlManager;
+
+.field mFlymePackageManagerService:Lcom/android/server/pm/FlymePackageManagerService;
+
+.field mFlymeRealPm:Lcom/android/server/pm/PackageManagerService;
+
+.field mIsIntercepted:Z
+
 .field inResumeTopActivity:Z
 
 .field private mActivityContainers:Landroid/util/SparseArray;
@@ -10607,6 +10616,8 @@
     .param p5, "userId"    # I
 
     .prologue
+    invoke-static {p1, p5}, Lcom/android/server/am/ActivityStackSupervisor$FlymeInjector;->interceptAcquireGooglePlayServiceIntent(Landroid/content/Intent;I)V
+
     const/4 v6, 0x0
 
     .line 876
@@ -14006,7 +14017,6 @@
 
     goto/16 :goto_e
 
-    .line 1682
     .end local v29    # "e":Landroid/os/RemoteException;
     :cond_23
     new-instance v7, Lcom/android/server/am/ActivityRecord;
@@ -19662,5 +19672,15 @@
     .end local v5    # "stackNdx":I
     .end local v6    # "stacks":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ActivityStack;>;"
     :cond_8
+    return-void
+.end method
+
+.method setPackageManager(Lcom/android/server/pm/PackageManagerService;)V
+    .locals 0
+    .param p1, "pm"    # Lcom/android/server/pm/PackageManagerService;
+
+    .prologue
+    iput-object p1, p0, Lcom/android/server/am/ActivityStackSupervisor;->mFlymeRealPm:Lcom/android/server/pm/PackageManagerService;
+
     return-void
 .end method
