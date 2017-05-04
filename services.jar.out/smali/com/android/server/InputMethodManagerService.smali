@@ -5006,6 +5006,8 @@
     .end local v4    # "summary":Ljava/lang/CharSequence;
     .end local v5    # "title":Ljava/lang/CharSequence;
     :goto_2
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/InputMethodManagerService;->showFlymeImeSwitcherNotificationIfNeeded()V
+
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
     return-void

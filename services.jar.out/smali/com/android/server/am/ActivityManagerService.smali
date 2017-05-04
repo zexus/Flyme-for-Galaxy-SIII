@@ -3569,6 +3569,8 @@
     .param p5, "nowElapsed"    # J
 
     .prologue
+    invoke-static/range {p1 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->applyFlymeOomAdjLocked(Lcom/android/server/am/ProcessRecord;)V
+
     const/16 v23, 0x1
 
     .local v23, "success":Z
@@ -7949,6 +7951,19 @@
     .local v59, "killProcess":Z
     :goto_9
     if-eqz v59, :cond_1a
+    invoke-static {v14}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->isFlymePackageShouldRestart(Landroid/content/Intent;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_flyme_0
+
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v14}, Lcom/android/server/am/ActivityManagerService;->forceStopFlymePackageLocked(Landroid/content/Intent;)V
+
+    goto/16 :goto_flyme_0
+
+    :cond_flyme_0
 
     const-string v4, "android.intent.extra.UID"
 
@@ -7985,6 +8000,8 @@
     invoke-direct/range {v4 .. v13}, Lcom/android/server/am/ActivityManagerService;->forceStopPackageLocked(Ljava/lang/String;IZZZZZILjava/lang/String;)Z
 
     :cond_1a
+    :goto_flyme_0
+
     if-eqz v66, :cond_22
 
     const/4 v4, 0x1
@@ -11518,6 +11535,16 @@
 
     .line 16086
     :cond_15
+    invoke-static/range {p1 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->isRestartFavoriteApp(Lcom/android/server/am/ProcessRecord;)Z
+
+    move-result v11
+
+    if-eqz v11, :cond_flyme_0
+
+    const/4 v10, 0x1
+
+    :cond_flyme_0
+
     if-eqz v10, :cond_16
 
     move-object/from16 v0, p1
@@ -37602,7 +37629,7 @@
 
     move/from16 v0, p2
 
-    invoke-static {v2, v0}, Lcom/android/server/am/ActivityManagerService;->killProcessGroup(II)V
+    invoke-static {v2, v0}, Lcom/android/server/am/ActivityManagerService;->killFlymeProcessGroup(II)V
 
     .line 4969
     const/4 v2, 0x1
@@ -100967,6 +100994,8 @@
     invoke-virtual {v3, v5}, Lcom/android/server/am/ActivityManagerService$MainHandler;->post(Ljava/lang/Runnable;)Z
 
     :cond_37
+    invoke-static/range {p0 .. p0}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->updateFlymeOomAdjLocked(Lcom/android/server/am/ActivityManagerService;)V
+
     return-void
 
     .restart local v4    # "app":Lcom/android/server/am/ProcessRecord;
