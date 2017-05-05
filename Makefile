@@ -54,7 +54,7 @@ vendor_modify_images := boot
 # The default value is Bluetooth.
 # You can configure the apk name in the vendor/system/app or vendor/system/priv-app directory.
 #-----------------------------------------------------------------------------
-vendor_saved_apps := Bluetooth BluetoothMidiService HTMLViewer Tag KeyChain Nfc PicoTts PrintSpooler Stk UserDictionaryProvider BackupRestoreConfirmation DefaultContainerService ExternalStorageProvider FusedLocation InputDevices ProxyHandler SharedStorageBackup Shell WAPPushManager CaptivePortalLogin webview 
+vendor_saved_apps := Bluetooth BluetoothMidiService HTMLViewer Tag KeyChain Nfc PicoTts PrintSpooler Stk UserDictionaryProvider BackupRestoreConfirmation DefaultContainerService ExternalStorageProvider FusedLocation InputDevices ProxyHandler SharedStorageBackup Shell WAPPushManager CaptivePortalLogin webview CMSettingsProvider telresources
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.
@@ -139,7 +139,9 @@ override_property += \
 # You should configure the property according to your device and your ID with replace the "Nexus-6P_Unofficial".
 override_property += \
     ro.flyme.romer=SiFooYee \
-    ro.product.model_romer=GT-I9300_SiFooYee
+    ro.product.model_romer=GT-I9300_SiFooYee \
+    config.disable_atlas=true \
+    persist.adb.notify=0
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
