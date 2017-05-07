@@ -2559,6 +2559,8 @@
 
     .prologue
     .line 86
+    invoke-static {p0}, Lcom/android/internal/telephony/TelephonyPluginDelegate;->init(Landroid/content/Context;)V
+
     invoke-static {p0}, Lcom/android/internal/telephony/PhoneFactory;->makeDefaultPhone(Landroid/content/Context;)V
 
     .line 85
