@@ -1059,6 +1059,15 @@
     return v2
 .end method
 
+.method public matchesCallFilter(Landroid/os/Bundle;)Z
+    .locals 1
+
+    .prologue
+    const/4 v0, 0x1
+
+    return v0
+.end method
+
 .method public matchesCallFilter(Landroid/os/Bundle;)[Z
     .locals 3
     .param p1, "extras"    # Landroid/os/Bundle;
