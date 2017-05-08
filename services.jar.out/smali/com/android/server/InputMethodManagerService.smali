@@ -2395,6 +2395,8 @@
     .param p1, "imi"    # Landroid/view/inputmethod/InputMethodInfo;
 
     .prologue
+    return-void
+
     .line 3627
     invoke-static {}, Landroid/os/UserHandle;->myUserId()I
 
