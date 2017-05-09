@@ -53,7 +53,7 @@
     .param p2, "event"    # Landroid/view/MotionEvent;
 
     .prologue
-    invoke-direct {p0, p2}, Landroid/widget/ListPopupWindow$PopupTouchInterceptor;->flymeHookOnTouch(Landroid/view/MotionEvent;)Z
+    invoke-direct/range {p0 .. p2}, Landroid/widget/ListPopupWindow$PopupTouchInterceptor;->flymeHookOnTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
 
     move-result v0
 
@@ -189,36 +189,42 @@
     goto :goto_0
 .end method
 
-.method private flymeHookOnTouch(Landroid/view/MotionEvent;)Z
+.method private flymeHookOnTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
     .locals 9
-    .param p1, "event"    # Landroid/view/MotionEvent;
+    .param p1, "v"    # Landroid/view/View;
+    .param p2, "event"    # Landroid/view/MotionEvent;
 
     .prologue
     const/4 v8, 0x0
 
-    invoke-virtual {p1}, Landroid/view/MotionEvent;->getAction()I
+    .line 1872
+    invoke-virtual {p2}, Landroid/view/MotionEvent;->getAction()I
 
     move-result v0
 
+    .line 1873
     .local v0, "action":I
-    invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
+    invoke-virtual {p2}, Landroid/view/MotionEvent;->getX()F
 
     move-result v4
 
     float-to-int v2, v4
 
+    .line 1874
     .local v2, "x":I
-    invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
+    invoke-virtual {p2}, Landroid/view/MotionEvent;->getY()F
 
     move-result v4
 
     float-to-int v3, v4
 
+    .line 1878
     .local v3, "y":I
     new-instance v1, Landroid/graphics/Rect;
 
     invoke-direct {v1}, Landroid/graphics/Rect;-><init>()V
 
+    .line 1879
     .local v1, "rect":Landroid/graphics/Rect;
     iget-object v4, p0, Landroid/widget/ListPopupWindow$PopupTouchInterceptor;->this$0:Landroid/widget/ListPopupWindow;
 
@@ -232,6 +238,7 @@
 
     if-eqz v4, :cond_0
 
+    .line 1880
     iget-object v4, p0, Landroid/widget/ListPopupWindow$PopupTouchInterceptor;->this$0:Landroid/widget/ListPopupWindow;
 
     invoke-virtual {v4}, Landroid/widget/ListPopupWindow;->flymeGetFieldPopup()Landroid/widget/PopupWindow;
@@ -244,6 +251,7 @@
 
     invoke-virtual {v4, v1}, Landroid/graphics/drawable/Drawable;->getPadding(Landroid/graphics/Rect;)Z
 
+    .line 1882
     :cond_0
     iget-object v4, p0, Landroid/widget/ListPopupWindow$PopupTouchInterceptor;->this$0:Landroid/widget/ListPopupWindow;
 
@@ -253,6 +261,7 @@
 
     if-nez v0, :cond_2
 
+    .line 1883
     iget-object v4, p0, Landroid/widget/ListPopupWindow$PopupTouchInterceptor;->this$0:Landroid/widget/ListPopupWindow;
 
     invoke-virtual {v4}, Landroid/widget/ListPopupWindow;->flymeGetFieldPopup()Landroid/widget/PopupWindow;
@@ -271,8 +280,10 @@
 
     move-result v4
 
+    .line 1882
     if-eqz v4, :cond_2
 
+    .line 1884
     iget v4, v1, Landroid/graphics/Rect;->left:I
 
     if-lt v2, v4, :cond_2
@@ -305,6 +316,7 @@
 
     if-ge v3, v4, :cond_2
 
+    .line 1885
     iget-object v4, p0, Landroid/widget/ListPopupWindow$PopupTouchInterceptor;->this$0:Landroid/widget/ListPopupWindow;
 
     invoke-virtual {v4}, Landroid/widget/ListPopupWindow;->flymeGetFieldHandler()Landroid/os/Handler;
@@ -321,15 +333,18 @@
 
     invoke-virtual {v4, v5, v6, v7}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
 
+    .line 1889
     :cond_1
     :goto_0
     return v8
 
+    .line 1886
     :cond_2
     const/4 v4, 0x1
 
     if-ne v0, v4, :cond_1
 
+    .line 1887
     iget-object v4, p0, Landroid/widget/ListPopupWindow$PopupTouchInterceptor;->this$0:Landroid/widget/ListPopupWindow;
 
     invoke-virtual {v4}, Landroid/widget/ListPopupWindow;->flymeGetFieldHandler()Landroid/os/Handler;

@@ -4279,7 +4279,7 @@
     .prologue
     const/4 v2, 0x0
 
-    invoke-static {p0}, Landroid/widget/Editor$FlymeInjector;->isFlymeCursorVisible(Landroid/widget/Editor;)Z
+    invoke-static/range {p0 .. p0}, Landroid/widget/Editor$FlymeInjector;->isFlymeCursorVisible(Landroid/widget/Editor;)Z
 
     move-result v3
 

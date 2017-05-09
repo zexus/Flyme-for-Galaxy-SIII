@@ -197,13 +197,15 @@
     iget-object v6, v6, Landroid/app/LoadedApk$ReceiverDispatcher;->mContext:Landroid/content/Context;
 
     invoke-virtual {v5, v6, v2}, Landroid/content/BroadcastReceiver;->onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+
+    :cond_flyme_0
+
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 898
     .end local v0    # "cl":Ljava/lang/ClassLoader;
     :cond_3
-    :cond_flyme_0
     invoke-virtual {v5}, Landroid/content/BroadcastReceiver;->getPendingResult()Landroid/content/BroadcastReceiver$PendingResult;
 
     move-result-object v6

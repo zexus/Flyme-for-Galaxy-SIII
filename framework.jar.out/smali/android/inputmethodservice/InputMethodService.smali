@@ -2581,7 +2581,7 @@
     .prologue
     const/4 v10, 0x0
 
-    const v4, #android:style@Theme.DeviceDefault.InputMethod#t
+    sget v4, Lcom/flyme/internal/R$style;->Theme_Flyme_InputMethod:I
 
     const/4 v9, 0x0
 
@@ -2598,10 +2598,6 @@
     const v3, #android:style@Theme.Holo.InputMethod#t
 
     move v5, v4
-
-    sget v4, Lcom/flyme/internal/R$style;->Theme_Flyme_InputMethod:I
-
-    sget v5, Lcom/flyme/internal/R$style;->Theme_Flyme_InputMethod:I
 
     invoke-static/range {v0 .. v5}, Landroid/content/res/Resources;->selectSystemTheme(IIIIII)I
 

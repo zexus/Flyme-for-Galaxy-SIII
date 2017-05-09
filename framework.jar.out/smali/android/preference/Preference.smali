@@ -1606,9 +1606,9 @@
 
     iget-boolean v0, p0, Landroid/preference/Preference;->mDependencyMet:Z
 
-    return v0
-
     if-eqz v0, :cond_0
+
+    return v0
 
     iget-boolean v0, p0, Landroid/preference/Preference;->mParentDependencyMet:Z
 

@@ -28932,7 +28932,7 @@
 
     move-result v0
 
-    if-eqz v0, :code_flyme_0
+    if-eqz v0, :cond_flyme_0
 
     move-object/from16 v0, p0
 
@@ -28944,7 +28944,7 @@
 
     goto :goto_flyme_0
 
-    :code_flyme_0
+    :cond_flyme_0
 
     move-object/from16 v0, p0
 

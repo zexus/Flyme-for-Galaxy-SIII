@@ -6172,9 +6172,9 @@
 
     invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_flyme_0
+    if-nez v0, :cond_flyme_0
 
     return-void
 
@@ -6276,9 +6276,9 @@
 
     invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_flyme_0
+    if-nez v0, :cond_flyme_0
 
     return-void
 
@@ -6480,9 +6480,9 @@
     .prologue
     invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_flyme_0
+    if-nez v0, :cond_flyme_0
 
     return-void
 
@@ -6581,9 +6581,9 @@
     .prologue
     invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_flyme_0
+    if-nez v0, :cond_flyme_0
 
     return-void
 
@@ -6760,9 +6760,9 @@
 
     invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_flyme_0
+    if-nez v0, :cond_flyme_0
 
     return-void
 
@@ -6912,9 +6912,9 @@
 
     invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_flyme_0
+    if-nez v0, :cond_flyme_0
 
     return-void
 
@@ -7223,9 +7223,9 @@
     .prologue
     invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_flyme_0
+    if-nez v0, :cond_flyme_0
 
     return-void
 
@@ -7455,9 +7455,9 @@
 
     invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_flyme_0
+    if-nez v0, :cond_flyme_0
 
     return-void
 
@@ -7545,9 +7545,9 @@
     .prologue
     invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_flyme_0
+    if-nez v0, :cond_flyme_0
 
     return-void
 
@@ -7639,9 +7639,9 @@
 
     invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_flyme_0
+    if-nez v0, :cond_flyme_0
 
     return-void
 
@@ -7823,9 +7823,9 @@
     .prologue
     invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_flyme_0
+    if-nez v0, :cond_flyme_0
 
     return-void
 

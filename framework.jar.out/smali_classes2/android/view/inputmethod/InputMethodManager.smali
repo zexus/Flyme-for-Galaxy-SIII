@@ -5987,6 +5987,9 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     :cond_0
+
+    invoke-static/range {p0 .. p0}, Landroid/view/inputmethod/InputMethodManager$FlymeInjector;->windowDismissed(Landroid/view/inputmethod/InputMethodManager;)V
+
     monitor-exit v1
 
     .line 1272

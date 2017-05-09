@@ -2705,13 +2705,20 @@
     .locals 2
 
     .prologue
+
+    invoke-static {}, Landroid/app/ApplicationPackageManager$FlymeInjector;->getFlymeDefaultActivityIcon()Landroid/graphics/drawable/Drawable;
+
+    move-result-object v0
+
+    return-object v0
+
     invoke-static {}, Landroid/content/res/Resources;->getSystem()Landroid/content/res/Resources;
 
     move-result-object v0
 
     const v1, #android:drawable@sym_def_app_icon#t
 
-    invoke-static {}, Landroid/app/ApplicationPackageManager$FlymeInjector;->getFlymeDefaultActivityIcon()Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v0
 
@@ -2800,6 +2807,10 @@
     .line 837
     .local v6, "r":Landroid/content/res/Resources;
     const/4 v7, 0x0
+
+    invoke-virtual {v6, p2, v7}, Landroid/content/res/Resources;->getDrawable(ILandroid/content/res/Resources$Theme;)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v1
 
     invoke-static/range {p0 .. p3}, Landroid/app/ApplicationPackageManager$FlymeInjector;->getFlymeThemeDrawable(Landroid/app/ApplicationPackageManager;Ljava/lang/String;ILandroid/content/pm/ApplicationInfo;)Landroid/graphics/drawable/Drawable;
 

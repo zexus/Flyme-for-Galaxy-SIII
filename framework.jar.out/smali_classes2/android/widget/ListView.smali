@@ -8396,26 +8396,27 @@
 .end method
 
 .method drawDivider(Landroid/graphics/Canvas;Landroid/graphics/Rect;I)V
-    .locals 1
+    .locals 2
     .param p1, "canvas"    # Landroid/graphics/Canvas;
     .param p2, "bounds"    # Landroid/graphics/Rect;
     .param p3, "childIndex"    # I
 
     .prologue
-    invoke-direct {p0, p3}, Landroid/widget/ListView;->flymeDrawDivider(I)Z
-
-    move-result v0
-
-    if-nez v0, :cond_flyme_0
-
-    return-void
-
-    :cond_flyme_0
 
     iget-object v0, p0, Landroid/widget/ListView;->mDivider:Landroid/graphics/drawable/Drawable;
 
     .local v0, "divider":Landroid/graphics/drawable/Drawable;
     invoke-virtual {v0, p2}, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
+
+    invoke-direct/range {p0 .. p3}, Landroid/widget/ListView;->flymeDrawDivider(Landroid/graphics/Canvas;Landroid/graphics/Rect;I)Z
+
+    move-result v1
+
+    if-nez v1, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
 
     invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
@@ -13840,9 +13841,11 @@
     goto :goto_0
 .end method
 
-.method private flymeDrawDivider(I)Z
+.method private flymeDrawDivider(Landroid/graphics/Canvas;Landroid/graphics/Rect;I)Z
     .locals 22
-    .param p1, "childIndex"    # I
+    .param p1, "canvas"    # Landroid/graphics/Canvas;
+    .param p2, "bounds"    # Landroid/graphics/Rect;
+    .param p3, "childIndex"    # I
 
     .prologue
     move-object/from16 v0, p0
@@ -13914,7 +13917,7 @@
 
     .end local v19    # "wrappedAdapter":Landroid/widget/ListAdapter;
     :cond_0
-    move/from16 v9, p1
+    move/from16 v9, p3
 
     .local v9, "index":I
     move-object/from16 v0, p0
@@ -13986,7 +13989,7 @@
     :goto_3
     const/16 v20, -0x1
 
-    move/from16 v0, p1
+    move/from16 v0, p3
 
     move/from16 v1, v20
 
@@ -14209,7 +14212,7 @@
     :goto_4
     const/16 v20, -0x1
 
-    move/from16 v0, p1
+    move/from16 v0, p3
 
     move/from16 v1, v20
 

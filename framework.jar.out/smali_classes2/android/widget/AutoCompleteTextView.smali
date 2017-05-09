@@ -486,7 +486,7 @@
 
     if-eqz v0, :cond_4
 
-    invoke-static {p0, p2}, Landroid/widget/AutoCompleteTextView$FlymeInjector;->getPosition(Landroid/widget/AutoCompleteTextView;I)I
+    invoke-static/range {p0 .. p2}, Landroid/widget/AutoCompleteTextView$FlymeInjector;->getPosition(Landroid/widget/AutoCompleteTextView;Landroid/view/View;I)I
 
     move-result p2
 

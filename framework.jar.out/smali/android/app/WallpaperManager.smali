@@ -2953,11 +2953,9 @@
 
     if-eqz v0, :cond_flyme_0
 
-    new-instance v0, Ljava/io/IOException;
+    const/4 v0, 0x0
 
-    invoke-direct {v0}, Ljava/io/IOException;-><init>()V
-
-    throw v0
+    return v0
 
     :cond_flyme_0
 

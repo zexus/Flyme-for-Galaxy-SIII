@@ -5173,11 +5173,6 @@
     move-result v0
 
     if-eqz v0, :cond_0
-    invoke-direct/range {p0 .. p0}, Lcom/android/server/am/ActivityRecord;->isFlymeResolverActivity()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_flyme_0
 
     const/4 v0, 0x0
 
@@ -5185,8 +5180,17 @@
     return v0
 
     :cond_0
-    :cond_flyme_0
     const/4 v0, 0x1
+
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/am/ActivityRecord;->isFlymeResolverActivity()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_flyme_0
+
+    const/4 v0, 0x0
+
+    :cond_flyme_0
 
     goto :goto_0
 .end method

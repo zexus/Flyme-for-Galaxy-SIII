@@ -816,14 +816,13 @@
 
     const/4 v8, 0x1
 
-    if-ne v4, v8, :cond_flyme_1
+    if-ne v4, v8, :cond_8
 
     const/4 v7, 0x1
 
     .line 1776
     .local v7, "restart":Z
     :goto_8
-    :goto_flyme_0
     move-object/from16 v0, p1
 
     iget-object v0, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
@@ -870,11 +869,6 @@
     monitor-exit v15
 
     return-void
-
-    :cond_flyme_1
-    const/4 v7, 0x0
-
-    goto :goto_flyme_0
 
     :cond_flyme_0
 

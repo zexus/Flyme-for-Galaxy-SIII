@@ -514,6 +514,8 @@
 
     move-result-object v0
 
+    return-object v0
+
     new-instance v0, Landroid/service/notification/StatusBarNotification;
 
     iget-object v1, p0, Landroid/service/notification/StatusBarNotification;->pkg:Ljava/lang/String;
@@ -1017,6 +1019,8 @@
     iget-wide v0, p0, Landroid/service/notification/StatusBarNotification;->postTime:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
+
+    invoke-static/range {p0 .. p2}, Landroid/service/notification/StatusBarNotification$FlymeInjector;->writeToParcel(Landroid/service/notification/StatusBarNotification;Landroid/os/Parcel;I)V
 
     .line 111
     return-void
