@@ -24171,7 +24171,9 @@
 
     if-nez v5, :cond_flyme_0
 
-    return v6
+    const/4 v5, 0x1
+
+    return v5
 
     :cond_flyme_0
 
