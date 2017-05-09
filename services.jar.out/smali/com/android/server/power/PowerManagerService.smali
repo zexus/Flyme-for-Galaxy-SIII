@@ -6364,9 +6364,9 @@
     if-eqz v1, :cond_1
 
     .line 2841
-    const-string/jumbo v1, "ctl.start"
+    const-string/jumbo v1, "sys.powerctl"
 
-    const-string/jumbo v2, "pre-recovery"
+    const-string/jumbo v2, "reboot,recovery"
 
     invoke-static {v1, v2}, Landroid/os/SystemProperties;->set(Ljava/lang/String;Ljava/lang/String;)V
 
