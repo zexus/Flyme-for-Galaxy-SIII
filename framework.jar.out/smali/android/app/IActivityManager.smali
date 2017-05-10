@@ -2400,6 +2400,14 @@
     .end annotation
 .end method
 
+.method public abstract showBootMessage(Ljava/lang/CharSequence;Z)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract updateBootProgress(ILandroid/content/pm/ApplicationInfo;IIZ)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
