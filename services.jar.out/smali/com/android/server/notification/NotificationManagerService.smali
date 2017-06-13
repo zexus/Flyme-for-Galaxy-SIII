@@ -33,6 +33,8 @@
 # static fields
 .field private mFlymeFirewall:Lcom/android/server/notification/NotificationFirewall;
 
+.field private mFlymeInterceptThread:Landroid/os/HandlerThread;
+
 .field mFlymePowerManager:Landroid/os/PowerManager;
 
 .field mFlymeWakeLock:Landroid/os/PowerManager$WakeLock;
@@ -12338,25 +12340,50 @@
     .locals 3
 
     .prologue
+    .line 3950
     new-instance v0, Lcom/android/server/notification/NotificationFirewallImpl;
 
     invoke-direct {v0}, Lcom/android/server/notification/NotificationFirewallImpl;-><init>()V
 
     iput-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymeFirewall:Lcom/android/server/notification/NotificationFirewall;
 
+    .line 3951
     iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mRankingHelper:Lcom/android/server/notification/RankingHelper;
 
     iget-object v1, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymeFirewall:Lcom/android/server/notification/NotificationFirewall;
 
     invoke-virtual {v0, v1}, Lcom/android/server/notification/RankingHelper;->setNotificationFirewall(Lcom/android/server/notification/NotificationFirewall;)V
 
+    .line 3952
+    iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymeInterceptThread:Landroid/os/HandlerThread;
+
+    if-nez v0, :cond_0
+
+    .line 3953
+    new-instance v0, Landroid/os/HandlerThread;
+
+    const-string v1, "intercept"
+
+    const/4 v2, -0x2
+
+    invoke-direct {v0, v1, v2}, Landroid/os/HandlerThread;-><init>(Ljava/lang/String;I)V
+
+    iput-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymeInterceptThread:Landroid/os/HandlerThread;
+
+    .line 3955
+    :cond_0
+    iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymeInterceptThread:Landroid/os/HandlerThread;
+
+    invoke-virtual {v0}, Landroid/os/HandlerThread;->start()V
+
+    .line 3956
     iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymeFirewall:Lcom/android/server/notification/NotificationFirewall;
 
     invoke-virtual {p0}, Lcom/android/server/notification/NotificationManagerService;->getContext()Landroid/content/Context;
 
     move-result-object v1
 
-    iget-object v2, p0, Lcom/android/server/notification/NotificationManagerService;->mRankingThread:Landroid/os/HandlerThread;
+    iget-object v2, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymeInterceptThread:Landroid/os/HandlerThread;
 
     invoke-virtual {v2}, Landroid/os/HandlerThread;->getLooper()Landroid/os/Looper;
 
@@ -12364,11 +12391,12 @@
 
     invoke-interface {v0, v1, v2}, Lcom/android/server/notification/NotificationFirewall;->initialize(Landroid/content/Context;Landroid/os/Looper;)V
 
+    .line 3958
     invoke-virtual {p0}, Lcom/android/server/notification/NotificationManagerService;->getContext()Landroid/content/Context;
 
     move-result-object v0
 
-    const-string v1, "power"
+    const-string/jumbo v1, "power"
 
     invoke-virtual {v0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
@@ -12378,10 +12406,13 @@
 
     iput-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymePowerManager:Landroid/os/PowerManager;
 
+    .line 3959
     iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymePowerManager:Landroid/os/PowerManager;
 
-    const-string v1, "NotificationService"
+    .line 3961
+    const-string/jumbo v1, "NotificationService"
 
+    .line 3959
     const v2, 0x3000001a
 
     invoke-virtual {v0, v2, v1}, Landroid/os/PowerManager;->newWakeLock(ILjava/lang/String;)Landroid/os/PowerManager$WakeLock;
@@ -12390,12 +12421,14 @@
 
     iput-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymeWakeLock:Landroid/os/PowerManager$WakeLock;
 
+    .line 3962
     iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymeWakeLock:Landroid/os/PowerManager$WakeLock;
 
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/os/PowerManager$WakeLock;->setReferenceCounted(Z)V
 
+    .line 3948
     return-void
 .end method
 
@@ -12782,6 +12815,8 @@
     move-result-object v12
 
     .local v12, "filter":Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+    iput-object v12, v2, Landroid/service/notification/StatusBarNotification;->mFlymeFilter:Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+
     :goto_3
     move-object/from16 v0, p0
 
