@@ -1,5 +1,5 @@
 .class Lcom/android/server/notification/NotificationManagerService$FlymeExtNotificationManagerServiceInternal;
-.super Lcom/android/server/notification/NotificationManagerService$5;
+.super Lcom/android/server/notification/NotificationManagerService$6;
 .source "NotificationManagerService.java"
 
 
@@ -31,7 +31,7 @@
     .line 1104
     iput-object p1, p0, Lcom/android/server/notification/NotificationManagerService$FlymeExtNotificationManagerServiceInternal;->this$0:Lcom/android/server/notification/NotificationManagerService;
 
-    invoke-direct {p0, p1}, Lcom/android/server/notification/NotificationManagerService$5;-><init>(Lcom/android/server/notification/NotificationManagerService;)V
+    invoke-direct {p0, p1}, Lcom/android/server/notification/NotificationManagerService$6;-><init>(Lcom/android/server/notification/NotificationManagerService;)V
 
     return-void
 .end method
@@ -105,7 +105,7 @@
     packed-switch p1, :pswitch_data_0
 
     .line 1148
-    invoke-super {p0, p1, p2, p3, p4}, Lcom/android/server/notification/NotificationManagerService$5;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
+    invoke-super {p0, p1, p2, p3, p4}, Lcom/android/server/notification/NotificationManagerService$6;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
     move-result v6
 
