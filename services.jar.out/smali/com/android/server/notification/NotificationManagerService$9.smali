@@ -219,7 +219,7 @@
 
     .line 2535
     :cond_2
-    invoke-direct/range {p0 .. p0}, Lcom/android/server/notification/NotificationManagerService$8;->setFlymeNotification()Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/notification/NotificationManagerService$9;->setFlymeNotification()Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
 
     move-result-object v12
 
