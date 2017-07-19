@@ -141,9 +141,7 @@ override_property += \
     ro.flyme.romer=SiFooYee \
     ro.product.model_romer=GT-I9300_SiFooYee \
     config.disable_atlas=true \
-    persist.adb.notify=0 \
-    dalvik.vm.heapgrowthlimit=192m \
-    dalvik.vm.heapsize=512m
+    persist.adb.notify=0
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
