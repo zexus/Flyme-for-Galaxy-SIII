@@ -93,7 +93,7 @@ vendor_modify_jars := framework services telephony-common wifi-service org.cyano
 # The default value is nothing.
 # You can configure the board system apk name in the value.
 #-----------------------------------------------------------------------------
-board_remove_apps := LogReport Pedometer MzCompaign Mall Wallet
+board_remove_apps := LogReport Pedometer MzCompaign Mall Wallet flymebbs EBook
 
 ##############################################################################
 # The value decides which apk you want to modify, when the apk is based on the board system apk.
