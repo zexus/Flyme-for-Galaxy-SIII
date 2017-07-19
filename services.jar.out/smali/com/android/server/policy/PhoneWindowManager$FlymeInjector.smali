@@ -929,6 +929,92 @@
     return v1
 .end method
 
+.method static showBootMessage(Lcom/android/server/policy/PhoneWindowManager;II)Z
+    .locals 7
+    .param p0, "pwm"    # Lcom/android/server/policy/PhoneWindowManager;
+    .param p1, "curr"    # I
+    .param p2, "total"    # I
+
+    .prologue
+    int-to-double v0, p1
+
+    int-to-double v2, p2
+
+    div-double v4, v0, v2
+
+    const-wide/high16 v0, 0x4059000000000000L    # 100.0
+
+    mul-double/2addr v0, v4
+
+    const-wide/high16 v2, 0x3fe0000000000000L    # 0.5
+
+    sub-double/2addr v0, v2
+
+    double-to-int v2, v0
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    iget-object v1, p0, Lcom/android/server/policy/PhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    sget v3, Lcom/flyme/internal/R$string;->dexopt_apps_apk_percent:I
+
+    const/4 v4, 0x1
+
+    new-array v4, v4, [Ljava/lang/Object;
+
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v5
+
+    const/4 v6, 0x0
+
+    aput-object v5, v4, v6
+
+    invoke-virtual {v1, v3, v4}, Landroid/content/res/Resources;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const-string/jumbo v3, "flymeTrain"
+
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const-string/jumbo v3, "processTrain"
+
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {p0, v0}, Lcom/android/server/policy/PhoneWindowManager$FlymeInjector;->showBootMessage(Lcom/android/server/policy/PhoneWindowManager;Ljava/lang/CharSequence;)Z
+
+    move-result v3
+
+    return v3
+.end method
+
 .method static showFlymeGlobalActions(Lcom/android/server/policy/PhoneWindowManager;)Z
     .locals 4
     .param p0, "pwm"    # Lcom/android/server/policy/PhoneWindowManager;

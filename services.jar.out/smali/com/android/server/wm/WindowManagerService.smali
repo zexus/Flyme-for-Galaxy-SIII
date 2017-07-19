@@ -30134,19 +30134,6 @@
     return v0
 .end method
 
-.method public keyguardGoingAway(ZZ)V
-    .locals 1
-    .param p1, "disableWindowAnimations"    # Z
-    .param p2, "keyguardGoingToNotificationShade"    # Z
-
-    .prologue
-    const/4 v0, 0x0
-
-    invoke-virtual {p0, p1, p2, v0}, Lcom/android/server/wm/WindowManagerService;->keyguardGoingAway(ZZZ)V
-
-    return-void
-.end method
-
 .method public keyguardGoingAway(ZZZ)V
     .locals 3
     .param p1, "disableWindowAnimations"    # Z
@@ -50684,4 +50671,17 @@
     iput-object v0, p0, Lcom/android/server/wm/WindowManagerService;->mMoveWindowService:Lcom/android/server/wm/MoveWindowService;
 
     return-object v0
+.end method
+
+.method public keyguardGoingAway(ZZ)V
+    .locals 1
+    .param p1, "disableWindowAnimations"    # Z
+    .param p2, "keyguardGoingToNotificationShade"    # Z
+
+    .prologue
+    const/4 v0, 0x0
+
+    invoke-virtual {p0, p1, p2, v0}, Lcom/android/server/wm/WindowManagerService;->keyguardGoingAway(ZZZ)V
+
+    return-void
 .end method

@@ -987,7 +987,7 @@
 
     #move-result v15
 
-    const/16 v15, -0x1
+    const/4 v15, -0x1
 
     .line 305
     .local v15, "userNwMode":I
@@ -9215,7 +9215,7 @@
     const/4 v4, 0x0
 
     .line 1835
-    invoke-virtual {v1, v2, v0, v3, v4}, Landroid/content/ContentResolver;->update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    #invoke-virtual {v1, v2, v0, v3, v4}, Landroid/content/ContentResolver;->update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     .line 1831
     return-void

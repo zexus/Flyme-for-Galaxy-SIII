@@ -2079,6 +2079,8 @@
 
     invoke-static {v0, v1}, Landroid/telephony/Rlog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
+    invoke-static/range {p0 .. p0}, Lcom/android/internal/telephony/TelephonyPluginDelegate;->init(Landroid/content/Context;)V
+
     .line 179
     invoke-static {}, Lcom/android/internal/telephony/TelephonyPluginDelegate;->getInstance()Lcom/android/internal/telephony/TelephonyPluginDelegate;
 
@@ -2559,8 +2561,6 @@
 
     .prologue
     .line 86
-    invoke-static {p0}, Lcom/android/internal/telephony/TelephonyPluginDelegate;->init(Landroid/content/Context;)V
-
     invoke-static {p0}, Lcom/android/internal/telephony/PhoneFactory;->makeDefaultPhone(Landroid/content/Context;)V
 
     .line 85

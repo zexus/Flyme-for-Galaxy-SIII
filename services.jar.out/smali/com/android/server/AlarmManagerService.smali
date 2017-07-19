@@ -1796,8 +1796,6 @@
     .param p1, "userId"    # I
 
     .prologue
-    return-void
-
     .line 2685
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 

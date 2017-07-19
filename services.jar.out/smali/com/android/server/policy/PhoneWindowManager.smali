@@ -30071,7 +30071,15 @@
     .param p4, "totalAppCount"    # I
 
     .prologue
+    invoke-static {p0, p3, p4}, Lcom/android/server/policy/PhoneWindowManager$FlymeInjector;->showBootMessage(Lcom/android/server/policy/PhoneWindowManager;II)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_flyme_0
+
     return-void
+
+    :cond_flyme_0
 
     .line 7059
     iget-object v6, p0, Lcom/android/server/policy/PhoneWindowManager;->mHandler:Landroid/os/Handler;
