@@ -143,7 +143,8 @@ override_property += \
     config.disable_atlas=true \
     persist.adb.notify=0 \
     dalvik.vm.heapgrowthlimit=192m \
-    dalvik.vm.heapsize=512m
+    dalvik.vm.heapsize=512m \
+    persist.screenshot.need_blur=false
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
