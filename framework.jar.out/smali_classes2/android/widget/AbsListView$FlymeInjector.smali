@@ -225,7 +225,7 @@
     .param p1, "drawable"    # Landroid/graphics/drawable/Drawable;
 
     .prologue
-    const v10, #android:attr@state_hovered#t
+    const v10, 0x1010367
 
     const/16 v9, 0x190
 
@@ -252,13 +252,13 @@
 
     .line 7859
     .local v2, "stateListDrawable":Landroid/graphics/drawable/StateListDrawable;
-    const v3, #android:attr@state_pressed#t
+    const v3, 0x10100a7
 
-    const v4, #android:attr@state_enabled#t
+    const v4, 0x101009e
 
-    const v5, #android:attr@state_focused#t
+    const v5, 0x101009c
 
-    const v6, #android:attr@state_window_focused#t
+    const v6, 0x101009d
 
     filled-new-array {v3, v4, v5, v6}, [I
 
@@ -509,7 +509,7 @@
     if-eqz v1, :cond_0
 
     .line 7827
-    const v2, #android:id@checkbox#t
+    const v2, 0x1020001
 
     invoke-virtual {v1, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 

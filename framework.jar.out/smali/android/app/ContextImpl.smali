@@ -186,8 +186,10 @@
 
     move/from16 v9, p9
 
+    .line 1821
     invoke-direct/range {v0 .. v10}, Landroid/app/ContextImpl;-><init>(Landroid/app/ContextImpl;Landroid/app/ActivityThread;Landroid/app/LoadedApk;Landroid/os/IBinder;Landroid/os/UserHandle;ZLandroid/view/Display;Landroid/content/res/Configuration;ILjava/lang/String;)V
 
+    .line 1820
     return-void
 .end method
 
@@ -432,40 +434,33 @@
 
     move-object/from16 v9, p8
 
-    .line 1874
     invoke-virtual/range {v2 .. v12}, Landroid/app/ResourcesManager;->getTopLevelResources(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;ILjava/lang/String;Landroid/content/res/Configuration;Landroid/content/res/CompatibilityInfo;Landroid/content/Context;Z)Landroid/content/res/Resources;
 
     move-result-object v14
 
     invoke-direct {p0, v14}, Landroid/app/ContextImpl;->setFlymeThemeResource(Landroid/content/res/Resources;)V
 
-    .line 1885
     :cond_4
     :goto_4
     iput-object v14, p0, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
 
-    .line 1887
     if-eqz p1, :cond_b
 
-    .line 1888
     move-object/from16 v0, p1
 
     iget-object v2, v0, Landroid/app/ContextImpl;->mBasePackageName:Ljava/lang/String;
 
     iput-object v2, p0, Landroid/app/ContextImpl;->mBasePackageName:Ljava/lang/String;
 
-    .line 1889
     move-object/from16 v0, p1
 
     iget-object v2, v0, Landroid/app/ContextImpl;->mOpPackageName:Ljava/lang/String;
 
     iput-object v2, p0, Landroid/app/ContextImpl;->mOpPackageName:Ljava/lang/String;
 
-    .line 1828
     :goto_5
     return-void
 
-    .line 1845
     .end local v7    # "displayId":I
     .end local v14    # "resources":Landroid/content/res/Resources;
     .restart local p7    # "display":Landroid/view/Display;
@@ -6478,6 +6473,7 @@
     .param p2, "user"    # Landroid/os/UserHandle;
 
     .prologue
+
     invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
 
     move-result v0
@@ -6487,6 +6483,7 @@
     return-void
 
     :cond_flyme_0
+
     invoke-virtual/range {p0 .. p0}, Landroid/app/ContextImpl;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v1
@@ -6579,6 +6576,7 @@
     .param p4, "appOp"    # I
 
     .prologue
+
     invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
 
     move-result v0
@@ -6588,6 +6586,7 @@
     return-void
 
     :cond_flyme_0
+
     invoke-virtual/range {p0 .. p0}, Landroid/app/ContextImpl;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v1
@@ -7821,6 +7820,7 @@
     .end annotation
 
     .prologue
+
     invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
 
     move-result v0
@@ -7830,6 +7830,7 @@
     return-void
 
     :cond_flyme_0
+
     const/4 v5, 0x0
 
     .local v5, "rd":Landroid/content/IIntentReceiver;

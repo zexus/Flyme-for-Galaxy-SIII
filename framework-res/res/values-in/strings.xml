@@ -43,7 +43,7 @@
     <string name="reboot_reboot">Mulai ulang</string>
     <string name="reboot_recovery">Recovery</string>
     <string name="reboot_bootloader">Bootloader</string>
-    <string name="reboot_download">Download</string>
+    <string name="reboot_download">Unduh</string>
     <string name="reboot_soft">Mulai ulang cepat</string>
     <string name="reboot_title">Mulai ulang</string>
     <string name="reboot_confirm">Ponsel anda akan mulai ulang.</string>

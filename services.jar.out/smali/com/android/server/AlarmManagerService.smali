@@ -1798,12 +1798,10 @@
     .prologue
     return-void
 
-    .line 2685
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v16
 
-    .line 2687
     .local v16, "token":J
     :try_start_0
     new-instance v18, Landroid/os/UserHandle;
@@ -3052,12 +3050,10 @@
     .prologue
     return-void
 
-    .line 2735
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v2
 
-    .line 2737
     .local v2, "token":J
     :try_start_0
     invoke-virtual {p0}, Lcom/android/server/AlarmManagerService;->getContext()Landroid/content/Context;

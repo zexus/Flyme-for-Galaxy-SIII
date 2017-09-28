@@ -16,7 +16,7 @@ debug.atrace.tags.enableflags=0
 #
 # BOOTIMAGE_BUILD_PROPERTIES
 #
-ro.bootimage.build.date=2017年 05月 02日 星期二 18:41:16 HKT
-ro.bootimage.build.date.utc=1493721676
-ro.bootimage.build.fingerprint=samsung/cm_i9300/i9300:6.0.1/MOB31K/dcf5c64fd6:userdebug/test-keys
+ro.bootimage.build.date=Tue Dec 20 15:55:56 PST 2016
+ro.bootimage.build.date.utc=1482278156
+ro.bootimage.build.fingerprint=samsung/cm_i9300/i9300:6.0.1/MOB31K/d0e3985563:userdebug/test-keys
 persist.sys.usb.config=none

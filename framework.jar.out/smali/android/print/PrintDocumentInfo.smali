@@ -189,19 +189,19 @@
 
 .method synthetic constructor <init>(Landroid/print/PrintDocumentInfo;Landroid/print/PrintDocumentInfo;)V
     .locals 0
+    .param p1, "prototype"    # Landroid/print/PrintDocumentInfo;
 
     .prologue
-    invoke-direct {p0}, Landroid/print/PrintDocumentInfo;-><init>()V
+    invoke-direct {p0, p1}, Landroid/print/PrintDocumentInfo;-><init>(Landroid/print/PrintDocumentInfo;)V
 
     return-void
 .end method
 
 .method synthetic constructor <init>(Landroid/print/PrintDocumentInfo;Landroid/print/PrintDocumentInfo;Landroid/print/PrintDocumentInfo;)V
     .locals 0
-    .param p1, "prototype"    # Landroid/print/PrintDocumentInfo;
 
     .prologue
-    invoke-direct {p0, p1}, Landroid/print/PrintDocumentInfo;-><init>(Landroid/print/PrintDocumentInfo;)V
+    invoke-direct {p0}, Landroid/print/PrintDocumentInfo;-><init>()V
 
     return-void
 .end method

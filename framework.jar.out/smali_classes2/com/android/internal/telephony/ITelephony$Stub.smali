@@ -236,11 +236,11 @@
 
 .field static final TRANSACTION_nvWriteCdmaPrl:I = 0x5a
 
-.field static final TRANSACTION_nvWriteItem:I = 0x59
+.field static final TRANSACTION_nvWriteItem_88:I = 0x59
 
 .field static final TRANSACTION_revokeProtectedSmsAddress:I = 0x49
 
-.field static final TRANSACTION_sendEnvelopeWithStatus_86:I = 0x57
+.field static final TRANSACTION_sendEnvelopeWithStatus:I = 0x57
 
 .field static final TRANSACTION_setCellInfoListRate:I = 0x46
 

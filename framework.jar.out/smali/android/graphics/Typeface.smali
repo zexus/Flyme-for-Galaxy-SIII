@@ -986,6 +986,7 @@
     .param p0, "style"    # I
 
     .prologue
+
     invoke-static {}, Landroid/content/res/flymetheme/FlymeFontsHelper;->hasFlymeTypeface()Z
 
     move-result v0
@@ -1528,11 +1529,13 @@
     move-object/from16 v2, v19
 
     invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
     move-object/from16 v0, v19
 
     move-object/from16 v1, v23
 
     invoke-static {v4, v0, v1}, Landroid/graphics/Typeface;->putFlymeSystemFonts(Landroid/graphics/FontListParser$Alias;Landroid/graphics/Typeface;Ljava/util/Map;)V
+
     :try_end_1
     .catch Ljava/lang/RuntimeException; {:try_start_1 .. :try_end_1} :catch_0
     .catch Ljava/io/FileNotFoundException; {:try_start_1 .. :try_end_1} :catch_1
@@ -2132,7 +2135,6 @@
     :cond_0
     return v0
 .end method
-
 
 .method public static isSystemTypeface(Landroid/graphics/Typeface;)Z
     .locals 1

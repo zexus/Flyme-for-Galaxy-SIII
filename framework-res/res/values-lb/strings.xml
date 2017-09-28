@@ -828,10 +828,8 @@ Bass du sécher datt s du vun dëser Säit ewechnavigéiere wëlls?"</string>
     <string name="chooseActivity">Wiel eng Aktioun aus</string>
     <string name="chooseUsbActivity">Wiel eng App fir den USB-Apparat aus</string>
     <string name="noApplications">Dës Aktioun ka vu kenger App duerchgefouert ginn.</string>
-    <string name="aerr_title" />
     <string name="aerr_application">Leider huet %1$s opgehale mat Funktionéieren.</string>
     <string name="aerr_process">Leider gouf de Prozess %1$s gestoppt.</string>
-    <string name="anr_title" />
     <string name="anr_activity_application">"%2$s äntwert net.
 
 Wëlls de d'App zoumaachen?"</string>

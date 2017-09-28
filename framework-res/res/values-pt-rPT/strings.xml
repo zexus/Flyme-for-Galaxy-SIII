@@ -135,7 +135,7 @@
     <string name="app_ops_get_accounts">obter contas do dispositivo</string>
     <string name="app_ops_wifi_change">alterar o estado do Wi-Fi</string>
     <string name="app_ops_su">obter acesso root</string>
-    <string name="lock_to_app_toast_no_navbar">Para soltar este ecrã, toque e segure o botão Anterior.</string>
+    <string name="lock_to_app_toast_no_navbar">Para soltar este ecrã, toque e segure o botão Voltar.</string>
     <string name="tethered_notification_no_device_message">Nenhum dispositivo conectado</string>
     <string name="tethered_notification_one_device_message">%1$s dispositivo conectado</string>
     <string name="tethered_notification_multi_device_message">%1$s dispositivos conectados</string>

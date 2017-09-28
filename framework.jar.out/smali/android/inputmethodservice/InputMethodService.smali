@@ -776,9 +776,11 @@
 
     :cond_1
     :goto_0
+
     invoke-static/range {p0 .. p2}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->hideInputDelayIfNeeded(Landroid/inputmethodservice/InputMethodService;Landroid/view/inputmethod/InputConnection;Landroid/view/inputmethod/EditorInfo;)V
 
     :cond_flyme_0
+
     return-void
 
     :cond_2
@@ -3347,17 +3349,18 @@
 
     .line 1858
     :cond_0
+
     invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->isImeInterceptBackKey(Landroid/inputmethodservice/InputMethodService;)Z
 
-    move-result v3
+    move-result v1
 
-    if-nez v3, :cond_flyme_0
+    if-nez v1, :cond_flyme_0
 
     invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->handleBack(Landroid/inputmethodservice/InputMethodService;)Z
 
-    move-result v3
+    move-result v1
 
-    return v3
+    return v1
 
     :cond_flyme_0
 
@@ -4215,6 +4218,7 @@
     .param p1, "flags"    # I
 
     .prologue
+
     invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->requestHideSelf(Landroid/inputmethodservice/InputMethodService;)Z
 
     move-result v0

@@ -13,7 +13,7 @@ sdkInfo:
 sharedLibrary: false
 unknownFiles: {}
 usesFramework: null
-version: 2.1.1-04d478-SNAPSHOT
+version: 2.2.2-6a4ae2-SNAPSHOT
 versionInfo:
   versionCode: '23'
   versionName: 6.0.1

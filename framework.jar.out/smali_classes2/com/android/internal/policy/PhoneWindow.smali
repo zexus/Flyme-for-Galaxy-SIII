@@ -10825,6 +10825,7 @@
     .param p1, "color"    # I
 
     .prologue
+
     invoke-static/range {p0 .. p1}, Lcom/android/internal/policy/PhoneWindow$FlymeInjector;->flymeOnStatusBarColorChange(Lcom/android/internal/policy/PhoneWindow;I)I
 
     move-result p1

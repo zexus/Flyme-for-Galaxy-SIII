@@ -4359,33 +4359,28 @@
 
     if-eq v2, v3, :cond_0
 
-    .line 617
     invoke-direct {p0}, Lcom/android/server/BluetoothManagerService;->hook_checkIfCallerIsForegroundUser()Z
 
     move-result v2
 
     if-eqz v2, :cond_1
 
-    .line 622
     :cond_0
     iget-object v2, p0, Lcom/android/server/BluetoothManagerService;->mContext:Landroid/content/Context;
 
-    const-string/jumbo v3, "android.permission.BLUETOOTH_ADMIN"
+    const-string v3, "android.permission.BLUETOOTH_ADMIN"
 
-    .line 623
-    const-string/jumbo v4, "Need BLUETOOTH ADMIN permission"
+    const-string v4, "Need BLUETOOTH ADMIN permission"
 
-    .line 622
     invoke-virtual {v2, v3, v4}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 625
-    const-string/jumbo v2, "BluetoothManagerService"
+    const-string v2, "BluetoothManagerService"
 
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v4, "enable():  mBluetooth ="
+    const-string v4, "enable():  mBluetooth ="
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -5755,7 +5750,6 @@
 
     throw v3
 .end method
-
 
 .method private hook_checkIfCallerIsForegroundUser()Z
     .locals 1

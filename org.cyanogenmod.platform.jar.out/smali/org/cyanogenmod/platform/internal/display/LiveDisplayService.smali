@@ -908,8 +908,6 @@
     .locals 10
 
     .prologue
-    return-void
-
     .line 307
     invoke-static {}, Landroid/os/UserHandle;->myUserId()I
 
@@ -1102,8 +1100,6 @@
     .locals 7
 
     .prologue
-    return-void
-
     .line 332
     invoke-static {}, Landroid/os/UserHandle;->myUserId()I
 

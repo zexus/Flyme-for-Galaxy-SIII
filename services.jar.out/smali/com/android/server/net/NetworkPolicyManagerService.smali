@@ -814,6 +814,7 @@
     .param p0, "template"    # Landroid/net/NetworkTemplate;
 
     .prologue
+
     invoke-static/range {p0 .. p0}, Lcom/android/server/net/NetworkPolicyManagerService$FlymeInjector;->buildFlymeNetworkOverLimitIntent(Landroid/net/NetworkTemplate;)Landroid/content/Intent;
 
     move-result-object v0
@@ -917,6 +918,7 @@
     .param p0, "template"    # Landroid/net/NetworkTemplate;
 
     .prologue
+
     invoke-static/range {p0 .. p0}, Lcom/android/server/net/NetworkPolicyManagerService$FlymeInjector;->buildFlymeViewDataUsageIntent(Landroid/net/NetworkTemplate;)Landroid/content/Intent;
 
     move-result-object v0
@@ -4010,6 +4012,7 @@
     .param p3, "persist"    # Z
 
     .prologue
+
     invoke-static/range {p0 .. p2}, Lcom/android/server/net/NetworkPolicyManagerService$FlymeInjector;->updateRulesForUidWifiAndMobileLocked(Lcom/android/server/net/NetworkPolicyManagerService;II)V
 
     iget-object v0, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mUidPolicy:Landroid/util/SparseIntArray;
@@ -9667,6 +9670,7 @@
     move-result v3
 
     .local v3, "oldRules":I
+
     invoke-static {p0, p1, v7}, Lcom/android/server/net/NetworkPolicyManagerService$FlymeInjector;->flymeChangeUidRules(Lcom/android/server/net/NetworkPolicyManagerService;II)I
 
     move-result v7

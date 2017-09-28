@@ -37,10 +37,6 @@
         <item>Aner</item>
         <item>Personaliséiert</item>
     </string-array>
-    <array name="wfcOperatorErrorAlertMessages" />
-    <array name="wfcOperatorErrorNotificationMessages" />
-    <array name="fingerprint_acquired_vendor" />
-    <array name="fingerprint_error_vendor" />
     <string-array name="imAddressTypes">
         <item>Doheem</item>
         <item>Aarbecht</item>

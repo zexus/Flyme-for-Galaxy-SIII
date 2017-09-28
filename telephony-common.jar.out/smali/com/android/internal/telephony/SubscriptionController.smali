@@ -918,21 +918,17 @@
 
     move-result-object v1
 
-    .line 294
-    const v18, 0x108042c
+    const v18, #android:drawable@ic_sim_card_multi_24px_clr#t
 
-    .line 293
     move/from16 v0, v18
 
     invoke-static {v1, v0}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
 
     move-result-object v11
 
-    .line 296
     .local v11, "iconBitmap":Landroid/graphics/Bitmap;
-    const-string/jumbo v1, "mcc"
+    const-string v1, "mcc"
 
-    .line 295
     move-object/from16 v0, p1
 
     invoke-interface {v0, v1}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
@@ -1248,7 +1244,7 @@
 
     move-result-object v4
 
-    const v5, 0x107000a
+    const v5, #android:array@sim_colors#t
 
     invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getIntArray(I)[I
 
@@ -5282,31 +5278,25 @@
     .locals 4
 
     .prologue
-    .line 1340
     iget-object v2, p0, Lcom/android/internal/telephony/SubscriptionController;->mContext:Landroid/content/Context;
 
     invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v2
 
-    .line 1341
-    const v3, 0x1120065
+    const v3, #android:bool@config_voice_capable#t
 
-    .line 1340
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getBoolean(I)Z
 
     move-result v0
 
-    .line 1342
     .local v0, "isVoiceCapable":Z
     if-eqz v0, :cond_1
 
-    .line 1343
     invoke-virtual {p0}, Lcom/android/internal/telephony/SubscriptionController;->getDefaultVoiceSubId()I
 
     move-result v1
 
-    .line 1349
     .local v1, "subId":I
     :goto_0
     invoke-virtual {p0, v1}, Lcom/android/internal/telephony/SubscriptionController;->isActiveSubId(I)Z
@@ -7989,7 +7979,7 @@
     .line 990
     iget-object v5, p0, Lcom/android/internal/telephony/SubscriptionController;->mContext:Landroid/content/Context;
 
-    const v6, 0x104000e
+    const v6, #android:string@unknownName#t
 
     invoke-virtual {v5, v6}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -8769,33 +8759,25 @@
 
     if-eqz v4, :cond_0
 
-    .line 871
-    const-string/jumbo v0, ""
+    const-string v0, ""
 
-    .line 872
     .local v0, "carrierText":Ljava/lang/String;
     if-eqz p2, :cond_3
 
-    .line 873
     move-object v0, p3
 
-    .line 874
     if-eqz p4, :cond_2
 
-    .line 876
     invoke-static {p5, p3}, Ljava/util/Objects;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
 
     move-result v4
 
     if-nez v4, :cond_2
 
-    .line 877
     iget-object v4, p0, Lcom/android/internal/telephony/SubscriptionController;->mContext:Landroid/content/Context;
 
-    .line 878
-    const v6, 0x104056c
+    const v6, #android:string@kg_text_message_separator#t
 
-    .line 877
     invoke-virtual {v4, v6}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
     move-result-object v4
@@ -9214,10 +9196,8 @@
 
     const/4 v4, 0x0
 
-    .line 1835
     #invoke-virtual {v1, v2, v0, v3, v4}, Landroid/content/ContentResolver;->update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
-    .line 1831
     return-void
 .end method
 

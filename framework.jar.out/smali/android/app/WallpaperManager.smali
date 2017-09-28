@@ -467,10 +467,12 @@
     .end annotation
 
     .prologue
+    .line 1341
     const/4 v0, 0x1
 
     invoke-virtual {p0, v0}, Landroid/app/WallpaperManager;->clear(Z)V
 
+    .line 1340
     return-void
 .end method
 
@@ -2193,6 +2195,7 @@
     .end annotation
 
     .prologue
+
     invoke-static/range {p0 .. p0}, Landroid/app/WallpaperManager$FlymeInjector;->isFlymeChildrenMode(Landroid/app/WallpaperManager;)Z
 
     move-result v0
@@ -2648,6 +2651,7 @@
     .end annotation
 
     .prologue
+
     invoke-static/range {p0 .. p0}, Landroid/app/WallpaperManager$FlymeInjector;->isFlymeChildrenMode(Landroid/app/WallpaperManager;)Z
 
     move-result v0
@@ -2812,6 +2816,7 @@
     .end annotation
 
     .prologue
+
     invoke-static/range {p0 .. p0}, Landroid/app/WallpaperManager$FlymeInjector;->isFlymeChildrenMode(Landroid/app/WallpaperManager;)Z
 
     move-result v0
@@ -2947,6 +2952,7 @@
     .param p1, "name"    # Landroid/content/ComponentName;
 
     .prologue
+
     invoke-static/range {p0 .. p0}, Landroid/app/WallpaperManager$FlymeInjector;->isFlymeChildrenMode(Landroid/app/WallpaperManager;)Z
 
     move-result v0

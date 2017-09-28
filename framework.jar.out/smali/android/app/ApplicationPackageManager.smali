@@ -2772,6 +2772,7 @@
     move-result-object v0
 
     .local v0, "cachedIcon":Landroid/graphics/drawable/Drawable;
+
     invoke-static/range {p1 .. p1}, Landroid/app/ApplicationPackageManager$FlymeInjector;->isFlymeCalendarPkg(Ljava/lang/String;)Z
 
     move-result v7

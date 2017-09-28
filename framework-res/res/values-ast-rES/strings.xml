@@ -897,10 +897,8 @@ entra na páxina \""<b>google.com/accounts/recovery</b>.</string>
     <string name="chooseActivity">Esbilla una aición</string>
     <string name="chooseUsbActivity">Seleicionar una aplicación pal preséu USB</string>
     <string name="noApplications">Nenguna aplicación pue facer esta aición.</string>
-    <string name="aerr_title" />
     <string name="aerr_application">"Detúvose l'aplicación %1$s."</string>
     <string name="aerr_process">"Detúvose'l procesu %1$s."</string>
-    <string name="anr_title" />
     <string name="anr_activity_application">"L'aplicación %2$s nun respuende.
 
 ¿Quies zarrala?"</string>

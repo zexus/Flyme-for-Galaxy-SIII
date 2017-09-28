@@ -44,7 +44,7 @@
     <string name="reboot_recovery">Recovery</string>
     <string name="reboot_bootloader">Bootloader</string>
     <string name="reboot_download">Download</string>
-    <string name="reboot_soft">Snelle herstart</string>
+    <string name="reboot_soft">Soft reboot</string>
     <string name="reboot_title">Herstarten</string>
     <string name="reboot_confirm">Uw telefoon wordt herstart.</string>
     <string name="reboot_progress">Herstarten…</string>

@@ -5877,6 +5877,7 @@
 
     .line 1938
     :cond_4
+
     invoke-direct/range {p0 .. p2}, Landroid/widget/ListView;->setFlymeHoldView(Landroid/view/View;I)V
 
     move-object/from16 v0, p0
@@ -7219,6 +7220,7 @@
     .line 3262
     .local v11, "drawDividers":Z
     :goto_2
+
     move-object/from16 v0, p0
 
     invoke-direct {v0, v10}, Landroid/widget/ListView;->getFlymeDividerHeight(I)I
@@ -8402,7 +8404,6 @@
     .param p3, "childIndex"    # I
 
     .prologue
-
     iget-object v0, p0, Landroid/widget/ListView;->mDivider:Landroid/graphics/drawable/Drawable;
 
     .local v0, "divider":Landroid/graphics/drawable/Drawable;

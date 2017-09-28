@@ -1,3 +1,4 @@
+system 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/addon.d 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/addon.d/50-cm.sh 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/addon.d/blacklist 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
@@ -469,7 +470,9 @@ system/etc/bluetooth 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/etc/bluetooth/auto_pair_devlist.conf 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/etc/bluetooth/bt_did.conf 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/etc/bluetooth/bt_stack.conf 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
+system/etc/build-manifest.xml 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/etc/CHANGELOG-CM.txt 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
+system/etc/CHANGES.txt 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/etc/clatd.conf 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/etc/dhcpcd 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/etc/dhcpcd/dhcpcd.conf 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
@@ -1309,7 +1312,6 @@ system/lib/soundfx/libeffectproxy.so 0 0 644 selabel=u:object_r:system_file:s0 c
 system/lib/soundfx/libldnhncr.so 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/lib/soundfx/libreverbwrapper.so 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/lib/soundfx/libvisualizer.so 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
-system/lost+found 0 0 700 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/media 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/media/audio 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/media/audio/alarms 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
@@ -1566,6 +1568,8 @@ system/priv-app/CMAudioService/CMAudioService.apk 0 0 644 selabel=u:object_r:sys
 system/priv-app/CMAudioService/lib 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/priv-app/CMAudioService/lib/arm 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/priv-app/CMAudioService/lib/arm/libcmaudio_jni.so 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
+system/priv-app/CMBugReport 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
+system/priv-app/CMBugReport/CMBugReport.apk 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/priv-app/CMSettingsProvider 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/priv-app/CMSettingsProvider/CMSettingsProvider.apk 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/priv-app/CMUpdater 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0

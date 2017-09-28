@@ -973,6 +973,7 @@
     .end local v8    # "trim":I
     .end local v9    # "update":Landroid/service/notification/NotificationRankingUpdate;
     :cond_8
+
     invoke-direct/range {p0 .. p2}, Lcom/android/server/notification/NotificationManagerService$NotificationListeners;->notifyFlymePosted(Landroid/service/notification/StatusBarNotification;Landroid/service/notification/StatusBarNotification;)V
 
     return-void
@@ -1112,6 +1113,7 @@
     .end local v0    # "info":Lcom/android/server/notification/ManagedServices$ManagedServiceInfo;
     .end local v3    # "update":Landroid/service/notification/NotificationRankingUpdate;
     :cond_1
+
     invoke-direct/range {p0 .. p1}, Lcom/android/server/notification/NotificationManagerService$NotificationListeners;->notifyFlymeRemoved(Landroid/service/notification/StatusBarNotification;)V
 
     return-void

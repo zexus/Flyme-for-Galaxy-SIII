@@ -836,6 +836,7 @@
 
     .end local v4    # "positionListener":Landroid/widget/Editor$PositionListener;
     :pswitch_1
+
     invoke-direct/range {p0 .. p0}, Landroid/widget/Editor$HandleView;->flymeHideOptionWrapper()V
 
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getRawX()F
@@ -1038,6 +1039,7 @@
     if-eqz p2, :cond_3
 
     :cond_1
+
     invoke-direct/range {p0 .. p1}, Landroid/widget/Editor$HandleView;->flymePositionAtCursorOffset(I)Z
 
     move-result v3

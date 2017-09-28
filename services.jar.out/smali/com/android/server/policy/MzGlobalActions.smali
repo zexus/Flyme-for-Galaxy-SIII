@@ -197,7 +197,7 @@
     .locals 1
 
     .prologue
-    .line 851
+    .line 825
     const/4 v0, 0x0
 
     return v0

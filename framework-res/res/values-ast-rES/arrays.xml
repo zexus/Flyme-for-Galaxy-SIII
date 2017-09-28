@@ -44,10 +44,6 @@
     <integer-array name="maps_starting_zoom">
         <item>6</item>
     </integer-array>
-    <array name="wfcOperatorErrorAlertMessages" />
-    <array name="wfcOperatorErrorNotificationMessages" />
-    <array name="fingerprint_acquired_vendor" />
-    <array name="fingerprint_error_vendor" />
     <string-array name="imAddressTypes">
         <item>Casa</item>
         <item>Trabayu</item>

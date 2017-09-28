@@ -1206,7 +1206,7 @@
     new-array v5, v8, [I
 
     .line 1152
-    const v6, #android:attr@state_enabled#t
+    const v6, 0x101009e
 
     aput v6, v5, v7
 
@@ -1960,7 +1960,7 @@
 
     .line 832
     :cond_0
-    const v7, #android:id@button1#t
+    const v7, 0x1020019
 
     invoke-virtual {v3, v7}, Landroid/widget/LinearLayout;->findViewById(I)Landroid/view/View;
 
@@ -1970,7 +1970,7 @@
 
     .line 833
     .local v4, "buttonPositive":Landroid/widget/Button;
-    const v7, #android:id@button2#t
+    const v7, 0x102001a
 
     invoke-virtual {v3, v7}, Landroid/widget/LinearLayout;->findViewById(I)Landroid/view/View;
 
@@ -1980,7 +1980,7 @@
 
     .line 834
     .local v1, "buttonNegative":Landroid/widget/Button;
-    const v7, #android:id@button3#t
+    const v7, 0x102001b
 
     invoke-virtual {v3, v7}, Landroid/widget/LinearLayout;->findViewById(I)Landroid/view/View;
 
@@ -2860,7 +2860,7 @@
 
     move-object/from16 v17, v0
 
-    const v18, #android:id@message#t
+    const v18, 0x102000b
 
     invoke-virtual/range {v17 .. v18}, Landroid/view/Window;->findViewById(I)Landroid/view/View;
 
@@ -2935,7 +2935,7 @@
     const/16 v19, 0x0
 
     .line 951
-    const v20, #android:attr@windowTitleStyle#t
+    const v20, 0x101005b
 
     const/16 v21, 0x0
 
@@ -3718,7 +3718,7 @@
     .line 1052
     iget-object v2, p0, Lcom/android/internal/app/AlertControllerExt;->mWindow:Landroid/view/Window;
 
-    const v5, #android:id@icon#t
+    const v5, 0x1020006
 
     invoke-virtual {v2, v5}, Landroid/view/Window;->findViewById(I)Landroid/view/View;
 
@@ -3940,7 +3940,7 @@
     iget-object v3, p0, Lcom/android/internal/app/AlertControllerExt;->mContext:Landroid/content/Context;
 
     .line 1079
-    const v4, #android:style@TextAppearance.DeviceDefault.Small#t
+    const v4, 0x10301b3
 
     .line 1078
     invoke-virtual {v2, v3, v4}, Landroid/widget/TextView;->setTextAppearance(Landroid/content/Context;I)V
@@ -5539,7 +5539,7 @@
     .line 767
     iget-object v0, p0, Lcom/android/internal/app/AlertControllerExt;->mWindow:Landroid/view/Window;
 
-    const v1, #android:id@mask#t
+    const v1, 0x102002e
 
     invoke-virtual {v0, v1}, Landroid/view/Window;->findViewById(I)Landroid/view/View;
 

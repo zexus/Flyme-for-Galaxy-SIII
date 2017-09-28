@@ -37,7 +37,7 @@
     <string name="permlab_changePhoneBlacklist">modifica la blacklist del telefono</string>
     <string name="permdesc_changePhoneBlacklist">"Consente all'app di modificare i numeri di telefono che vengono bloccati per messaggi o chiamate in arrivo."</string>
     <string name="permlab_setKeyguardWallpaper">imposta sfondo sblocco schermo</string>
-    <string name="permdesc_setKeyguardWallpaper">"Consente all'app di cambiare lo sfondo del blocco schermo."</string>
+    <string name="permdesc_setKeyguardWallpaper">"Consente all'app di cambiare lo sfondo della schermata di sblocco."</string>
     <string name="global_action_reboot">Riavvia</string>
     <string name="global_action_current_user">Corrente</string>
     <string name="reboot_reboot">Riavvia</string>

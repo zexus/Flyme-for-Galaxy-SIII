@@ -3569,6 +3569,7 @@
     .param p5, "nowElapsed"    # J
 
     .prologue
+
     invoke-static/range {p1 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->applyFlymeOomAdjLocked(Lcom/android/server/am/ProcessRecord;)V
 
     const/16 v23, 0x1
@@ -7951,6 +7952,7 @@
     .local v59, "killProcess":Z
     :goto_9
     if-eqz v59, :cond_1a
+
     invoke-static {v14}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->isFlymePackageShouldRestart(Landroid/content/Intent;)Z
 
     move-result v4
@@ -8001,7 +8003,6 @@
 
     :cond_1a
     :goto_flyme_0
-
     if-eqz v66, :cond_22
 
     const/4 v4, 0x1
@@ -20310,6 +20311,7 @@
     .param p1, "func"    # Ljava/lang/String;
 
     .prologue
+
     invoke-static {}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->isSystemUid()Z
 
     move-result v0
@@ -31715,6 +31717,7 @@
     .param p2, "userName"    # Ljava/lang/String;
 
     .prologue
+
     invoke-static/range {p0 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->flymeShowUserSwitchDialog(Lcom/android/server/am/ActivityManagerService;I)V
 
     return-void
@@ -67282,12 +67285,14 @@
 
     if-nez v2, :cond_6
 
+    .line 8761
     :cond_0
     :goto_6
     add-int/lit8 v12, v12, 0x1
 
     goto :goto_5
 
+    .line 8740
     .end local v10    # "allowed":Z
     .end local v11    # "detailed":Z
     .end local v12    # "i":I
@@ -68667,6 +68672,7 @@
     move-result-object v0
 
     .local v0, "tr":Lcom/android/server/am/TaskRecord;
+
     invoke-static/range {p0 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->isHomeTask(Lcom/android/server/am/ActivityManagerService;I)Z
 
     move-result v1
@@ -100977,6 +100983,7 @@
     invoke-virtual {v3, v5}, Lcom/android/server/am/ActivityManagerService$MainHandler;->post(Ljava/lang/Runnable;)Z
 
     :cond_37
+
     invoke-static/range {p0 .. p0}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->updateFlymeOomAdjLocked(Lcom/android/server/am/ActivityManagerService;)V
 
     return-void
@@ -101763,7 +101770,6 @@
     throw v1
 .end method
 
-
 .method static invokeMethodKillProcessGroup(II)V
     .locals 0
     .param p0, "uid"    # I
@@ -102351,17 +102357,14 @@
     .param p2, "value"    # I
 
     .prologue
-    .line 20983
-    const-string/jumbo v2, "android.permission.READ_FRAME_BUFFER"
+    const-string v2, "android.permission.READ_FRAME_BUFFER"
 
-    const-string/jumbo v3, "scrollTopActivity"
+    const-string v3, "scrollTopActivity"
 
     invoke-virtual {p0, v2, v3}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 20984
     monitor-enter p0
 
-    .line 20985
     :try_start_0
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->getFocusedStack()Lcom/android/server/am/ActivityStack;
 
@@ -102373,7 +102376,6 @@
 
     move-result-object v1
 
-    .line 20986
     .local v1, "r":Lcom/android/server/am/ActivityRecord;
     iget-object v2, v1, Lcom/android/server/am/ActivityRecord;->state:Lcom/android/server/am/ActivityStack$ActivityState;
 
@@ -102393,7 +102395,6 @@
 
     if-eqz v2, :cond_0
 
-    .line 20988
     :try_start_1
     new-instance v2, Landroid/app/FlymeExtIApplicationThreadProxy;
 
@@ -102418,10 +102419,8 @@
     :goto_0
     monitor-exit p0
 
-    .line 20982
     return-void
 
-    .line 20984
     .end local v1    # "r":Lcom/android/server/am/ActivityRecord;
     :catchall_0
     move-exception v2
@@ -102430,7 +102429,6 @@
 
     throw v2
 
-    .line 20989
     .restart local v1    # "r":Lcom/android/server/am/ActivityRecord;
     :catch_0
     move-exception v0

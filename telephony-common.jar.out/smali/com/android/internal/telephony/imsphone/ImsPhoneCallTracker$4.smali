@@ -402,8 +402,6 @@
 
     invoke-virtual {v4}, Lcom/android/internal/telephony/imsphone/ImsPhone;->onFeatureCapabilityChanged()V
 
-    invoke-direct/range {p0 .. p0}, Lcom/android/internal/telephony/imsphone/ImsPhoneCallTracker$4;->broadcastFlymeImsStatusChange()V
-
     .line 1692
     iget-object v4, p0, Lcom/android/internal/telephony/imsphone/ImsPhoneCallTracker$4;->this$0:Lcom/android/internal/telephony/imsphone/ImsPhoneCallTracker;
 
@@ -445,6 +443,8 @@
     move-result v5
 
     invoke-virtual {v4, v5}, Lcom/android/internal/telephony/imsphone/ImsPhone;->notifyForVideoCapabilityChanged(Z)V
+
+    invoke-direct/range {p0 .. p0}, Lcom/android/internal/telephony/imsphone/ImsPhoneCallTracker$4;->broadcastFlymeImsStatusChange()V
 
     .line 1654
     .end local v2    # "i":I
@@ -669,7 +669,6 @@
     .locals 4
 
     .prologue
-    .line 1634
     invoke-static {}, Landroid/os/BuildExt;->isMtkPlatform()Z
 
     move-result v2
@@ -685,15 +684,13 @@
     :cond_0
     return-void
 
-    .line 1636
     :cond_1
     new-instance v0, Landroid/content/Intent;
 
-    const-string/jumbo v2, "com.android.ims.IMS_STATE_CHANGED"
+    const-string v2, "com.android.ims.IMS_STATE_CHANGED"
 
     invoke-direct {v0, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 1637
     .local v0, "intent":Landroid/content/Intent;
     iget-object v2, p0, Lcom/android/internal/telephony/imsphone/ImsPhoneCallTracker$4;->this$0:Lcom/android/internal/telephony/imsphone/ImsPhoneCallTracker;
 
@@ -707,14 +704,12 @@
 
     move-result v1
 
-    .line 1638
     .local v1, "serviceState":I
-    const-string/jumbo v2, "android:regState"
+    const-string v2, "android:regState"
 
     invoke-virtual {v0, v2, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 1639
-    const-string/jumbo v2, "android:phone_id"
+    const-string v2, "android:phone_id"
 
     iget-object v3, p0, Lcom/android/internal/telephony/imsphone/ImsPhoneCallTracker$4;->this$0:Lcom/android/internal/telephony/imsphone/ImsPhoneCallTracker;
 
@@ -726,7 +721,6 @@
 
     invoke-virtual {v0, v2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 1640
     iget-object v2, p0, Lcom/android/internal/telephony/imsphone/ImsPhoneCallTracker$4;->this$0:Lcom/android/internal/telephony/imsphone/ImsPhoneCallTracker;
 
     iget-object v2, v2, Lcom/android/internal/telephony/imsphone/ImsPhoneCallTracker;->mPhone:Lcom/android/internal/telephony/imsphone/ImsPhone;
@@ -737,6 +731,5 @@
 
     invoke-virtual {v2, v0}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
-    .line 1633
     return-void
 .end method

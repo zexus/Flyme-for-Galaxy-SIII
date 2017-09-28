@@ -716,10 +716,8 @@ Visit "<b>google.com/هەمار/recovery</b>.</string>
     <string name="chooseActivity">چالاکیەک هەڵبژێرە</string>
     <string name="chooseUsbActivity">هەڵبژاردنی بەرنامەیک بۆ ئامێری USB</string>
     <string name="noApplications">‌هیچ بەرنامەیەک ناتوانێت ڕۆڵی ئەم چالاکیە ببینێت.</string>
-    <string name="aerr_title" />
     <string name="aerr_application">بەداخەوە, %1$sوەستا.</string>
     <string name="aerr_process">بەداخەوە پرۆسەکە %1$s وەستا.</string>
-    <string name="anr_title" />
     <string name="anr_activity_application">"%2$s وەڵام نادانتەوە.
 
 ئەتەوێت دایخەیت?"</string>

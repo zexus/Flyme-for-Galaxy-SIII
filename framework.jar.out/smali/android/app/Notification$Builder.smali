@@ -41,6 +41,7 @@
 
 
 # instance fields
+
 .field public mFlymeNotificationBuilder:Landroid/app/NotificationBuilderExt;
 
 .field private mFlymeReplyIntent:Landroid/app/PendingIntent;
@@ -730,7 +731,6 @@
 
     return-object v0
 
-    .line 2990
     const/4 v0, 0x1
 
     invoke-direct {p0, p1, v0}, Landroid/app/Notification$Builder;->applyStandardTemplate(IZ)Landroid/widget/RemoteViews;

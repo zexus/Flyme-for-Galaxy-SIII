@@ -689,6 +689,7 @@
 
     .line 200
     :cond_0
+
     invoke-static/range {p0 .. p0}, Lcom/android/server/BatteryService$FlymeInjector;->registerBootCompleted(Lcom/android/server/BatteryService;)V
 
     return-void
@@ -3518,6 +3519,7 @@
 
     :cond_12
     :goto_10
+
     invoke-static/range {p0 .. p0}, Lcom/android/server/BatteryService$FlymeInjector;->onBatteryLow(Lcom/android/server/BatteryService;)V
 
     iget-object v0, p0, Lcom/android/server/BatteryService;->mLed:Lcom/android/server/BatteryService$Led;
@@ -4756,6 +4758,7 @@
     .locals 2
 
     .prologue
+
     invoke-static/range {p0 .. p0}, Lcom/android/server/BatteryService$FlymeInjector;->shutdownIfNoPowerLocked(Lcom/android/server/BatteryService;)Z
 
     move-result v0
@@ -4789,6 +4792,7 @@
     if-ge v0, v1, :cond_1
 
     :cond_0
+
     invoke-static/range {p0 .. p0}, Lcom/android/server/BatteryService$FlymeInjector;->writeMessageToFileIfNoPowerLocked(Lcom/android/server/BatteryService;)V
 
     iget-object v0, p0, Lcom/android/server/BatteryService;->mHandler:Landroid/os/Handler;
@@ -4807,6 +4811,7 @@
     .locals 2
 
     .prologue
+
     invoke-static {}, Lcom/android/server/BatteryService$FlymeInjector;->shutdownIfOverTempLocked()Z
 
     move-result v0

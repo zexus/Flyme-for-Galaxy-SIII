@@ -27,7 +27,6 @@
 
 .field public static final OLD_ID_IME_MEIZU:Ljava/lang/String; = "com.baidu.input_mz/com.meizu.input.MzInputService"
 
-
 .field mFlymeHandler:Landroid/os/Handler;
 
 .field mFlymeInputMethodManagerService:Lcom/android/internal/view/MzIInputMethodManager;
@@ -3092,6 +3091,7 @@
 
     .line 1426
     :cond_0
+
     invoke-static {p0, v10}, Landroid/view/inputmethod/InputMethodManager$FlymeInjector;->onWindowFocus(Landroid/view/inputmethod/InputMethodManager;Z)Z
 
     move-result v10

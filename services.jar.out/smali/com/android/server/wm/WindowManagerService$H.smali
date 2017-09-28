@@ -122,6 +122,7 @@
     :cond_0
     :goto_0
     :pswitch_0
+
     invoke-direct/range {p0 .. p1}, Lcom/android/server/wm/WindowManagerService$H;->handleFlymeMessage(Landroid/os/Message;)V
 
     return-void

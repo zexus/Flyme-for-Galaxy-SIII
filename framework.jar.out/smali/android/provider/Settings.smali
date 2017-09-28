@@ -783,22 +783,18 @@
     .prologue
     const/16 v0, 0x17
 
-    .line 8492
     if-ne p0, v0, :cond_0
 
-    .line 8493
     invoke-static {v0}, Lmeizu/security/FlymePermissionManager;->isFlymePermissionGranted(I)Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 8494
     const/4 v0, 0x1
 
     return v0
 
-    .line 8498
     :cond_0
     const/4 v0, 0x0
 

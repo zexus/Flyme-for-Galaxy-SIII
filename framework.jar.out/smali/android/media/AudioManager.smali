@@ -2902,6 +2902,7 @@
     .param p3, "flags"    # I
 
     .prologue
+
     invoke-direct/range {p0 .. p3}, Landroid/media/AudioManager;->adjustFlymeFlags(III)I
 
     move-result p3

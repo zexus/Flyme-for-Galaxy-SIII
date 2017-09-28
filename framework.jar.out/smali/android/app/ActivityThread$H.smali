@@ -1395,16 +1395,13 @@
     .param p1, "msg"    # Landroid/os/Message;
 
     .prologue
-    .line 1642
     iget v0, p1, Landroid/os/Message;->what:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 1641
     :goto_0
     return-void
 
-    .line 1645
     :pswitch_0
     iget-object v0, p0, Landroid/app/ActivityThread$H;->this$0:Landroid/app/ActivityThread;
 
@@ -1414,7 +1411,6 @@
 
     goto :goto_0
 
-    .line 1651
     :pswitch_1
     iget-object v1, p0, Landroid/app/ActivityThread$H;->this$0:Landroid/app/ActivityThread;
 
@@ -1426,7 +1422,6 @@
 
     goto :goto_0
 
-    .line 1642
     :pswitch_data_0
     .packed-switch 0xcb
         :pswitch_0

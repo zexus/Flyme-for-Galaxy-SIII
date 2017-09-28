@@ -49,7 +49,7 @@
     :cond_0
     new-instance v0, Landroid/print/PrintDocumentInfo;
 
-    invoke-direct {v0, v1, v1}, Landroid/print/PrintDocumentInfo;-><init>(Landroid/print/PrintDocumentInfo;Landroid/print/PrintDocumentInfo;)V
+    invoke-direct {v0, v1, v1, v1}, Landroid/print/PrintDocumentInfo;-><init>(Landroid/print/PrintDocumentInfo;Landroid/print/PrintDocumentInfo;Landroid/print/PrintDocumentInfo;)V
 
     iput-object v0, p0, Landroid/print/PrintDocumentInfo$Builder;->mPrototype:Landroid/print/PrintDocumentInfo;
 
@@ -68,8 +68,6 @@
     .locals 3
 
     .prologue
-    const/4 v2, 0x0
-
     .line 344
     iget-object v0, p0, Landroid/print/PrintDocumentInfo$Builder;->mPrototype:Landroid/print/PrintDocumentInfo;
 
@@ -92,7 +90,9 @@
 
     iget-object v1, p0, Landroid/print/PrintDocumentInfo$Builder;->mPrototype:Landroid/print/PrintDocumentInfo;
 
-    invoke-direct {v0, v1, v2, v2}, Landroid/print/PrintDocumentInfo;-><init>(Landroid/print/PrintDocumentInfo;Landroid/print/PrintDocumentInfo;Landroid/print/PrintDocumentInfo;)V
+    const/4 v2, 0x0
+
+    invoke-direct {v0, v1, v2}, Landroid/print/PrintDocumentInfo;-><init>(Landroid/print/PrintDocumentInfo;Landroid/print/PrintDocumentInfo;)V
 
     return-object v0
 .end method

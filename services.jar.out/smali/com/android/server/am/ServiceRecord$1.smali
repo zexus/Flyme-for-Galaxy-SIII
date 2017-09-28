@@ -238,7 +238,6 @@
 
     #invoke-virtual {v15, v2}, Landroid/app/Notification$Builder;->setSmallIcon(I)Landroid/app/Notification$Builder;
 
-
     .line 470
     const/16 v2, 0x40
 

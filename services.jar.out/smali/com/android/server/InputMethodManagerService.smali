@@ -2397,49 +2397,39 @@
     .prologue
     return-void
 
-    .line 3627
     invoke-static {}, Landroid/os/UserHandle;->myUserId()I
 
     move-result v10
 
-    .line 3628
     .local v10, "userId":I
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v8
 
-    .line 3630
     .local v8, "token":J
     :try_start_0
     new-instance v7, Landroid/os/UserHandle;
 
     invoke-direct {v7, v10}, Landroid/os/UserHandle;-><init>(I)V
 
-    .line 3631
     .local v7, "user":Landroid/os/UserHandle;
     iget-object v11, p0, Lcom/android/server/InputMethodManagerService;->mContext:Landroid/content/Context;
 
-    .line 3632
-    const-string/jumbo v12, "ime_selector"
+    const-string v12, "ime_selector"
 
-    .line 3631
     invoke-static {v11, v10, v12}, Lorg/cyanogenmod/internal/util/QSUtils;->getDynamicQSTileResIconId(Landroid/content/Context;ILjava/lang/String;)I
 
     move-result v1
 
-    .line 3633
     .local v1, "icon":I
     iget-object v11, p0, Lcom/android/server/InputMethodManagerService;->mContext:Landroid/content/Context;
 
-    .line 3634
-    const-string/jumbo v12, "ime_selector"
+    const-string v12, "ime_selector"
 
-    .line 3633
     invoke-static {v11, v10, v12}, Lorg/cyanogenmod/internal/util/QSUtils;->getDynamicQSTileLabel(Landroid/content/Context;ILjava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 3635
     .local v0, "contentDesc":Ljava/lang/String;
     iget-object v11, p0, Lcom/android/server/InputMethodManagerService;->mContext:Landroid/content/Context;
 
@@ -3767,6 +3757,7 @@
     .locals 4
 
     .prologue
+
     invoke-direct/range {p0 .. p0}, Lcom/android/server/InputMethodManagerService;->flymeHideCurrentInputLocked()V
 
     new-instance v0, Landroid/content/Intent;
@@ -4748,18 +4739,15 @@
     .prologue
     return-void
 
-    .line 3659
     invoke-static {}, Landroid/os/UserHandle;->myUserId()I
 
     move-result v1
 
-    .line 3660
     .local v1, "userId":I
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v2
 
-    .line 3662
     .local v2, "token":J
     :try_start_0
     iget-object v4, p0, Lcom/android/server/InputMethodManagerService;->mContext:Landroid/content/Context;
@@ -5004,16 +4992,14 @@
     :cond_3
     :goto_1
     invoke-direct {p0, v2}, Lcom/android/server/InputMethodManagerService;->publishImeSelectorCustomTile(Landroid/view/inputmethod/InputMethodInfo;)V
+
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/InputMethodManagerService;->showFlymeImeSwitcherNotificationIfNeeded()V
+
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .end local v4    # "summary":Ljava/lang/CharSequence;
     .end local v5    # "title":Ljava/lang/CharSequence;
-
-    invoke-direct/range {p0 .. p0}, Lcom/android/server/InputMethodManagerService;->showFlymeImeSwitcherNotificationIfNeeded()V
-    
-    :cond_flyme_0
-
     :goto_2
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
@@ -5079,11 +5065,11 @@
     :try_start_2
     iget-boolean v7, p0, Lcom/android/server/InputMethodManagerService;->mNotificationShown:Z
 
-    if-eqz v7, :cond_flyme_0
+    if-eqz v7, :cond_7
 
     iget-object v7, p0, Lcom/android/server/InputMethodManagerService;->mNotificationManager:Landroid/app/NotificationManager;
 
-    if-eqz v7, :cond_flyme_0
+    if-eqz v7, :cond_7
 
     iget-object v7, p0, Lcom/android/server/InputMethodManagerService;->mNotificationManager:Landroid/app/NotificationManager;
 

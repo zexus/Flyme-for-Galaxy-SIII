@@ -6,8 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lcom/android/server/SystemServer$AdbPortObserver;,
-        Lcom/android/server/SystemServer$FlymeInjector;
+        Lcom/android/server/SystemServer$FlymeInjector;,
+        Lcom/android/server/SystemServer$AdbPortObserver;
     }
 .end annotation
 
@@ -2809,12 +2809,15 @@
     invoke-virtual {v3, v4}, Lcom/android/server/SystemServiceManager;->startService(Ljava/lang/Class;)Lcom/android/server/SystemService;
 
     :cond_1b
+    goto/16 :goto_flyme_0
+
     if-nez v56, :cond_1c
 
     if-eqz v51, :cond_31
 
     .end local v33    # "atlas":Lcom/android/server/AssetAtlasService;
     :cond_1c
+    :goto_flyme_0
     :goto_26
     if-nez v56, :cond_1d
 
@@ -3140,7 +3143,6 @@
     .end local v82    # "mmsService":Lcom/android/server/MmsServiceBroker;
     check-cast v82, Lcom/android/server/MmsServiceBroker;
 
-    .line 1060
     .local v82, "mmsService":Lcom/android/server/MmsServiceBroker;
 
     move-object/from16 v0, p0
@@ -3156,7 +3158,6 @@
 
     move-result-object v95
 
-    .line 1061
     .local v95, "serverClazz":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
     const/4 v3, 0x1
 

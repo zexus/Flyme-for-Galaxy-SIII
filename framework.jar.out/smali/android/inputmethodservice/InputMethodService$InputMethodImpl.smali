@@ -388,6 +388,7 @@
     .locals 2
 
     .prologue
+
     invoke-direct/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$InputMethodImpl;->unbindInputEnter()V
 
     const/4 v1, 0x0

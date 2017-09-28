@@ -165,6 +165,7 @@
     .param p1, "themeResId"    # I
 
     .prologue
+
     invoke-static/range {p0 .. p1}, Landroid/app/AlertDialog$FlymeInjector;->getFlymeAlertDialogTheme(Landroid/content/Context;I)I
 
     move-result p1
@@ -283,7 +284,6 @@
     invoke-virtual {v0}, Lcom/android/internal/app/AlertController;->installContent()V
 
     invoke-direct/range {p0 .. p0}, Landroid/app/AlertDialog;->applyFlymeStyle()V
-
 
     return-void
 .end method

@@ -3317,6 +3317,7 @@
 
     .line 1377
     :cond_d
+
     invoke-static/range {p0 .. p1}, Landroid/widget/TextView$FlymeInjector;->initFlymeExtraFields(Landroid/widget/TextView;Landroid/content/Context;)V
 
     if-nez v54, :cond_e
@@ -9596,6 +9597,7 @@
     .line 4283
     .local v17, "s2":Landroid/text/Spannable;
     :goto_4
+
     invoke-static/range {p0 .. p0}, Landroid/widget/TextView$FlymeInjector;->resetAutoLinkMask(Landroid/widget/TextView;)V
 
     move-object/from16 v0, p0
@@ -30140,6 +30142,7 @@
     invoke-virtual {p0, v3, v2}, Landroid/widget/TextView;->onSelectionChanged(II)V
 
     :cond_7
+
     invoke-static/range {p0 .. p6}, Landroid/widget/TextView$FlymeInjector;->editorOnSelectionChanged(Landroid/widget/TextView;Landroid/text/Spanned;Ljava/lang/Object;IIII)V
 
     instance-of v5, p2, Landroid/text/style/UpdateAppearance;
@@ -30912,6 +30915,7 @@
     :goto_0
     return v0
 
+    .line 2515
     :cond_0
     iget-object v0, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
 
@@ -30965,7 +30969,6 @@
 
     if-eqz p2, :cond_1
 
-    .line 2515
     :cond_0
     iget-object v0, p0, Landroid/widget/TextView;->mTextPaint:Landroid/text/TextPaint;
 

@@ -643,6 +643,7 @@
 
     .line 973
     .local v1, "enoughToFilter":Z
+
     invoke-static/range {p0 .. p0}, Landroid/widget/AutoCompleteTextView$FlymeInjector;->updateFlymeDropDownForFilter(Landroid/widget/AutoCompleteTextView;)V
 
     if-gtz p1, :cond_1
@@ -876,6 +877,7 @@
     .locals 2
 
     .prologue
+
     iget-boolean v0, p0, Landroid/widget/AutoCompleteTextView;->mIsFlymeMmsFirstFileter:Z
 
     if-eqz v0, :cond_flyme_0

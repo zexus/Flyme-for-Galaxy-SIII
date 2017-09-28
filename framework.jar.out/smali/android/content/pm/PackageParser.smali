@@ -6253,18 +6253,20 @@
 
     if-nez v2, :cond_20
 
+    .line 3469
     const/4 v2, 0x0
 
     return-object v2
 
+    .line 3473
     :cond_2d
-    const-string v2, "PackageParser"
+    const-string/jumbo v2, "PackageParser"
 
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v4, "Problem in package "
+    const-string/jumbo v4, "Problem in package "
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -22940,6 +22942,7 @@
     .param p2, "requireFilename"    # Z
 
     .prologue
+
     invoke-static/range {p0 .. p0}, Landroid/content/pm/PackageParser$FlymeInjector;->validateName(Ljava/lang/String;)Z
 
     move-result v0

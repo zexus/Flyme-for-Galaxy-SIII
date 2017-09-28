@@ -15,10 +15,6 @@
 
 
 # static fields
-.field private mFlymeConfigCloud:Lcom/android/server/notification/ConfigCloud;
-
-.field private mFlymeRankingController:Lcom/flyme/server/notfication/RankingController;
-
 .field private static final ATT_KEYGUARD:Ljava/lang/String; = "keyguard"
 
 .field private static final ATT_NAME:Ljava/lang/String; = "name"
@@ -51,6 +47,10 @@
 
 
 # instance fields
+.field private mFlymeConfigCloud:Lcom/android/server/notification/ConfigCloud;
+
+.field private mFlymeRankingController:Lcom/flyme/server/notfication/RankingController;
+
 .field private final mContext:Landroid/content/Context;
 
 .field private final mFinalComparator:Lcom/android/server/notification/GlobalSortKeyComparator;
@@ -144,6 +144,7 @@
     iput-object p2, p0, Lcom/android/server/notification/RankingHelper;->mRankingHandler:Landroid/os/Handler;
 
     invoke-direct/range {p0 .. p0}, Lcom/android/server/notification/RankingHelper;->initFlymeExtraFields()V
+
     array-length v0, p4
 
     .local v0, "N":I
@@ -1677,6 +1678,14 @@
 
     iput v14, v8, Lcom/android/server/notification/RankingHelper$Record;->visibility:I
 
+    :cond_flyme_0
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p1
+
+    invoke-direct {v0, v1, v8}, Lcom/android/server/notification/RankingHelper;->readFlymeExtraFields(Lorg/xmlpull/v1/XmlPullParser;Lcom/android/server/notification/RankingHelper$Record;)V
+
     :cond_8
     const/4 v15, 0x1
 
@@ -1691,17 +1700,12 @@
 
     if-eqz v15, :cond_2
 
+    .line 184
     iput-wide v10, v8, Lcom/android/server/notification/RankingHelper$Record;->notificationSoundTimeout:J
-
-    :cond_flyme_0
-    move-object/from16 v0, p0
-
-    move-object/from16 v1, p1
-
-    invoke-direct {v0, v1, v8}, Lcom/android/server/notification/RankingHelper;->readFlymeExtraFields(Lorg/xmlpull/v1/XmlPullParser;Lcom/android/server/notification/RankingHelper$Record;)V
 
     goto/16 :goto_0
 
+    .line 157
     .end local v8    # "r":Lcom/android/server/notification/RankingHelper$Record;
     :catch_0
     move-exception v2
@@ -2398,6 +2402,7 @@
     invoke-interface {p1, v8, v3, v4}, Lorg/xmlpull/v1/XmlSerializer;->attribute(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
 
     :cond_3
+
     invoke-direct {p0, p1, v2}, Lcom/android/server/notification/RankingHelper;->writeFlymeExtraFields(Lorg/xmlpull/v1/XmlSerializer;Lcom/android/server/notification/RankingHelper$Record;)V
 
     iget v3, v2, Lcom/android/server/notification/RankingHelper$Record;->keyguard:I
@@ -2435,10 +2440,12 @@
 
     invoke-interface {p1, v8, v3, v4}, Lorg/xmlpull/v1/XmlSerializer;->attribute(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
 
+    .line 249
     :cond_5
     if-nez p2, :cond_6
 
-    const-string v3, "uid"
+    .line 250
+    const-string/jumbo v3, "uid"
 
     iget v4, v2, Lcom/android/server/notification/RankingHelper$Record;->uid:I
 

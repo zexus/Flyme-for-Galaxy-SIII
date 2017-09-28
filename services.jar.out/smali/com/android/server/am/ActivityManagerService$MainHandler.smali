@@ -853,6 +853,7 @@
 
     .line 1779
     .local v13, "reason":Ljava/lang/String;
+
     invoke-static/range {p1 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->isFlymePackageShouldRestart(Landroid/os/Message;)Z
 
     move-result v4

@@ -3891,7 +3891,7 @@
         <item name="dropDownWidth">wrap_content</item>
         <item name="dropDownHorizontalOffset">0.0dip</item>
         <item name="dropDownVerticalOffset">0.0dip</item>
-        <item name="popupAnimationStyle">@null</item>
+        <item name="popupAnimationStyle">@empty</item>
         <item name="popupElevation">@dimen/floating_window_z</item>
         <item name="popupEnterTransition">@transition/popup_window_enter</item>
         <item name="popupExitTransition">@transition/popup_window_exit</item>
@@ -3990,7 +3990,7 @@
         <item name="dropDownWidth">wrap_content</item>
         <item name="dropDownHorizontalOffset">0.0dip</item>
         <item name="dropDownVerticalOffset">0.0dip</item>
-        <item name="popupAnimationStyle">@null</item>
+        <item name="popupAnimationStyle">@empty</item>
         <item name="overlapAnchor">true</item>
         <item name="popupElevation">@dimen/floating_window_z</item>
         <item name="popupEnterTransition">@transition/popup_window_enter</item>
@@ -4013,8 +4013,8 @@
         <item name="gravity">fill_horizontal|center</item>
         <item name="divider">?dividerVertical</item>
         <item name="singleLine">true</item>
-        <item name="tabStripLeft">@null</item>
-        <item name="tabStripRight">@null</item>
+        <item name="tabStripLeft">@empty</item>
+        <item name="tabStripRight">@empty</item>
         <item name="tabStripEnabled">false</item>
         <item name="measureWithLargestChild">true</item>
         <item name="showDividers">none</item>
@@ -5230,9 +5230,9 @@
         <item name="minHeight">@dimen/alert_dialog_button_bar_height</item>
     </style>
     <style name="Widget.Material.SearchView.ActionBar" parent="@style/Widget.Material.SearchView">
-        <item name="queryBackground">@null</item>
-        <item name="submitBackground">@null</item>
-        <item name="searchHintIcon">@null</item>
+        <item name="queryBackground">@empty</item>
+        <item name="submitBackground">@empty</item>
+        <item name="searchHintIcon">@empty</item>
         <item name="defaultQueryHint">@string/search_hint</item>
     </style>
     <style name="Widget.Material.TextView.ListSeparator" parent="@style/Widget.TextView.ListSeparator">
@@ -5339,16 +5339,16 @@
         <item name="windowExitAnimation">@anim/popup_exit_material</item>
     </style>
     <style name="AlertDialog.Material" parent="@style/AlertDialog">
-        <item name="fullDark">@null</item>
-        <item name="topDark">@null</item>
-        <item name="centerDark">@null</item>
-        <item name="bottomDark">@null</item>
-        <item name="fullBright">@null</item>
-        <item name="topBright">@null</item>
-        <item name="centerBright">@null</item>
-        <item name="bottomBright">@null</item>
-        <item name="bottomMedium">@null</item>
-        <item name="centerMedium">@null</item>
+        <item name="fullDark">@empty</item>
+        <item name="topDark">@empty</item>
+        <item name="centerDark">@empty</item>
+        <item name="bottomDark">@empty</item>
+        <item name="fullBright">@empty</item>
+        <item name="topBright">@empty</item>
+        <item name="centerBright">@empty</item>
+        <item name="bottomBright">@empty</item>
+        <item name="bottomMedium">@empty</item>
+        <item name="centerMedium">@empty</item>
         <item name="layout">@layout/alert_dialog_material</item>
         <item name="listLayout">@layout/select_dialog_material</item>
         <item name="multiChoiceItemLayout">@layout/select_dialog_multichoice_material</item>

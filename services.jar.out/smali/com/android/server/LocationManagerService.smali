@@ -10365,6 +10365,7 @@
     invoke-static {v2, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     :cond_1
+
     invoke-direct/range {p0 .. p0}, Lcom/android/server/LocationManagerService;->isFlymePermissionGranted()Z
 
     move-result v0
@@ -10600,6 +10601,7 @@
     move-result v6
 
     .local v6, "uid":I
+
     invoke-direct/range {p0 .. p0}, Lcom/android/server/LocationManagerService;->isFlymePermissionGranted()Z
 
     move-result v0
