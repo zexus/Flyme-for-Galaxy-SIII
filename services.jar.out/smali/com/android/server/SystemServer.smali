@@ -3644,6 +3644,8 @@
     invoke-virtual {v4, v5}, Lcom/android/server/SystemServiceManager;->startService(Ljava/lang/Class;)Lcom/android/server/SystemService;
 
     :cond_28
+    goto/16 :goto_flyme_0
+
     if-nez v44, :cond_29
 
     if-eqz v36, :cond_4e
@@ -3651,6 +3653,7 @@
     .end local v21    # "atlas":Lcom/android/server/AssetAtlasService;
     :cond_29
     :goto_25
+    :goto_flyme_0
     if-nez v44, :cond_2a
 
     const-string v4, "graphicsstats"
@@ -5599,8 +5602,6 @@
 
     .line 1193
     :cond_4e
-    goto/16 :goto_flyme_0
-
     const-string/jumbo v4, "StartAssetAtlasService"
 
     invoke-static {v4}, Lcom/android/server/SystemServer;->traceBeginAndSlog(Ljava/lang/String;)V
@@ -5647,8 +5648,6 @@
     .end local v21    # "atlas":Lcom/android/server/AssetAtlasService;
     .restart local v56    # "e":Ljava/lang/Throwable;
     :goto_43
-    :goto_flyme_0
-
     const-string/jumbo v4, "starting AssetAtlasService"
 
     move-object/from16 v0, p0
