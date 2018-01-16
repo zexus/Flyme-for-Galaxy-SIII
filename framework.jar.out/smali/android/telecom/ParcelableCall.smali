@@ -799,3 +799,120 @@
     .line 371
     goto :goto_1
 .end method
+
+.method public constructor <init>(Ljava/lang/String;ILandroid/telecom/DisconnectCause;Ljava/util/List;IIIJLandroid/net/Uri;ILjava/lang/String;ILandroid/telecom/GatewayInfo;Landroid/telecom/PhoneAccountHandle;ZLcom/android/internal/telecom/IVideoProvider;Ljava/lang/String;Ljava/util/List;Landroid/telecom/StatusHints;ILjava/util/List;Landroid/os/Bundle;Landroid/os/Bundle;)V
+    .locals 27
+    .param p1, "id"    # Ljava/lang/String;
+    .param p2, "state"    # I
+    .param p3, "disconnectCause"    # Landroid/telecom/DisconnectCause;
+    .param p5, "capabilities"    # I
+    .param p6, "properties"    # I
+    .param p7, "supportedAudioRoutes"    # I
+    .param p8, "connectTimeMillis"    # J
+    .param p10, "handle"    # Landroid/net/Uri;
+    .param p11, "handlePresentation"    # I
+    .param p12, "callerDisplayName"    # Ljava/lang/String;
+    .param p13, "callerDisplayNamePresentation"    # I
+    .param p14, "gatewayInfo"    # Landroid/telecom/GatewayInfo;
+    .param p15, "accountHandle"    # Landroid/telecom/PhoneAccountHandle;
+    .param p16, "isVideoCallProviderChanged"    # Z
+    .param p17, "videoCallProvider"    # Lcom/android/internal/telecom/IVideoProvider;
+    .param p18, "parentCallId"    # Ljava/lang/String;
+    .param p20, "statusHints"    # Landroid/telecom/StatusHints;
+    .param p21, "videoState"    # I
+    .param p23, "intentExtras"    # Landroid/os/Bundle;
+    .param p24, "extras"    # Landroid/os/Bundle;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            "I",
+            "Landroid/telecom/DisconnectCause;",
+            "Ljava/util/List",
+            "<",
+            "Ljava/lang/String;",
+            ">;IIIJ",
+            "Landroid/net/Uri;",
+            "I",
+            "Ljava/lang/String;",
+            "I",
+            "Landroid/telecom/GatewayInfo;",
+            "Landroid/telecom/PhoneAccountHandle;",
+            "Z",
+            "Lcom/android/internal/telecom/IVideoProvider;",
+            "Ljava/lang/String;",
+            "Ljava/util/List",
+            "<",
+            "Ljava/lang/String;",
+            ">;",
+            "Landroid/telecom/StatusHints;",
+            "I",
+            "Ljava/util/List",
+            "<",
+            "Ljava/lang/String;",
+            ">;",
+            "Landroid/os/Bundle;",
+            "Landroid/os/Bundle;",
+            ")V"
+        }
+    .end annotation
+
+    .prologue
+    .line 61
+    .local p4, "cannedSmsResponses":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
+    .local p19, "childCallIds":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
+    .local p22, "conferenceableCallIds":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p1
+
+    move/from16 v2, p2
+
+    move-object/from16 v3, p3
+
+    move-object/from16 v4, p4
+
+    move/from16 v5, p5
+
+    move/from16 v6, p6
+
+    const-wide/16 v7, 0x0
+
+    move/from16 v9, p7
+
+    move-wide/from16 v10, p8
+
+    move-object/from16 v12, p10
+
+    move/from16 v13, p11
+
+    move-object/from16 v14, p12
+
+    move/from16 v15, p13
+
+    move-object/from16 v16, p14
+
+    move-object/from16 v17, p15
+
+    move/from16 v18, p16
+
+    move-object/from16 v19, p17
+
+    move-object/from16 v20, p18
+
+    move-object/from16 v21, p19
+
+    move-object/from16 v22, p20
+
+    move/from16 v23, p21
+
+    move-object/from16 v24, p22
+
+    move-object/from16 v25, p23
+
+    move-object/from16 v26, p24
+
+    invoke-direct/range {v0 .. v26}, Landroid/telecom/ParcelableCall;-><init>(Ljava/lang/String;ILandroid/telecom/DisconnectCause;Ljava/util/List;IIJIJLandroid/net/Uri;ILjava/lang/String;ILandroid/telecom/GatewayInfo;Landroid/telecom/PhoneAccountHandle;ZLcom/android/internal/telecom/IVideoProvider;Ljava/lang/String;Ljava/util/List;Landroid/telecom/StatusHints;ILjava/util/List;Landroid/os/Bundle;Landroid/os/Bundle;)V
+
+    return-void
+.end method
