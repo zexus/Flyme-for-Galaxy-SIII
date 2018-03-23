@@ -3570,6 +3570,12 @@
 
     iput v0, v1, Lcom/android/internal/policy/DecorView$ColorViewState;->color:I
 
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p1
+
+    invoke-static {v0, v1, v9}, Lcom/android/internal/policy/DecorView$FlymeInjector;->updateNavigationBarIcon(Lcom/android/internal/policy/DecorView;Lcom/android/internal/policy/DecorView$ColorViewState;Z)V
+
     .line 1163
     return-void
 
@@ -4193,6 +4199,8 @@
 
     invoke-virtual {v2, v3}, Landroid/view/View;->setBackgroundColor(I)V
 
+    invoke-static/range {p0 .. p0}, Lcom/android/internal/policy/DecorView$FlymeInjector;->updateNavigationGuardColorInner(Lcom/android/internal/policy/DecorView;)V
+
     iget-object v2, p0, Lcom/android/internal/policy/DecorView;->mNavigationGuard:Landroid/view/View;
 
     iget-object v3, p0, Lcom/android/internal/policy/DecorView;->mNavigationColorViewState:Lcom/android/internal/policy/DecorView$ColorViewState;
@@ -4391,6 +4399,8 @@
     move-result v9
 
     invoke-virtual {v7, v9}, Landroid/view/View;->setBackgroundColor(I)V
+
+    invoke-static/range {p0 .. p0}, Lcom/android/internal/policy/DecorView$FlymeInjector;->updateNavigationGuardColorInner(Lcom/android/internal/policy/DecorView;)V
 
     iget-object v7, p0, Lcom/android/internal/policy/DecorView;->mStatusGuard:Landroid/view/View;
 
@@ -8852,6 +8862,10 @@
 
     iget v5, v2, Lcom/android/internal/policy/PhoneWindow;->mNavigationBarColor:I
 
+    invoke-static/range {p0 .. p0}, Lcom/android/internal/policy/DecorView$FlymeInjector;->calculateNavigationBarColor(Lcom/android/internal/policy/DecorView;)I
+
+    move-result v5
+
     if-nez v32, :cond_12
 
     move v7, v8
@@ -9528,6 +9542,8 @@
     :cond_0
     invoke-virtual {v1, v0}, Landroid/view/View;->setVisibility(I)V
 
+    invoke-static/range {p0 .. p0}, Lcom/android/internal/policy/DecorView$FlymeInjector;->updateNavigationGuardColorInner(Lcom/android/internal/policy/DecorView;)V
+
     .line 1370
     :cond_1
     return-void
@@ -9600,6 +9616,24 @@
 
     .prologue
     iget-object v0, p0, Lcom/android/internal/policy/DecorView;->mWindow:Lcom/android/internal/policy/PhoneWindow;
+
+    return-object v0
+.end method
+
+.method flymeGetFieldNavigationColorViewState()Lcom/android/internal/policy/DecorView$ColorViewState;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/policy/DecorView;->mNavigationColorViewState:Lcom/android/internal/policy/DecorView$ColorViewState;
+
+    return-object v0
+.end method
+
+.method flymeGetFieldNavigationGuard()Landroid/view/View;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/policy/DecorView;->mNavigationGuard:Landroid/view/View;
 
     return-object v0
 .end method

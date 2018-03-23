@@ -20198,6 +20198,18 @@
     .line 4295
     invoke-direct {p0, v0}, Lcom/android/server/ConnectivityService;->ensureRequestableCapabilities(Landroid/net/NetworkCapabilities;)V
 
+    invoke-direct {p0, v0}, Lcom/android/server/ConnectivityService;->isFlymePermissionGranted(Landroid/net/NetworkCapabilities;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_flyme_0
+
+    const/4 v3, 0x0
+
+    return-object v3
+
+    :cond_flyme_0
+
     .line 4297
     new-instance v1, Landroid/net/NetworkRequest;
 
@@ -21117,6 +21129,19 @@
 
     .line 4226
     :cond_4
+
+    invoke-direct/range {p0 .. p1}, Lcom/android/server/ConnectivityService;->isFlymePermissionGranted(Landroid/net/NetworkCapabilities;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_flyme_0
+
+    const/4 v4, 0x0
+
+    return-object v4
+
+    :cond_flyme_0
+
     new-instance v1, Landroid/net/NetworkRequest;
 
     .line 4227
@@ -23210,4 +23235,34 @@
 
     .local v0, "e":Landroid/os/RemoteException;
     goto :goto_1
+.end method
+
+.method private isFlymePermissionGranted(Landroid/net/NetworkCapabilities;)Z
+    .locals 2
+    .param p1, "networkCapabilities"    # Landroid/net/NetworkCapabilities;
+
+    .prologue
+    const/4 v1, 0x0
+
+    invoke-virtual {p1, v1}, Landroid/net/NetworkCapabilities;->hasCapability(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    const/16 v0, 0x43
+
+    invoke-static {v0}, Lmeizu/security/FlymePermissionManager;->isFlymePermissionGranted(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    :cond_0
+    return v1
+
+    :cond_1
+    const/4 v0, 0x1
+
+    return v0
 .end method
