@@ -47,14 +47,14 @@ vendor_modify_images := boot
 # The default value is nothing.
 # You can configure the file name which relative to the vendor/system directory.
 #-----------------------------------------------------------------------------
-vendor_remove_files := etc/permissions/org.cyanogenmod.livedisplay.xml
+#vendor_remove_files := bin/zchgd
 
 ##############################################################################
 # The value decides the vendor apk which you want to save in the vendor directory for the ota package.
 # The default value is Bluetooth.
 # You can configure the apk name in the vendor/system/app or vendor/system/priv-app directory.
 #-----------------------------------------------------------------------------
-vendor_saved_apps := Bluetooth BluetoothMidiService BookmarkProvider EasterEgg ExtShared HTMLViewer KeyChain Nfc PacProcessor PrintRecommendationService PrintSpooler Stk UserDictionaryProvider WAPPushManager WallpaperBackup BackupRestoreConfirmation BlockedNumberProvider CarrierConfig CellBroadcastReceiver DefaultContainerService EmergencyInfo ExternalStorageProvider FusedLocation InputDevices ManagedProvisioning MtpDocumentsProvider ProxyHandler SharedStorageBackup Shell StatementService StorageManager Tag WallpaperCropper CMSettingsProvider
+vendor_saved_apps := Bluetooth BluetoothMidiService BookmarkProvider EasterEgg ExtShared HTMLViewer KeyChain Nfc PacProcessor PrintRecommendationService PrintSpooler Stk UserDictionaryProvider WAPPushManager WallpaperBackup BackupRestoreConfirmation BlockedNumberProvider CarrierConfig CellBroadcastReceiver DefaultContainerService EmergencyInfo ExternalStorageProvider FusedLocation InputDevices ManagedProvisioning MtpDocumentsProvider ProxyHandler SharedStorageBackup Shell StatementService StorageManager Tag WallpaperCropper
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.
@@ -72,7 +72,7 @@ vendor_saved_apps := Bluetooth BluetoothMidiService BookmarkProvider EasterEgg E
 # You need to decode android.policy.jar to the project directory (use apktool d android.policy.jar) first,
 # and then you can make it by:   make android.policy
 #-----------------------------------------------------------------------------
-vendor_modify_jars := framework services telephony-common wifi-service org.cyanogenmod.platform
+vendor_modify_jars := framework services telephony-common wifi-service
 
 ##############################################################################
 # The value decides which board system directory you want to save.
@@ -93,7 +93,7 @@ vendor_modify_jars := framework services telephony-common wifi-service org.cyano
 # The default value is nothing.
 # You can configure the board system apk name in the value.
 #-----------------------------------------------------------------------------
-board_remove_apps := LogReport NfcNci OperaMax Bridge CosMaster DesktopBackup GameCenter IflytekSpeechService Life Mall MzCompaign MzPay Pedometer Reader RoamingPay EBook GameSDKService NetContactService VoiceAssistant Wallet YellowPage
+#board_remove_apps := LogReport
 
 ##############################################################################
 # The value decides which apk you want to modify, when the apk is based on the board system apk.
@@ -127,8 +127,8 @@ board_remove_apps := LogReport NfcNci OperaMax Bridge CosMaster DesktopBackup Ga
 # The property decide whether hide the soft mainkeys.
 # If 1, hide the soft mainkeys. If 0, display the soft mainkeys.
 # You should configure the property according to your device.
-override_property += \
-    qemu.hw.mainkeys=1
+#override_property += \
+#    qemu.hw.mainkeys=0
 
 
 # The value of the property ro.flyme.romer will be contained in the ota package name.
@@ -138,16 +138,16 @@ override_property += \
 # The default value is Nexus-6P_Unofficial.
 # You should configure the property according to your device and your ID with replace the "Nexus-6P_Unofficial".
 override_property += \
-    ro.flyme.romer=SiFooYee \
-    ro.product.model_romer=GT-I9300_SiFooYee
+    ro.flyme.romer=Unofficial \
+    ro.product.model_romer=Pixel_Unofficial
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
 # The default value is nothing.
 # You can add the property name in the value from the build.prop.
 #-----------------------------------------------------------------------------
-remove_property += \
-    ro.build.selinux
+# remove_property += \
+#     dev.defaultwallpaper
 
 ##############################################################################
 # Defines whether uses assertions in /META-INF/com/google/android/updater-script of the OTA package.
@@ -155,7 +155,7 @@ remove_property += \
 # Set it to be false when you want to escape the verification.
 # Default: true
 #-----------------------------------------------------------------------------
-USE_ASSERTIONS_IN_UPDATER_SCRIPT := false
+#USE_ASSERTIONS_IN_UPDATER_SCRIPT := false
 
 ##############################################################################
 # Defines whether reduces useless resources, only keep the resources of preferred configuration, like current density or locale.
