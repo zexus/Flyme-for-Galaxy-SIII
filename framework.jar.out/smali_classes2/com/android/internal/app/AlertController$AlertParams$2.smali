@@ -89,8 +89,7 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 1090
-    const v2, 0x1020014
+    const v2, #android:id@text1#t
 
     invoke-virtual {p1, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -164,6 +163,10 @@
     invoke-virtual {v0, v1, p3, v2}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
     move-result-object v0
+
+    iget-object v1, p0, Lcom/android/internal/app/AlertController$AlertParams$2;->this$1:Lcom/android/internal/app/AlertController$AlertParams;
+
+    invoke-virtual {v1, v0}, Lcom/android/internal/app/AlertController$AlertParams;->setFlymeListItemViewPadding(Landroid/view/View;)V
 
     return-object v0
 .end method

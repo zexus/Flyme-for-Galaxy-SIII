@@ -326,6 +326,14 @@
     iget-object v7, v0, Lcom/android/server/notification/NotificationManagerService$EnqueueNotificationRunnable;->r:Lcom/android/server/notification/NotificationRecord;
 
     invoke-virtual {v6, v7}, Lcom/android/server/notification/NotificationUsageStats;->registerSuspendedByAdmin(Lcom/android/server/notification/NotificationRecord;)V
+
+    :goto_flyme_0
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/notification/NotificationManagerService$EnqueueNotificationRunnable;->this$0:Lcom/android/server/notification/NotificationManagerService;
+
+    invoke-virtual {v6, v12}, Lcom/android/server/notification/NotificationManagerService;->callFlymeReplyIntent(Landroid/service/notification/StatusBarNotification;)V
+
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -371,7 +379,7 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    goto :goto_1
+    goto :goto_flyme_0
 
     .line 2824
     .end local v1    # "callingUid":I
@@ -477,6 +485,16 @@
 
     invoke-virtual {v6, v7}, Lcom/android/server/notification/NotificationUsageStats;->registerPostedByApp(Lcom/android/server/notification/NotificationRecord;)V
 
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/notification/NotificationManagerService$EnqueueNotificationRunnable;->this$0:Lcom/android/server/notification/NotificationManagerService;
+
+    move-object/from16 v0, p0
+
+    iget-object v7, v0, Lcom/android/server/notification/NotificationManagerService$EnqueueNotificationRunnable;->r:Lcom/android/server/notification/NotificationRecord;
+
+    invoke-virtual {v6, v7}, Lcom/android/server/notification/NotificationManagerService;->addFlymePackageSendNumber(Lcom/android/server/notification/NotificationRecord;)V
+
     .line 2900
     :goto_2
     move-object/from16 v0, p0
@@ -542,19 +560,26 @@
 
     invoke-virtual {v6, v7}, Lcom/android/server/notification/RankingHelper;->sort(Ljava/util/ArrayList;)V
 
-    .line 2912
     invoke-virtual {v13}, Landroid/app/Notification;->getSmallIcon()Landroid/graphics/drawable/Icon;
 
     move-result-object v6
 
     if-eqz v6, :cond_d
 
-    .line 2913
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/notification/NotificationManagerService$EnqueueNotificationRunnable;->this$0:Lcom/android/server/notification/NotificationManagerService;
+
+    invoke-virtual {v6, v13}, Lcom/android/server/notification/NotificationManagerService;->isFlymeNotificationHideFlag(Landroid/app/Notification;)Z
+
+    move-result v6
+
+    if-eqz v6, :cond_flyme_0
+
     if-eqz v14, :cond_c
 
     iget-object v15, v14, Lcom/android/server/notification/NotificationRecord;->sbn:Landroid/service/notification/StatusBarNotification;
 
-    .line 2914
     :goto_3
     move-object/from16 v0, p0
 
@@ -658,23 +683,24 @@
 
     goto/16 :goto_2
 
-    .line 2913
     :cond_c
     const/4 v15, 0x0
 
     .local v15, "oldSbn":Landroid/service/notification/StatusBarNotification;
     goto :goto_3
 
-    .line 2916
     .end local v15    # "oldSbn":Landroid/service/notification/StatusBarNotification;
     :cond_d
-    const-string/jumbo v6, "NotificationService"
+
+    :cond_flyme_0
+
+    const-string v6, "NotificationService"
 
     new-instance v7, Ljava/lang/StringBuilder;
 
     invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v17, "Not posting notification without small icon: "
+    const-string v17, "Not posting notification without small icon: "
 
     move-object/from16 v0, v17
 

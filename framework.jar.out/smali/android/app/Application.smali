@@ -49,6 +49,8 @@
     .end annotation
 .end field
 
+.field private mFlymeUserTintBarAssist:Z
+
 .field public mLoadedApk:Landroid/app/LoadedApk;
 
 
@@ -59,29 +61,27 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 83
     invoke-direct {p0, v1}, Landroid/content/ContextWrapper;-><init>(Landroid/content/Context;)V
 
-    .line 49
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    .line 48
     iput-object v0, p0, Landroid/app/Application;->mComponentCallbacks:Ljava/util/ArrayList;
 
-    .line 51
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    .line 50
     iput-object v0, p0, Landroid/app/Application;->mActivityLifecycleCallbacks:Ljava/util/ArrayList;
 
-    .line 52
     iput-object v1, p0, Landroid/app/Application;->mAssistCallbacks:Ljava/util/ArrayList;
 
-    .line 82
+
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Landroid/app/Application;->mFlymeUserTintBarAssist:Z
+
     return-void
 .end method
 
@@ -923,4 +923,23 @@
     monitor-exit p0
 
     throw v0
+.end method
+
+.method public mzUserTintBar()Z
+    .locals 1
+
+    .prologue
+    iget-boolean v0, p0, Landroid/app/Application;->mFlymeUserTintBarAssist:Z
+
+    return v0
+.end method
+
+.method public setMzUserTintBarAssist(Z)V
+    .locals 0
+    .param p1, "userTintBarAssist"    # Z
+
+    .prologue
+    iput-boolean p1, p0, Landroid/app/Application;->mFlymeUserTintBarAssist:Z
+
+    return-void
 .end method

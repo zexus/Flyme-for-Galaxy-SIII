@@ -3447,19 +3447,17 @@
 
     invoke-virtual {v9, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 808
     iput-object v1, p0, Landroid/app/LoadedApk;->mApplication:Landroid/app/Application;
 
-    .line 810
+    invoke-static {}, Landroid/app/FlymeLoadedApkInjector;->cleanFlymeTypeface()V
+
     if-eqz p2, :cond_5
 
-    .line 812
     :try_start_1
     invoke-virtual {p2, v1}, Landroid/app/Instrumentation;->callApplicationOnCreate(Landroid/app/Application;)V
     :try_end_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
 
-    .line 824
     :cond_5
     iget-object v9, p0, Landroid/app/LoadedApk;->mActivityThread:Landroid/app/ActivityThread;
 
@@ -3670,7 +3668,7 @@
 
     check-cast v9, Ljava/lang/String;
 
-    invoke-direct {p0, v10, v9, v7}, Landroid/app/LoadedApk;->rewriteRValues(Ljava/lang/ClassLoader;Ljava/lang/String;I)V
+    invoke-static {p0, v10, v9, v7}, Landroid/app/FlymeLoadedApkInjector;->rewriteRValues(Landroid/app/LoadedApk;Ljava/lang/ClassLoader;Ljava/lang/String;I)V
 
     goto/16 :goto_1
 
@@ -4318,4 +4316,16 @@
     monitor-exit p0
 
     throw v1
+.end method
+
+.method flymeInvokeMethodRewriteRValues(Ljava/lang/ClassLoader;Ljava/lang/String;I)V
+    .locals 0
+    .param p1, "cl"    # Ljava/lang/ClassLoader;
+    .param p2, "packageName"    # Ljava/lang/String;
+    .param p3, "id"    # I
+
+    .prologue
+    invoke-direct {p0, p1, p2, p3}, Landroid/app/LoadedApk;->rewriteRValues(Ljava/lang/ClassLoader;Ljava/lang/String;I)V
+
+    return-void
 .end method

@@ -1212,16 +1212,19 @@
 
     move-result-object v0
 
-    .line 794
     .local v0, "imiLabel":Ljava/lang/CharSequence;
+    invoke-static/range {p0 .. p2}, Lcom/android/internal/inputmethod/InputMethodUtils;->getFlymeImeAndSubtypeDisplayName(Landroid/content/Context;Landroid/view/inputmethod/InputMethodInfo;Landroid/view/inputmethod/InputMethodSubtype;)Ljava/lang/CharSequence;
+
+    move-result-object v1
+
+    return-object v1
+
     if-eqz p2, :cond_0
 
-    .line 795
     const/4 v1, 0x2
 
     new-array v2, v1, [Ljava/lang/CharSequence;
 
-    .line 796
     invoke-virtual {p1}, Landroid/view/inputmethod/InputMethodInfo;->getPackageName()Ljava/lang/String;
 
     move-result-object v1
@@ -3436,21 +3439,17 @@
     .end annotation
 
     .prologue
-    .line 707
     .local p1, "enabledImis":Ljava/util/List;, "Ljava/util/List<Landroid/view/inputmethod/InputMethodInfo;>;"
     invoke-static {}, Landroid/content/res/Resources;->getSystem()Landroid/content/res/Resources;
 
     move-result-object v12
 
-    .line 708
-    const v13, 0x1070043
+    const v13, #android:array@config_disabledUntilUsedPreinstalledImes#t
 
-    .line 707
     invoke-virtual {v12, v13}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
 
     move-result-object v11
 
-    .line 709
     .local v11, "systemImesDisabledUntilUsed":[Ljava/lang/String;
     if-eqz v11, :cond_0
 
@@ -3669,4 +3668,172 @@
     .end local v10    # "packageName":Ljava/lang/String;
     :cond_8
     return-void
+.end method
+
+.method private static getFlymeImeAndSubtypeDisplayName(Landroid/content/Context;Landroid/view/inputmethod/InputMethodInfo;Landroid/view/inputmethod/InputMethodSubtype;)Ljava/lang/CharSequence;
+    .locals 5
+    .param p0, "context"    # Landroid/content/Context;
+    .param p1, "imi"    # Landroid/view/inputmethod/InputMethodInfo;
+    .param p2, "subtype"    # Landroid/view/inputmethod/InputMethodSubtype;
+
+    .prologue
+    invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    move-result-object v2
+
+    invoke-virtual {p1, v2}, Landroid/view/inputmethod/InputMethodInfo;->loadLabel(Landroid/content/pm/PackageManager;)Ljava/lang/CharSequence;
+
+    move-result-object v0
+
+    .local v0, "imiLabel":Ljava/lang/CharSequence;
+    if-eqz p2, :cond_0
+
+    invoke-virtual {p1}, Landroid/view/inputmethod/InputMethodInfo;->getId()Ljava/lang/String;
+
+    move-result-object v2
+
+    const-string v3, "com.meizu.flyme.input/com.meizu.input.MzInputService"
+
+    invoke-static {v2, v3}, Landroid/text/TextUtils;->equals(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1
+
+    :cond_0
+    return-object v0
+
+    :cond_1
+    invoke-virtual {p1}, Landroid/view/inputmethod/InputMethodInfo;->getPackageName()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {p1}, Landroid/view/inputmethod/InputMethodInfo;->getServiceInfo()Landroid/content/pm/ServiceInfo;
+
+    move-result-object v3
+
+    iget-object v3, v3, Landroid/content/pm/ServiceInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
+
+    invoke-virtual {p2, p0, v2, v3}, Landroid/view/inputmethod/InputMethodSubtype;->getDisplayName(Landroid/content/Context;Ljava/lang/String;Landroid/content/pm/ApplicationInfo;)Ljava/lang/CharSequence;
+
+    move-result-object v1
+
+    .local v1, "subtypeLabel":Ljava/lang/CharSequence;
+    invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2
+
+    return-object v0
+
+    :cond_2
+    const/4 v2, 0x2
+
+    new-array v3, v2, [Ljava/lang/CharSequence;
+
+    const/4 v2, 0x0
+
+    aput-object v1, v3, v2
+
+    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_3
+
+    const-string v2, ""
+
+    :goto_0
+    const/4 v4, 0x1
+
+    aput-object v2, v3, v4
+
+    invoke-static {v3}, Landroid/text/TextUtils;->concat([Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+
+    move-result-object v2
+
+    return-object v2
+
+    :cond_3
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, " - "
+
+    invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    goto :goto_0
+.end method
+
+.method public static isBuildExtAndDefaultIME(Landroid/view/inputmethod/InputMethodInfo;)Z
+    .locals 4
+    .param p0, "imi"    # Landroid/view/inputmethod/InputMethodInfo;
+
+    .prologue
+    invoke-virtual {p0}, Landroid/view/inputmethod/InputMethodInfo;->getId()Ljava/lang/String;
+
+    move-result-object v0
+
+    .local v0, "id":Ljava/lang/String;
+    const-string v3, "com.cootek.smartinputv5/com.cootek.smartinput5.TouchPalIME"
+
+    invoke-static {v0, v3}, Landroid/text/TextUtils;->equals(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_0
+
+    invoke-static {}, Landroid/os/BuildExt;->isProductInternational()Z
+
+    move-result v2
+
+    :goto_0
+    const-string v3, "com.syntellia.fleksy.keyboard/.Fleksy"
+
+    invoke-static {v0, v3}, Landroid/text/TextUtils;->equals(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_1
+
+    invoke-static {}, Landroid/os/BuildExt;->isIndiaVersion()Z
+
+    move-result v1
+
+    :goto_1
+    if-nez v2, :cond_2
+
+    :goto_2
+    return v1
+
+    :cond_0
+    const/4 v2, 0x0
+
+    .local v2, "isInternationalAndIMEIntl":Z
+    goto :goto_0
+
+    .end local v2    # "isInternationalAndIMEIntl":Z
+    :cond_1
+    const/4 v1, 0x0
+
+    .local v1, "isIndiaAndDefIME":Z
+    goto :goto_1
+
+    .end local v1    # "isIndiaAndDefIME":Z
+    :cond_2
+    const/4 v1, 0x1
+
+    goto :goto_2
 .end method

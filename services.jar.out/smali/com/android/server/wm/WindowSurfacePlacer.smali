@@ -1784,15 +1784,26 @@
 
     invoke-virtual {v11, v0, v3, v6, v7}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
 
-    .line 1676
     move-object/from16 v0, v16
 
     invoke-virtual {v0, v11}, Landroid/view/Surface;->unlockCanvasAndPost(Landroid/graphics/Canvas;)V
 
-    .line 1677
     invoke-virtual/range {v16 .. v16}, Landroid/view/Surface;->release()V
 
-    .line 1681
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/wm/WindowSurfacePlacer;->isFlymeCustomTransition()Z
+
+    move-result v3
+
+    if-nez v3, :cond_flyme_0
+
+    invoke-direct/range {p0 .. p2}, Lcom/android/server/wm/WindowSurfacePlacer;->createFlymeCustomThumbnailAnimation(ILcom/android/server/wm/AppWindowToken;)Landroid/view/animation/Animation;
+
+    move-result-object v10
+
+    goto :goto_flyme_0
+
+    :cond_flyme_0
+
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/wm/WindowSurfacePlacer;->mService:Lcom/android/server/wm/WindowManagerService;
@@ -1897,6 +1908,9 @@
     .end local v4    # "appRect":Landroid/graphics/Rect;
     .end local v21    # "win":Lcom/android/server/wm/WindowState;
     :goto_4
+
+    :goto_flyme_0
+
     const-wide/16 v6, 0x2710
 
     invoke-virtual {v10, v6, v7}, Landroid/view/animation/Animation;->restrictDuration(J)V
@@ -1943,6 +1957,12 @@
     move/from16 v0, v19
 
     invoke-virtual {v3, v0, v6}, Lcom/android/server/wm/AppTransition;->getNextAppTransitionStartRect(ILandroid/graphics/Rect;)V
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, v18
+
+    invoke-direct {v0, v1}, Lcom/android/server/wm/WindowSurfacePlacer;->setFlymeThumbnailShown(Lcom/android/server/wm/AppWindowAnimator;)V
 
     .line 1642
     .end local v2    # "surfaceControl":Landroid/view/SurfaceControl;
@@ -2565,12 +2585,12 @@
     :cond_b
     move-object/from16 v4, p0
 
-    .line 1184
     invoke-direct/range {v4 .. v9}, Lcom/android/server/wm/WindowSurfacePlacer;->maybeUpdateTransitToWallpaper(IZZLcom/android/server/wm/WindowState;Lcom/android/server/wm/WindowState;)I
 
     move-result v5
 
-    .line 1191
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/wm/WindowSurfacePlacer;->applyFlymeAnimateWallpaper()V
+
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/wm/WindowSurfacePlacer;->mService:Lcom/android/server/wm/WindowManagerService;
@@ -3695,7 +3715,16 @@
 
     move-result v4
 
+    if-nez v4, :cond_flyme_0
+
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/wm/WindowSurfacePlacer;->isFlymeCustomTransition()Z
+
+    move-result v4
+
     if-eqz v4, :cond_7
+
+
+    :cond_flyme_0
 
     .line 1298
     move-object/from16 v0, p0
@@ -8093,5 +8122,113 @@
 
     .line 1752
     :cond_0
+    return-void
+.end method
+
+.method private applyFlymeAnimateWallpaper()V
+    .locals 2
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/wm/WindowSurfacePlacer;->mService:Lcom/android/server/wm/WindowManagerService;
+
+    iget-object v0, v0, Lcom/android/server/wm/WindowManagerService;->mAppTransition:Lcom/android/server/wm/AppTransition;
+
+    invoke-virtual {v0}, Lcom/android/server/wm/AppTransition;->isCustomTransition()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/server/wm/WindowSurfacePlacer;->mService:Lcom/android/server/wm/WindowManagerService;
+
+    iget-object v1, p0, Lcom/android/server/wm/WindowSurfacePlacer;->mService:Lcom/android/server/wm/WindowManagerService;
+
+    iget-object v1, v1, Lcom/android/server/wm/WindowManagerService;->mAppTransition:Lcom/android/server/wm/AppTransition;
+
+    invoke-virtual {v1}, Lcom/android/server/wm/AppTransition;->applyAnimateWallpaper()Z
+
+    move-result v1
+
+    iput-boolean v1, v0, Lcom/android/server/wm/WindowManagerService;->mAnimateWallpaperWithTarget:Z
+
+    :cond_0
+    return-void
+.end method
+
+.method private createFlymeCustomThumbnailAnimation(ILcom/android/server/wm/AppWindowToken;)Landroid/view/animation/Animation;
+    .locals 6
+    .param p1, "transit"    # I
+    .param p2, "appToken"    # Lcom/android/server/wm/AppWindowToken;
+
+    .prologue
+    const/4 v5, 0x0
+
+    iget-object v4, p0, Lcom/android/server/wm/WindowSurfacePlacer;->mService:Lcom/android/server/wm/WindowManagerService;
+
+    invoke-virtual {v4}, Lcom/android/server/wm/WindowManagerService;->getDefaultDisplayContentLocked()Lcom/android/server/wm/DisplayContent;
+
+    move-result-object v1
+
+    .local v1, "displayContent":Lcom/android/server/wm/DisplayContent;
+    invoke-virtual {v1}, Lcom/android/server/wm/DisplayContent;->getDisplayInfo()Landroid/view/DisplayInfo;
+
+    move-result-object v2
+
+    .local v2, "displayInfo":Landroid/view/DisplayInfo;
+    iget-object v4, p0, Lcom/android/server/wm/WindowSurfacePlacer;->mService:Lcom/android/server/wm/WindowManagerService;
+
+    iget-object v4, v4, Lcom/android/server/wm/WindowManagerService;->mAppTransition:Lcom/android/server/wm/AppTransition;
+
+    invoke-virtual {v4, v2, p1}, Lcom/android/server/wm/AppTransition;->createCustomThumbnailAnimationLocked(Landroid/view/DisplayInfo;I)Landroid/view/animation/Animation;
+
+    move-result-object v0
+
+    .local v0, "anim":Landroid/view/animation/Animation;
+    iget-object v3, p2, Lcom/android/server/wm/AppWindowToken;->mAppAnimator:Lcom/android/server/wm/AppWindowAnimator;
+
+    .local v3, "openingAppAnimator":Lcom/android/server/wm/AppWindowAnimator;
+    iput v5, v3, Lcom/android/server/wm/AppWindowAnimator;->thumbnailForceAboveLayer:I
+
+    iput-boolean v5, v3, Lcom/android/server/wm/AppWindowAnimator;->deferThumbnailDestruction:Z
+
+    return-object v0
+.end method
+
+.method private isFlymeCustomTransition()Z
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/wm/WindowSurfacePlacer;->mService:Lcom/android/server/wm/WindowManagerService;
+
+    iget-object v0, v0, Lcom/android/server/wm/WindowManagerService;->mAppTransition:Lcom/android/server/wm/AppTransition;
+
+    invoke-virtual {v0}, Lcom/android/server/wm/AppTransition;->isCustomTransition()Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method private setFlymeThumbnailShown(Lcom/android/server/wm/AppWindowAnimator;)V
+    .locals 1
+    .param p1, "openingAppAnimator"    # Lcom/android/server/wm/AppWindowAnimator;
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/wm/WindowSurfacePlacer;->mTmpStartRect:Landroid/graphics/Rect;
+
+    iget v0, v0, Landroid/graphics/Rect;->left:I
+
+    iput v0, p1, Lcom/android/server/wm/AppWindowAnimator;->mFlymeThumbnailX:I
+
+    iget-object v0, p0, Lcom/android/server/wm/WindowSurfacePlacer;->mTmpStartRect:Landroid/graphics/Rect;
+
+    iget v0, v0, Landroid/graphics/Rect;->top:I
+
+    iput v0, p1, Lcom/android/server/wm/AppWindowAnimator;->mFlymeThumbnailY:I
+
+    const/4 v0, 0x0
+
+    iput-boolean v0, p1, Lcom/android/server/wm/AppWindowAnimator;->mFlymeThumbnailShown:Z
+
     return-void
 .end method

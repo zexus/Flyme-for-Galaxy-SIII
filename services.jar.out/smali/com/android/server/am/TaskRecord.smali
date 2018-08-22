@@ -3747,42 +3747,40 @@
 
     check-cast v1, Lcom/android/server/am/ActivityRecord;
 
-    .line 784
     .local v1, "top":Lcom/android/server/am/ActivityRecord;
     iget-boolean v2, v1, Lcom/android/server/am/ActivityRecord;->mTaskOverlay:Z
 
-    if-eqz v2, :cond_1
+    if-eqz v2, :cond_flyme_0
 
-    .line 787
     add-int/lit8 p1, p1, -0x1
 
-    .line 791
+
+    :cond_flyme_0
+    invoke-direct/range {p0 .. p2}, Lcom/android/server/am/TaskRecord;->updateFlymeActivityRecordIndex(ILcom/android/server/am/ActivityRecord;)I
+
+    move-result p1
+
     .end local v1    # "top":Lcom/android/server/am/ActivityRecord;
     :cond_1
     iget-object v2, p0, Lcom/android/server/am/TaskRecord;->mActivities:Ljava/util/ArrayList;
 
     invoke-virtual {v2, p1, p2}, Ljava/util/ArrayList;->add(ILjava/lang/Object;)V
 
-    .line 792
     invoke-virtual {p0}, Lcom/android/server/am/TaskRecord;->updateEffectiveIntent()V
 
-    .line 793
     invoke-virtual {p2}, Lcom/android/server/am/ActivityRecord;->isPersistable()Z
 
     move-result v2
 
     if-eqz v2, :cond_2
 
-    .line 794
     iget-object v2, p0, Lcom/android/server/am/TaskRecord;->mService:Lcom/android/server/am/ActivityManagerService;
 
     invoke-virtual {v2, p0, v4}, Lcom/android/server/am/ActivityManagerService;->notifyTaskPersisterLocked(Lcom/android/server/am/TaskRecord;Z)V
 
-    .line 760
     :cond_2
     return-void
 
-    .line 777
     .end local v0    # "size":I
     :cond_3
     iget v2, p0, Lcom/android/server/am/TaskRecord;->taskType:I
@@ -8371,4 +8369,177 @@
     .end local v5    # "colorBackground":I
     :cond_a
     return-void
+.end method
+
+.method private updateFlymeActivityRecordIndex(ILcom/android/server/am/ActivityRecord;)I
+    .locals 4
+    .param p1, "index"    # I
+    .param p2, "r"    # Lcom/android/server/am/ActivityRecord;
+
+    .prologue
+    iget-object v2, p0, Lcom/android/server/am/TaskRecord;->mActivities:Ljava/util/ArrayList;
+
+    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
+
+    move-result v0
+
+    .local v0, "size":I
+    iget-object v2, p0, Lcom/android/server/am/TaskRecord;->mActivities:Ljava/util/ArrayList;
+
+    add-int/lit8 v3, v0, -0x1
+
+    invoke-virtual {v2, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/android/server/am/ActivityRecord;
+
+    .local v1, "top":Lcom/android/server/am/ActivityRecord;
+    iget-boolean v2, v1, Lcom/android/server/am/ActivityRecord;->mTaskOverlay:Z
+
+    if-nez v2, :cond_0
+
+    invoke-virtual {v1}, Lcom/android/server/am/ActivityRecord;->isAccessApplication()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    iget-object v2, p2, Lcom/android/server/am/ActivityRecord;->resultTo:Lcom/android/server/am/ActivityRecord;
+
+    if-eq v2, v1, :cond_0
+
+    add-int/lit8 p1, p1, -0x1
+
+    :cond_0
+    return p1
+.end method
+
+.method public getHomeThumbnail()Landroid/app/ActivityManager$TaskThumbnail;
+    .locals 4
+
+    .prologue
+    const/4 v3, 0x0
+
+    iget-object v2, p0, Lcom/android/server/am/TaskRecord;->stack:Lcom/android/server/am/ActivityStack;
+
+    if-eqz v2, :cond_0
+
+    iget-object v2, p0, Lcom/android/server/am/TaskRecord;->stack:Lcom/android/server/am/ActivityStack;
+
+    invoke-virtual {v2}, Lcom/android/server/am/ActivityStack;->isHomeStack()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    iget-object v2, p0, Lcom/android/server/am/TaskRecord;->stack:Lcom/android/server/am/ActivityStack;
+
+    iget-object v0, v2, Lcom/android/server/am/ActivityStack;->mResumedActivity:Lcom/android/server/am/ActivityRecord;
+
+    .local v0, "resumedActivity":Lcom/android/server/am/ActivityRecord;
+    if-eqz v0, :cond_0
+
+    iget-object v2, v0, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
+
+    if-ne v2, p0, :cond_0
+
+    invoke-virtual {v0}, Lcom/android/server/am/ActivityRecord;->isHomeActivity()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    invoke-virtual {p0, v3}, Lcom/android/server/am/TaskRecord;->setLastThumbnailLocked(Landroid/graphics/Bitmap;)Z
+
+    .end local v0    # "resumedActivity":Lcom/android/server/am/ActivityRecord;
+    :cond_0
+    new-instance v1, Landroid/app/ActivityManager$TaskThumbnail;
+
+    invoke-direct {v1}, Landroid/app/ActivityManager$TaskThumbnail;-><init>()V
+
+    .local v1, "taskThumbnail":Landroid/app/ActivityManager$TaskThumbnail;
+    invoke-virtual {p0, v1}, Lcom/android/server/am/TaskRecord;->getLastThumbnail(Landroid/app/ActivityManager$TaskThumbnail;)V
+
+    return-object v1
+.end method
+
+.method performClearTaskUntilUnlocked(Lcom/android/server/am/ActivityRecord;)Z
+    .locals 7
+    .param p1, "skipped"    # Lcom/android/server/am/ActivityRecord;
+
+    .prologue
+    iget-object v4, p0, Lcom/android/server/am/TaskRecord;->mActivities:Ljava/util/ArrayList;
+
+    invoke-virtual {v4, p1}, Ljava/util/ArrayList;->indexOf(Ljava/lang/Object;)I
+
+    move-result v3
+
+    .local v3, "top":I
+    move v2, v3
+
+    .local v2, "start":I
+    add-int/lit8 v0, v3, -0x1
+
+    .local v0, "activityNdx":I
+    :goto_0
+    if-ltz v0, :cond_1
+
+    iget-object v4, p0, Lcom/android/server/am/TaskRecord;->mActivities:Ljava/util/ArrayList;
+
+    invoke-virtual {v4, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/android/server/am/ActivityRecord;
+
+    .local v1, "r":Lcom/android/server/am/ActivityRecord;
+    iget-boolean v4, v1, Lcom/android/server/am/ActivityRecord;->finishing:Z
+
+    if-eqz v4, :cond_0
+
+    :goto_1
+    add-int/lit8 v0, v0, -0x1
+
+    goto :goto_0
+
+    :cond_0
+    iget-object v4, p0, Lcom/android/server/am/TaskRecord;->mService:Lcom/android/server/am/ActivityManagerService;
+
+    iget-object v4, v4, Lcom/android/server/am/ActivityManagerService;->mFlymeAccessControlService:Lcom/meizu/server/AccessControlService;
+
+    iget-object v5, v1, Lcom/android/server/am/ActivityRecord;->intent:Landroid/content/Intent;
+
+    invoke-virtual {v5}, Landroid/content/Intent;->getComponent()Landroid/content/ComponentName;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Landroid/content/ComponentName;->flattenToString()Ljava/lang/String;
+
+    move-result-object v5
+
+    iget-object v6, v1, Lcom/android/server/am/ActivityRecord;->intent:Landroid/content/Intent;
+
+    invoke-virtual {v4, v5, v6}, Lcom/meizu/server/AccessControlService;->isPopupUnlockingActivity(Ljava/lang/String;Landroid/content/Intent;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_1
+
+    move v2, v0
+
+    goto :goto_1
+
+    .end local v1    # "r":Lcom/android/server/am/ActivityRecord;
+    :cond_1
+    if-gez v2, :cond_2
+
+    const/4 v2, 0x0
+
+    :cond_2
+    invoke-virtual {p0, v2}, Lcom/android/server/am/TaskRecord;->performClearTaskAtIndexLocked(I)V
+
+    const/4 v4, 0x1
+
+    return v4
 .end method

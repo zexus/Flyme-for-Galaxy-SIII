@@ -3305,8 +3305,19 @@
     .param p1, "enabled"    # Z
 
     .prologue
-    .line 1510
     :try_start_0
+    invoke-direct/range {p0 .. p0}, Landroid/net/wifi/WifiManager;->isFlymePermissionGranted()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_flyme_0
+
+    const/4 v1, 0x0
+
+    return v1
+
+    :cond_flyme_0
+
     iget-object v1, p0, Landroid/net/wifi/WifiManager;->mService:Landroid/net/wifi/IWifiManager;
 
     iget-object v2, p0, Landroid/net/wifi/WifiManager;->mContext:Landroid/content/Context;
@@ -3323,11 +3334,9 @@
 
     return v1
 
-    .line 1511
     :catch_0
     move-exception v0
 
-    .line 1512
     .local v0, "e":Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->rethrowFromSystemServer()Ljava/lang/RuntimeException;
 
@@ -3343,7 +3352,6 @@
     .end annotation
 
     .prologue
-    .line 1304
     const/4 v0, 0x0
 
     return v0
@@ -3353,7 +3361,7 @@
     .locals 4
 
     .prologue
-    .line 1275
+    .line 1510
     :try_start_0
     iget-object v1, p0, Landroid/net/wifi/WifiManager;->mService:Landroid/net/wifi/IWifiManager;
 
@@ -3365,16 +3373,15 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1276
     const/4 v1, 0x1
 
     return v1
 
-    .line 1277
+    .line 1511
     :catch_0
     move-exception v0
 
-    .line 1278
+    .line 1512
     .local v0, "e":Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->rethrowFromSystemServer()Ljava/lang/RuntimeException;
 
@@ -3388,7 +3395,7 @@
     .param p1, "workSource"    # Landroid/os/WorkSource;
 
     .prologue
-    .line 1286
+    .line 1275
     :try_start_0
     iget-object v1, p0, Landroid/net/wifi/WifiManager;->mService:Landroid/net/wifi/IWifiManager;
 
@@ -3398,16 +3405,16 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1287
+    .line 1276
     const/4 v1, 0x1
 
     return v1
 
-    .line 1288
+    .line 1277
     :catch_0
     move-exception v0
 
-    .line 1289
+    .line 1278
     .local v0, "e":Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->rethrowFromSystemServer()Ljava/lang/RuntimeException;
 
@@ -3478,4 +3485,27 @@
     move-result v0
 
     return v0
+.end method
+
+.method private isFlymePermissionGranted()Z
+    .locals 1
+
+    .prologue
+    const/16 v0, 0x44
+
+    invoke-static {v0}, Lmeizu/security/FlymePermissionManager;->isFlymePermissionGranted(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x0
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x1
+
+    goto :goto_0
 .end method

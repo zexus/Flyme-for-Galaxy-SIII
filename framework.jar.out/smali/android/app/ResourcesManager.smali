@@ -1723,6 +1723,9 @@
 
     invoke-static {v0, v5, v1}, Landroid/content/res/Resources;->updateSystemConfiguration(Landroid/content/res/Configuration;Landroid/util/DisplayMetrics;Landroid/content/res/CompatibilityInfo;)V
 
+
+    invoke-static/range {v2 .. v2}, Landroid/app/FlymeResourcesManagerInjector;->freeCaches(I)V
+
     .line 822
     invoke-static {}, Landroid/app/ApplicationPackageManager;->configurationChanged()V
 

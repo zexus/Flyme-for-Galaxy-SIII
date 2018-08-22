@@ -67,6 +67,11 @@
 
     .line 1068
     .local v1, "view":Landroid/view/View;
+
+    iget-object v2, p0, Lcom/android/internal/app/AlertController$AlertParams$1;->this$1:Lcom/android/internal/app/AlertController$AlertParams;
+
+    invoke-virtual {v2, v1}, Lcom/android/internal/app/AlertController$AlertParams;->setFlymeListItemViewPadding(Landroid/view/View;)V
+
     iget-object v2, p0, Lcom/android/internal/app/AlertController$AlertParams$1;->this$1:Lcom/android/internal/app/AlertController$AlertParams;
 
     iget-object v2, v2, Lcom/android/internal/app/AlertController$AlertParams;->mCheckedItems:[Z

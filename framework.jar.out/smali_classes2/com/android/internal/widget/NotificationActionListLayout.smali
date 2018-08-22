@@ -110,29 +110,26 @@
     .param p2, "attrs"    # Landroid/util/AttributeSet;
 
     .prologue
-    .line 48
     invoke-direct {p0, p1, p2}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 40
     const/4 v0, 0x0
 
     iput v0, p0, Lcom/android/internal/widget/NotificationActionListLayout;->mTotalWidth:I
 
-    .line 41
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lcom/android/internal/widget/NotificationActionListLayout;->mMeasureOrderTextViews:Ljava/util/ArrayList;
 
-    .line 42
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lcom/android/internal/widget/NotificationActionListLayout;->mMeasureOrderOther:Ljava/util/ArrayList;
 
-    .line 47
+    invoke-direct/range {p0 .. p0}, Lcom/android/internal/widget/NotificationActionListLayout;->initFlymeNotificationActionListLayout()V
+
     return-void
 .end method
 
@@ -1246,4 +1243,25 @@
     iget-object v0, p0, Lcom/android/internal/widget/NotificationActionListLayout;->mDefaultBackground:Landroid/graphics/drawable/Drawable;
 
     goto :goto_1
+.end method
+
+.method private initFlymeNotificationActionListLayout()V
+    .locals 3
+
+    .prologue
+    invoke-virtual {p0}, Lcom/android/internal/widget/NotificationActionListLayout;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    sget v1, Lcom/flyme/internal/R$drawable;->mz_notification_actions_divider:I
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/res/Resources;->getDrawable(ILandroid/content/res/Resources$Theme;)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v0
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/widget/NotificationActionListLayout;->setDividerDrawable(Landroid/graphics/drawable/Drawable;)V
+
+    return-void
 .end method

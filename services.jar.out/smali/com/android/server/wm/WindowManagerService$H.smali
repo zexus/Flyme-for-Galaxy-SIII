@@ -143,24 +143,29 @@
     .param p1, "msg"    # Landroid/os/Message;
 
     .prologue
-    .line 8347
     move-object/from16 v0, p1
 
     iget v2, v0, Landroid/os/Message;->what:I
 
     packed-switch v2, :pswitch_data_0
 
-    .line 8343
     :cond_0
     :goto_0
     :pswitch_0
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/server/wm/WindowManagerService$H;->this$0:Lcom/android/server/wm/WindowManagerService;
+
+    move-object/from16 v0, p1
+
+    invoke-static {v2, v0}, Lcom/android/server/wm/FlymeWindowManagerServiceInjector;->handleFlymeMessage(Lcom/android/server/wm/WindowManagerService;Landroid/os/Message;)V
+
     return-void
 
-    .line 8352
     :pswitch_1
     const/4 v15, 0x0
 
-    .line 8354
     .local v15, "accessibilityController":Lcom/android/server/wm/AccessibilityController;
     move-object/from16 v0, p0
 

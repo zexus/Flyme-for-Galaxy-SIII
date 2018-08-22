@@ -510,3 +510,35 @@
 
     return-object v0
 .end method
+
+.method public isKeyguardShowing()Z
+    .locals 3
+
+    .prologue
+    :try_start_0
+    new-instance v1, Landroid/view/FlymeExtIWindowManagerProxy;
+
+    invoke-direct {v1}, Landroid/view/FlymeExtIWindowManagerProxy;-><init>()V
+
+    iget-object v2, p0, Landroid/app/KeyguardManager;->mWM:Landroid/view/IWindowManager;
+
+    invoke-interface {v2}, Landroid/view/IWindowManager;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Landroid/view/FlymeExtIWindowManagerProxy;->isKeyguardShowing(Landroid/os/IBinder;)Z
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result v1
+
+    return v1
+
+    :catch_0
+    move-exception v0
+
+    .local v0, "e":Landroid/os/RemoteException;
+    const/4 v1, 0x0
+
+    return v1
+.end method

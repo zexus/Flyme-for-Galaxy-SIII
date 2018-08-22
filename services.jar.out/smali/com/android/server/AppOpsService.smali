@@ -24,6 +24,9 @@
 
 
 # static fields
+
+.field mFlymeLooper:Landroid/os/Looper;
+
 .field static final DEBUG:Z = false
 
 .field static final DEFAULT_POLICY_FILE:Ljava/lang/String; = "/system/etc/appops_policy.xml"
@@ -7461,6 +7464,9 @@
     return v6
 
     :cond_3
+
+    invoke-direct/range {p0 .. p4}, Lcom/android/server/AppOpsService;->askFlymeOpsOperation(ILjava/lang/String;ILjava/lang/String;)V
+
     move-object v4, p0
 
     move v5, p1
@@ -7841,16 +7847,16 @@
 
     if-gtz v2, :cond_2
 
-    .line 434
     iget-object v2, p0, Lcom/android/server/AppOpsService;->mUidStates:Landroid/util/SparseArray;
 
     invoke-virtual {v2, p1}, Landroid/util/SparseArray;->remove(I)V
 
-    .line 437
+
+    invoke-static/range {p1 .. p1}, Lmeizu/security/FlymePermissionManager;->clearOpsOperation(I)V
+
     :cond_2
     if-eqz v0, :cond_3
 
-    .line 438
     invoke-direct {p0}, Lcom/android/server/AppOpsService;->scheduleFastWriteLocked()V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
@@ -12248,50 +12254,42 @@
     .locals 3
 
     .prologue
-    .line 453
-    const-string/jumbo v1, "AppOps"
+    const-string v1, "AppOps"
 
-    const-string/jumbo v2, "Writing app ops before shutdown..."
+    const-string v2, "Writing app ops before shutdown..."
 
     invoke-static {v1, v2}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 454
     const/4 v0, 0x0
 
-    .line 455
     .local v0, "doWrite":Z
     monitor-enter p0
 
-    .line 456
     :try_start_0
     iget-boolean v1, p0, Lcom/android/server/AppOpsService;->mWriteScheduled:Z
 
     if-eqz v1, :cond_0
 
-    .line 457
     const/4 v1, 0x0
 
     iput-boolean v1, p0, Lcom/android/server/AppOpsService;->mWriteScheduled:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 458
     const/4 v0, 0x1
 
     :cond_0
     monitor-exit p0
 
-    .line 461
     if-eqz v0, :cond_1
 
-    .line 462
     invoke-virtual {p0}, Lcom/android/server/AppOpsService;->writeState()V
 
-    .line 452
+    invoke-static {}, Lmeizu/security/FlymePermissionManager;->writeOpAskState()V
+
     :cond_1
     return-void
 
-    .line 455
     :catchall_0
     move-exception v1
 
@@ -13363,17 +13361,14 @@
     :cond_7
     monitor-exit p0
 
-    .line 352
     const-class v13, Landroid/os/storage/MountServiceInternal;
 
-    .line 351
     invoke-static {v13}, Lcom/android/server/LocalServices;->getService(Ljava/lang/Class;)Ljava/lang/Object;
 
     move-result-object v7
 
     check-cast v7, Landroid/os/storage/MountServiceInternal;
 
-    .line 354
     .local v7, "mountServiceInternal":Landroid/os/storage/MountServiceInternal;
     new-instance v13, Lcom/android/server/AppOpsService$4;
 
@@ -13401,18 +13396,15 @@
 
     iput-object v13, v0, Lcom/android/server/AppOpsService;->mPowerManager:Landroid/os/PowerManager;
 
-    .line 380
     new-instance v3, Landroid/content/IntentFilter;
 
     invoke-direct {v3}, Landroid/content/IntentFilter;-><init>()V
 
-    .line 381
     .local v3, "filter":Landroid/content/IntentFilter;
-    const-string/jumbo v13, "android.intent.action.SCREEN_OFF"
+    const-string v13, "android.intent.action.SCREEN_OFF"
 
     invoke-virtual {v3, v13}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 382
     move-object/from16 v0, p0
 
     iget-object v13, v0, Lcom/android/server/AppOpsService;->mContext:Landroid/content/Context;
@@ -13460,12 +13452,13 @@
 
     if-ltz v0, :cond_0
 
-    .line 446
     iget-object v0, p0, Lcom/android/server/AppOpsService;->mUidStates:Landroid/util/SparseArray;
 
     invoke-virtual {v0, p1}, Landroid/util/SparseArray;->remove(I)V
 
-    .line 447
+
+    invoke-static/range {p1 .. p1}, Lmeizu/security/FlymePermissionManager;->clearOpsOperation(I)V
+
     invoke-direct {p0}, Lcom/android/server/AppOpsService;->scheduleFastWriteLocked()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
@@ -14681,4 +14674,49 @@
     .catchall {:try_start_b .. :try_end_b} :catchall_1
 
     goto :goto_6
+.end method
+
+
+.method private askFlymeOpsOperation(ILjava/lang/String;ILjava/lang/String;)V
+    .locals 3
+    .param p1, "code"    # I
+    .param p2, "proxyPackageName"    # Ljava/lang/String;
+    .param p3, "proxiedUid"    # I
+    .param p4, "proxiedPackageName"    # Ljava/lang/String;
+
+    .prologue
+    invoke-static {p3, p4}, Lcom/android/server/AppOpsService;->resolvePackageName(ILjava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    .local v0, "resolveProxiedPackageName":Ljava/lang/String;
+    invoke-static {}, Landroid/os/Looper;->myLooper()Landroid/os/Looper;
+
+    move-result-object v1
+
+    iget-object v2, p0, Lcom/android/server/AppOpsService;->mFlymeLooper:Landroid/os/Looper;
+
+    if-eq v1, v2, :cond_0
+
+    invoke-static {p1}, Landroid/app/AppOpsManager;->opToSwitch(I)I
+
+    move-result v1
+
+    invoke-static {p3, v0, v1}, Lmeizu/security/FlymePermissionManager;->askOpsOperation(ILjava/lang/String;I)V
+
+    :cond_0
+    return-void
+.end method
+
+.method private initFlymeExtraFields()V
+    .locals 1
+
+    .prologue
+    invoke-static {}, Landroid/os/Looper;->myLooper()Landroid/os/Looper;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/server/AppOpsService;->mFlymeLooper:Landroid/os/Looper;
+
+    return-void
 .end method

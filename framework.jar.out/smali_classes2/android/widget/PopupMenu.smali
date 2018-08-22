@@ -13,6 +13,9 @@
 
 
 # instance fields
+
+.field private mFlymeLayoutMode:I
+
 .field private final mAnchor:Landroid/view/View;
 
 .field private final mContext:Landroid/content/Context;
@@ -75,8 +78,7 @@
     .param p3, "gravity"    # I
 
     .prologue
-    .line 74
-    const v4, 0x1010300
+    const v4, #android:attr@popupMenuStyle#t
 
     const/4 v5, 0x0
 
@@ -160,6 +162,8 @@
     invoke-direct {v1, p0}, Landroid/widget/PopupMenu$2;-><init>(Landroid/widget/PopupMenu;)V
 
     invoke-virtual {v0, v1}, Lcom/android/internal/view/menu/MenuPopupHelper;->setOnDismissListener(Landroid/widget/PopupWindow$OnDismissListener;)V
+
+    invoke-direct/range {p0 .. p0}, Landroid/widget/PopupMenu;->initFlymeExtraFields()V
 
     .line 95
     return-void
@@ -309,5 +313,76 @@
     invoke-virtual {v0}, Lcom/android/internal/view/menu/MenuPopupHelper;->show()V
 
     .line 225
+    return-void
+.end method
+
+.method private initFlymeExtraFields()V
+    .locals 1
+
+    .prologue
+    const/4 v0, -0x1
+
+    iput v0, p0, Landroid/widget/PopupMenu;->mFlymeLayoutMode:I
+
+    return-void
+.end method
+
+.method public adjustWindowPositionForMz(Z)V
+    .locals 0
+    .param p1, "adjust"    # Z
+
+    return-void
+.end method
+
+.method public setCenterHorizontal(Z)V
+    .locals 0
+    .param p1, "center"    # Z
+
+    .prologue
+    return-void
+.end method
+
+.method public setForceShowIcon(Z)V
+    .locals 1
+    .param p1, "showIcon"    # Z
+
+    .prologue
+    iget-object v0, p0, Landroid/widget/PopupMenu;->mPopup:Lcom/android/internal/view/menu/MenuPopupHelper;
+
+    if-nez v0, :cond_0
+
+    return-void
+
+    :cond_0
+    iget-object v0, p0, Landroid/widget/PopupMenu;->mPopup:Lcom/android/internal/view/menu/MenuPopupHelper;
+
+    invoke-virtual {v0, p1}, Lcom/android/internal/view/menu/MenuPopupHelper;->setForceShowIcon(Z)V
+
+    return-void
+.end method
+
+.method public setMaxHeight(I)V
+    .locals 0
+    .param p1, "height"    # I
+
+    .prologue
+    return-void
+.end method
+
+.method public setPopupLayoutMode(I)V
+    .locals 0
+    .param p1, "mode"    # I
+
+    .prologue
+    iput p1, p0, Landroid/widget/PopupMenu;->mFlymeLayoutMode:I
+
+    return-void
+.end method
+
+.method public setPopupWidth(I)V
+    .locals 0
+    .param p1, "width"    # I
+
+    .prologue
     return-void
 .end method

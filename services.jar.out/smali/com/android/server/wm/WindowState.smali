@@ -32,6 +32,9 @@
 
 
 # instance fields
+
+.field mWindowStateExt:Lcom/android/server/wm/WindowStateExt;
+
 .field mAnimateReplacingWindow:Z
 
 .field mAnimatingExit:Z
@@ -1468,28 +1471,25 @@
 
     iget-object v12, v12, Lcom/android/server/wm/AppWindowToken;->mInputApplicationHandle:Lcom/android/server/input/InputApplicationHandle;
 
-    .line 666
     :goto_e
     invoke-virtual/range {p10 .. p10}, Lcom/android/server/wm/DisplayContent;->getDisplayId()I
 
     move-result v14
 
-    .line 664
     invoke-direct {v13, v12, p0, v14}, Lcom/android/server/input/InputWindowHandle;-><init>(Lcom/android/server/input/InputApplicationHandle;Ljava/lang/Object;I)V
 
     iput-object v13, p0, Lcom/android/server/wm/WindowState;->mInputWindowHandle:Lcom/android/server/input/InputWindowHandle;
 
-    .line 524
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/wm/WindowState;->initFlymeExtraFields()V
+
     return-void
 
-    .line 639
     .restart local v11    # "parent":Lcom/android/server/wm/WindowToken;
     :cond_13
     move-object v3, v11
 
     goto :goto_c
 
-    .line 645
     .end local v11    # "parent":Lcom/android/server/wm/WindowToken;
     .restart local v2    # "appDisplay":Lcom/android/server/wm/DisplayContent;
     :cond_14
@@ -14041,4 +14041,99 @@
     iget-boolean v0, p0, Lcom/android/server/wm/WindowState;->mWasVisibleBeforeClientHidden:Z
 
     return v0
+.end method
+
+.method private computeFlymeFrameLw()V
+    .locals 3
+
+    .prologue
+    iget-object v2, p0, Lcom/android/server/wm/WindowState;->mWindowStateExt:Lcom/android/server/wm/WindowStateExt;
+
+    invoke-virtual {v2}, Lcom/android/server/wm/WindowStateExt;->isInMovedMode()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1
+
+    iget-object v2, p0, Lcom/android/server/wm/WindowState;->mWindowStateExt:Lcom/android/server/wm/WindowStateExt;
+
+    invoke-virtual {v2}, Lcom/android/server/wm/WindowStateExt;->getMovedX()I
+
+    move-result v0
+
+    .local v0, "moveX":I
+    iget-object v2, p0, Lcom/android/server/wm/WindowState;->mWindowStateExt:Lcom/android/server/wm/WindowStateExt;
+
+    invoke-virtual {v2}, Lcom/android/server/wm/WindowStateExt;->getMovedY()I
+
+    move-result v1
+
+    .local v1, "moveY":I
+    iget-object v2, p0, Lcom/android/server/wm/WindowState;->mAttachedWindow:Lcom/android/server/wm/WindowState;
+
+    if-nez v2, :cond_0
+
+    iget-object v2, p0, Lcom/android/server/wm/WindowState;->mFrame:Landroid/graphics/Rect;
+
+    invoke-virtual {v2, v0, v1}, Landroid/graphics/Rect;->offset(II)V
+
+    iget-object v2, p0, Lcom/android/server/wm/WindowState;->mContentFrame:Landroid/graphics/Rect;
+
+    invoke-virtual {v2, v0, v1}, Landroid/graphics/Rect;->offset(II)V
+
+    iget-object v2, p0, Lcom/android/server/wm/WindowState;->mVisibleFrame:Landroid/graphics/Rect;
+
+    invoke-virtual {v2, v0, v1}, Landroid/graphics/Rect;->offset(II)V
+
+    :cond_0
+    iget-object v2, p0, Lcom/android/server/wm/WindowState;->mWindowStateExt:Lcom/android/server/wm/WindowStateExt;
+
+    iput v0, v2, Lcom/android/server/wm/WindowStateExt;->mPreMovedShowX:I
+
+    iget-object v2, p0, Lcom/android/server/wm/WindowState;->mWindowStateExt:Lcom/android/server/wm/WindowStateExt;
+
+    iput v1, v2, Lcom/android/server/wm/WindowStateExt;->mPreMovedShowY:I
+
+    .end local v0    # "moveX":I
+    .end local v1    # "moveY":I
+    :cond_1
+    return-void
+.end method
+
+.method private initFlymeExtraFields()V
+    .locals 1
+
+    .prologue
+    new-instance v0, Lcom/android/server/wm/WindowStateExt;
+
+    invoke-direct {v0, p0}, Lcom/android/server/wm/WindowStateExt;-><init>(Lcom/android/server/wm/WindowState;)V
+
+    iput-object v0, p0, Lcom/android/server/wm/WindowState;->mWindowStateExt:Lcom/android/server/wm/WindowStateExt;
+
+    return-void
+.end method
+
+.method public isInMovedMode()Z
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/wm/WindowState;->mWindowStateExt:Lcom/android/server/wm/WindowStateExt;
+
+    invoke-virtual {v0}, Lcom/android/server/wm/WindowStateExt;->isInMovedMode()Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public setBackupFlag(I)V
+    .locals 1
+    .param p1, "flag"    # I
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/wm/WindowState;->mWindowStateExt:Lcom/android/server/wm/WindowStateExt;
+
+    iput p1, v0, Lcom/android/server/wm/WindowStateExt;->mBackupFlags:I
+
+    return-void
 .end method

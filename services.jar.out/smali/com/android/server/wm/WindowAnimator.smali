@@ -1608,7 +1608,6 @@
     :goto_3
     or-int/2addr v0, v8
 
-    .line 262
     iget-object v8, p1, Lcom/android/server/wm/WindowState;->mAttrs:Landroid/view/WindowManager$LayoutParams;
 
     iget v8, v8, Landroid/view/WindowManager$LayoutParams;->type:I
@@ -1622,15 +1621,13 @@
     :goto_4
     or-int/2addr v0, v8
 
-    .line 264
     if-eqz v1, :cond_2
 
-    .line 265
     iget-object v8, p1, Lcom/android/server/wm/WindowState;->mAppToken:Lcom/android/server/wm/AppWindowToken;
 
     if-eq v1, v8, :cond_1
 
-    .line 267
+    .line 262
     iget-object v8, p1, Lcom/android/server/wm/WindowState;->mAttrs:Landroid/view/WindowManager$LayoutParams;
 
     iget v8, v8, Landroid/view/WindowManager$LayoutParams;->flags:I
@@ -3839,11 +3836,18 @@
 
     move-result-object v4
 
-    .line 532
     .restart local v4    # "a":Landroid/view/animation/Animation;
     if-eqz v4, :cond_23
 
-    .line 535
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, v26
+
+    invoke-direct {v0, v1, v4}, Lcom/android/server/wm/WindowAnimator;->getFlymeLauncherUnlockAnimation(Lcom/android/server/wm/WindowStateAnimator;Landroid/view/animation/Animation;)Landroid/view/animation/Animation;
+
+    move-result-object v4
+
     const/16 v29, 0x1
 
     move-object/from16 v0, v26
@@ -4721,4 +4725,126 @@
     .line 981
     :cond_0
     return-void
+.end method
+
+.method private getFlymeLauncherUnlockAnimation(Lcom/android/server/wm/WindowStateAnimator;Landroid/view/animation/Animation;)Landroid/view/animation/Animation;
+    .locals 9
+    .param p1, "winAnimator"    # Lcom/android/server/wm/WindowStateAnimator;
+    .param p2, "a"    # Landroid/view/animation/Animation;
+
+    .prologue
+    const/4 v8, 0x1
+
+    const/4 v5, 0x0
+
+    const-string v0, "com.meizu.flyme.launcher"
+
+    .local v0, "LAUNCHER_PACKAGENAME":Ljava/lang/String;
+    const-string v3, "com.meizu.flyme.launcher"
+
+    iget-object v4, p1, Lcom/android/server/wm/WindowStateAnimator;->mWin:Lcom/android/server/wm/WindowState;
+
+    invoke-virtual {v4}, Lcom/android/server/wm/WindowState;->getOwningPackage()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    .local v1, "isLauncher":Z
+    if-eqz v1, :cond_0
+
+    const/high16 v3, 0x43df0000    # 446.0f
+
+    iget-object v4, p0, Lcom/android/server/wm/WindowAnimator;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v4}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    move-result-object v4
+
+    invoke-static {v8, v3, v4}, Landroid/util/TypedValue;->applyDimension(IFLandroid/util/DisplayMetrics;)F
+
+    move-result v2
+
+    .local v2, "translationY":F
+    new-instance p2, Landroid/view/animation/TranslateAnimation;
+
+    .end local p2    # "a":Landroid/view/animation/Animation;
+    invoke-direct {p2, v5, v5, v2, v5}, Landroid/view/animation/TranslateAnimation;-><init>(FFFF)V
+
+    .restart local p2    # "a":Landroid/view/animation/Animation;
+    const-wide/16 v4, 0x226
+
+    invoke-virtual {p2, v4, v5}, Landroid/view/animation/Animation;->setDuration(J)V
+
+    new-instance v3, Landroid/view/animation/PathInterpolator;
+
+    const v4, 0x3de147ae    # 0.11f
+
+    const v5, 0x3f666666    # 0.9f
+
+    const v6, 0x3e4ccccd    # 0.2f
+
+    const/high16 v7, 0x3f800000    # 1.0f
+
+    invoke-direct {v3, v4, v5, v6, v7}, Landroid/view/animation/PathInterpolator;-><init>(FFFF)V
+
+    invoke-virtual {p2, v3}, Landroid/view/animation/Animation;->setInterpolator(Landroid/view/animation/Interpolator;)V
+
+    invoke-virtual {p2, v8}, Landroid/view/animation/Animation;->setDetachWallpaper(Z)V
+
+    .end local v2    # "translationY":F
+    :cond_0
+    return-object p2
+.end method
+
+.method private isFlymeAllowWhenLocked(Lcom/android/server/wm/WindowState;Z)Z
+    .locals 4
+    .param p1, "win"    # Lcom/android/server/wm/WindowState;
+    .param p2, "allowWhenLocked"    # Z
+
+    .prologue
+    const/high16 v3, 0x20000
+
+    const/4 v0, 0x1
+
+    const/4 v1, 0x0
+
+    iget-object v2, p1, Lcom/android/server/wm/WindowState;->mAttrs:Landroid/view/WindowManager$LayoutParams;
+
+    iget v2, v2, Landroid/view/WindowManager$LayoutParams;->meizuFlags:I
+
+    and-int/2addr v2, v3
+
+    if-nez v2, :cond_0
+
+    iget-object v2, p1, Lcom/android/server/wm/WindowState;->mAttachedWindow:Lcom/android/server/wm/WindowState;
+
+    if-eqz v2, :cond_1
+
+    iget-object v2, p1, Lcom/android/server/wm/WindowState;->mAttachedWindow:Lcom/android/server/wm/WindowState;
+
+    iget-object v2, v2, Lcom/android/server/wm/WindowState;->mAttrs:Landroid/view/WindowManager$LayoutParams;
+
+    iget v2, v2, Landroid/view/WindowManager$LayoutParams;->meizuFlags:I
+
+    and-int/2addr v2, v3
+
+    if-eqz v2, :cond_1
+
+    :cond_0
+    :goto_0
+    or-int/2addr p2, v0
+
+    return p2
+
+    :cond_1
+    move v0, v1
+
+    goto :goto_0
 .end method

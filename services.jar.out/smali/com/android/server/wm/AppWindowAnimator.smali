@@ -24,6 +24,13 @@
 
 
 # instance fields
+
+.field mFlymeThumbnailShown:Z
+
+.field mFlymeThumbnailX:I
+
+.field mFlymeThumbnailY:I
+
 .field allDrawn:Z
 
 .field animLayerAdjustment:I
@@ -353,6 +360,9 @@
 
     invoke-virtual {v6, v0, v1, v7}, Landroid/view/animation/Animation;->getTransformation(JLandroid/view/animation/Transformation;)Z
 
+
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/wm/AppWindowAnimator;->setFlymePreTranslate()V
+
     .line 262
     iget-object v6, p0, Lcom/android/server/wm/AppWindowAnimator;->mAnimator:Lcom/android/server/wm/WindowAnimator;
 
@@ -456,10 +466,11 @@
 
     aget v9, v4, v9
 
-    .line 291
     invoke-virtual {v6, v5, v7, v8, v9}, Landroid/view/SurfaceControl;->setMatrix(FFFF)V
 
-    .line 293
+
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/wm/AppWindowAnimator;->updateFlymeThumbnailVisibility()V
+
     iget-object v5, p0, Lcom/android/server/wm/AppWindowAnimator;->thumbnail:Landroid/view/SurfaceControl;
 
     iget-object v6, p0, Lcom/android/server/wm/AppWindowAnimator;->thumbnailTransformation:Landroid/view/animation/Transformation;
@@ -566,16 +577,16 @@
 
     invoke-virtual {v0, v1}, Lcom/android/server/wm/WindowSurfacePlacer;->destroyAfterTransaction(Landroid/view/SurfaceControl;)V
 
-    .line 201
     iput-object v2, p0, Lcom/android/server/wm/AppWindowAnimator;->thumbnail:Landroid/view/SurfaceControl;
 
-    .line 203
+
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/wm/AppWindowAnimator;->clearFlymeThumbnail()V
+
     :cond_0
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/server/wm/AppWindowAnimator;->deferThumbnailDestruction:Z
 
-    .line 197
     return-void
 .end method
 
@@ -1646,4 +1657,104 @@
     .end local v4    # "winAnimator":Lcom/android/server/wm/WindowStateAnimator;
     :cond_3
     return-void
+.end method
+
+.method private clearFlymeThumbnail()V
+    .locals 1
+
+    .prologue
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lcom/android/server/wm/AppWindowAnimator;->mFlymeThumbnailShown:Z
+
+    return-void
+.end method
+
+.method private setFlymePreTranslate()V
+    .locals 3
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/wm/AppWindowAnimator;->thumbnailTransformation:Landroid/view/animation/Transformation;
+
+    invoke-virtual {v0}, Landroid/view/animation/Transformation;->getMatrix()Landroid/graphics/Matrix;
+
+    move-result-object v0
+
+    iget v1, p0, Lcom/android/server/wm/AppWindowAnimator;->mFlymeThumbnailX:I
+
+    int-to-float v1, v1
+
+    iget v2, p0, Lcom/android/server/wm/AppWindowAnimator;->mFlymeThumbnailY:I
+
+    int-to-float v2, v2
+
+    invoke-virtual {v0, v1, v2}, Landroid/graphics/Matrix;->preTranslate(FF)Z
+
+    return-void
+.end method
+
+.method private updateFlymeThumbnailVisibility()V
+    .locals 4
+
+    .prologue
+    const/4 v2, 0x1
+
+    .local v2, "showThumbnail":Z
+    iget-object v3, p0, Lcom/android/server/wm/AppWindowAnimator;->mAllAppWinAnimators:Ljava/util/ArrayList;
+
+    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
+
+    move-result v0
+
+    .local v0, "N":I
+    const/4 v1, 0x0
+
+    .local v1, "i":I
+    :goto_0
+    if-ge v1, v0, :cond_0
+
+    iget-object v3, p0, Lcom/android/server/wm/AppWindowAnimator;->mAllAppWinAnimators:Ljava/util/ArrayList;
+
+    invoke-virtual {v3, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/server/wm/WindowStateAnimator;
+
+    iget-boolean v3, v3, Lcom/android/server/wm/WindowStateAnimator;->mLastHidden:Z
+
+    if-eqz v3, :cond_2
+
+    const/4 v2, 0x0
+
+    :cond_0
+    iget-boolean v3, p0, Lcom/android/server/wm/AppWindowAnimator;->mFlymeThumbnailShown:Z
+
+    if-eq v3, v2, :cond_1
+
+    iput-boolean v2, p0, Lcom/android/server/wm/AppWindowAnimator;->mFlymeThumbnailShown:Z
+
+    iget-boolean v3, p0, Lcom/android/server/wm/AppWindowAnimator;->mFlymeThumbnailShown:Z
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lcom/android/server/wm/AppWindowAnimator;->thumbnail:Landroid/view/SurfaceControl;
+
+    invoke-virtual {v3}, Landroid/view/SurfaceControl;->show()V
+
+    :cond_1
+    :goto_1
+    return-void
+
+    :cond_2
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+
+    :cond_3
+    iget-object v3, p0, Lcom/android/server/wm/AppWindowAnimator;->thumbnail:Landroid/view/SurfaceControl;
+
+    invoke-virtual {v3}, Landroid/view/SurfaceControl;->hide()V
+
+    goto :goto_1
 .end method

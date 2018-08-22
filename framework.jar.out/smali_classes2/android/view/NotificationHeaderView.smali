@@ -21,6 +21,9 @@
 
 
 # instance fields
+
+.field private mFlymeTime:Landroid/view/View;
+
 .field private mAppName:Landroid/view/View;
 
 .field private mBackground:Landroid/graphics/drawable/Drawable;
@@ -170,76 +173,62 @@
     .param p4, "defStyleRes"    # I
 
     .prologue
-    .line 108
     invoke-direct {p0, p1, p2, p3, p4}, Landroid/view/ViewGroup;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;II)V
 
-    .line 46
     new-instance v0, Landroid/view/NotificationHeaderView$HeaderTouchListener;
 
     invoke-direct {v0, p0}, Landroid/view/NotificationHeaderView$HeaderTouchListener;-><init>(Landroid/view/NotificationHeaderView;)V
 
     iput-object v0, p0, Landroid/view/NotificationHeaderView;->mTouchListener:Landroid/view/NotificationHeaderView$HeaderTouchListener;
 
-    .line 58
     new-instance v0, Landroid/view/NotificationHeaderView$1;
 
     invoke-direct {v0, p0}, Landroid/view/NotificationHeaderView$1;-><init>(Landroid/view/NotificationHeaderView;)V
 
     iput-object v0, p0, Landroid/view/NotificationHeaderView;->mProvider:Landroid/view/ViewOutlineProvider;
 
-    .line 67
     new-instance v0, Landroid/view/NotificationHeaderView$2;
 
     invoke-direct {v0, p0}, Landroid/view/NotificationHeaderView$2;-><init>(Landroid/view/NotificationHeaderView;)V
 
     iput-object v0, p0, Landroid/view/NotificationHeaderView;->mExpandDelegate:Landroid/view/View$AccessibilityDelegate;
 
-    .line 109
     invoke-virtual {p0}, Landroid/view/NotificationHeaderView;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
 
-    .line 110
-    const v1, 0x105004d
+    const v1, #android:dimen@notification_header_shrink_min_width#t
 
-    .line 109
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
     move-result v0
 
     iput v0, p0, Landroid/view/NotificationHeaderView;->mChildMinWidth:I
 
-    .line 111
     invoke-virtual {p0}, Landroid/view/NotificationHeaderView;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
 
-    .line 112
-    const v1, 0x1050045
+    const v1, #android:dimen@notification_content_margin_end#t
 
-    .line 111
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
     move-result v0
 
     iput v0, p0, Landroid/view/NotificationHeaderView;->mContentEndMargin:I
 
-    .line 113
     invoke-virtual {p0}, Landroid/view/NotificationHeaderView;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
 
-    .line 114
-    const v1, 0x105004b
+    const v1, #android:dimen@notification_header_background_height#t
 
-    .line 113
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
     move-result v0
 
     iput v0, p0, Landroid/view/NotificationHeaderView;->mHeaderBackgroundHeight:I
 
-    .line 107
     return-void
 .end method
 
@@ -292,15 +281,12 @@
     .locals 3
 
     .prologue
-    .line 294
     iget-boolean v1, p0, Landroid/view/NotificationHeaderView;->mExpanded:Z
 
     if-eqz v1, :cond_0
 
-    .line 295
-    const v0, 0x1080319
+    sget v0, Lcom/flyme/internal/R$drawable;->ic_collapse_notification:I
 
-    .line 299
     .local v0, "drawableId":I
     :goto_0
     iget-object v1, p0, Landroid/view/NotificationHeaderView;->mExpandButton:Landroid/widget/ImageView;
@@ -328,7 +314,7 @@
     .line 297
     .end local v0    # "drawableId":I
     :cond_0
-    const v0, 0x108034d
+    sget v0, Lcom/flyme/internal/R$drawable;->ic_expand_notification:I
 
     .restart local v0    # "drawableId":I
     goto :goto_0
@@ -517,11 +503,9 @@
     .locals 2
 
     .prologue
-    .line 119
     invoke-super {p0}, Landroid/view/ViewGroup;->onFinishInflate()V
 
-    .line 120
-    const v0, 0x10203b1
+    const v0, #android:id@app_name_text#t
 
     invoke-virtual {p0, v0}, Landroid/view/NotificationHeaderView;->findViewById(I)Landroid/view/View;
 
@@ -529,8 +513,7 @@
 
     iput-object v0, p0, Landroid/view/NotificationHeaderView;->mAppName:Landroid/view/View;
 
-    .line 121
-    const v0, 0x10203b3
+    const v0, #android:id@header_text#t
 
     invoke-virtual {p0, v0}, Landroid/view/NotificationHeaderView;->findViewById(I)Landroid/view/View;
 
@@ -538,8 +521,7 @@
 
     iput-object v0, p0, Landroid/view/NotificationHeaderView;->mHeaderText:Landroid/view/View;
 
-    .line 122
-    const v0, 0x10203b6
+    const v0, #android:id@expand_button#t
 
     invoke-virtual {p0, v0}, Landroid/view/NotificationHeaderView;->findViewById(I)Landroid/view/View;
 
@@ -563,7 +545,7 @@
 
     .line 126
     :cond_0
-    const v0, 0x1020006
+    const v0, #android:id@icon#t
 
     invoke-virtual {p0, v0}, Landroid/view/NotificationHeaderView;->findViewById(I)Landroid/view/View;
 
@@ -571,14 +553,15 @@
 
     iput-object v0, p0, Landroid/view/NotificationHeaderView;->mIcon:Landroid/view/View;
 
-    .line 127
-    const v0, 0x10203b7
+    const v0, #android:id@profile_badge#t
 
     invoke-virtual {p0, v0}, Landroid/view/NotificationHeaderView;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/view/NotificationHeaderView;->mProfileBadge:Landroid/view/View;
+
+    invoke-direct/range {p0 .. p0}, Landroid/view/NotificationHeaderView;->initFlymeExtraFields()V
 
     .line 118
     return-void
@@ -764,6 +747,19 @@
     .line 201
     .end local v11    # "paddingEnd":I
     :cond_2
+
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v2, v7}, Landroid/view/NotificationHeaderView;->getFlymeLayoutRight(Landroid/view/View;I)I
+
+    move-result v7
+
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v2, v6}, Landroid/view/NotificationHeaderView;->getFlymeLayoutLeft(Landroid/view/View;I)I
+
+    move-result v6
+
     invoke-virtual/range {p0 .. p0}, Landroid/view/NotificationHeaderView;->getLayoutDirection()I
 
     move-result v15
@@ -1315,4 +1311,79 @@
     const/4 v0, 0x0
 
     goto :goto_0
+.end method
+
+.method private getFlymeLayoutLeft(Landroid/view/View;I)I
+    .locals 3
+    .param p1, "child"    # Landroid/view/View;
+    .param p2, "layoutLeft"    # I
+
+    .prologue
+    iget-object v2, p0, Landroid/view/NotificationHeaderView;->mFlymeTime:Landroid/view/View;
+
+    if-ne p1, v2, :cond_0
+
+    invoke-virtual {p0}, Landroid/view/NotificationHeaderView;->getPaddingEnd()I
+
+    move-result v1
+
+    .local v1, "paddingEnd":I
+    invoke-virtual {p0}, Landroid/view/NotificationHeaderView;->getWidth()I
+
+    move-result v2
+
+    sub-int v0, v2, v1
+
+    .local v0, "layoutRight":I
+    invoke-virtual {p1}, Landroid/view/View;->getMeasuredWidth()I
+
+    move-result v2
+
+    sub-int p2, v0, v2
+
+    .end local v0    # "layoutRight":I
+    .end local v1    # "paddingEnd":I
+    :cond_0
+    return p2
+.end method
+
+.method private getFlymeLayoutRight(Landroid/view/View;I)I
+    .locals 2
+    .param p1, "child"    # Landroid/view/View;
+    .param p2, "layoutRight"    # I
+
+    .prologue
+    iget-object v1, p0, Landroid/view/NotificationHeaderView;->mFlymeTime:Landroid/view/View;
+
+    if-ne p1, v1, :cond_0
+
+    invoke-virtual {p0}, Landroid/view/NotificationHeaderView;->getPaddingEnd()I
+
+    move-result v0
+
+    .local v0, "paddingEnd":I
+    invoke-virtual {p0}, Landroid/view/NotificationHeaderView;->getWidth()I
+
+    move-result v1
+
+    sub-int p2, v1, v0
+
+    .end local v0    # "paddingEnd":I
+    :cond_0
+    return p2
+.end method
+
+.method private initFlymeExtraFields()V
+    .locals 1
+
+    .prologue
+    const v0, #android:id@time#t
+
+    invoke-virtual {p0, v0}, Landroid/view/NotificationHeaderView;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    iput-object v0, p0, Landroid/view/NotificationHeaderView;->mFlymeTime:Landroid/view/View;
+
+    return-void
 .end method

@@ -1593,39 +1593,43 @@
 
     const/4 v11, 0x0
 
-    .line 515
     iget v8, p1, Lcom/android/server/am/TaskRecord;->mAffiliatedTaskId:I
 
     iget v9, p1, Lcom/android/server/am/TaskRecord;->taskId:I
 
     if-ne v8, v9, :cond_0
 
-    .line 516
     iget v8, p1, Lcom/android/server/am/TaskRecord;->mNextAffiliateTaskId:I
 
     if-eq v8, v10, :cond_1
 
-    .line 515
     :cond_0
     const/4 v0, 0x1
 
-    .line 519
     .local v0, "isAffiliated":Z
     :goto_0
+
+    invoke-direct/range {p0 .. p1}, Lcom/android/server/am/RecentTasks;->isFlymeAccessApplication(Lcom/android/server/am/TaskRecord;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
+
     invoke-virtual {p0}, Lcom/android/server/am/RecentTasks;->size()I
 
     move-result v5
 
-    .line 523
     .local v5, "recentsCount":I
     iget-object v8, p1, Lcom/android/server/am/TaskRecord;->voiceSession:Landroid/service/voice/IVoiceInteractionSession;
 
     if-eqz v8, :cond_3
 
-    .line 526
     return-void
 
-    .line 517
     .end local v0    # "isAffiliated":Z
     .end local v5    # "recentsCount":I
     :cond_1
@@ -3276,4 +3280,47 @@
     .line 208
     :cond_2
     return-object v4
+.end method
+
+.method private isFlymeAccessApplication(Lcom/android/server/am/TaskRecord;)Z
+    .locals 2
+    .param p1, "task"    # Lcom/android/server/am/TaskRecord;
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/am/RecentTasks;->mService:Lcom/android/server/am/ActivityManagerService;
+
+    iget-object v0, v0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
+
+    iget-object v1, p1, Lcom/android/server/am/TaskRecord;->stack:Lcom/android/server/am/ActivityStack;
+
+    invoke-virtual {v0, v1}, Lcom/android/server/am/ActivityStackSupervisor;->isFocusedStack(Lcom/android/server/am/ActivityStack;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    invoke-virtual {p1}, Lcom/android/server/am/TaskRecord;->topRunningActivityLocked()Lcom/android/server/am/ActivityRecord;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {p1}, Lcom/android/server/am/TaskRecord;->topRunningActivityLocked()Lcom/android/server/am/ActivityRecord;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/android/server/am/ActivityRecord;->isAccessApplication()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x1
+
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    return v0
 .end method
