@@ -303,6 +303,9 @@
     invoke-virtual {p0}, Lcom/android/server/AppOpsService;->readState()V
 
     .line 283
+
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/AppOpsService;->initFlymeExtraFields()V
+
     return-void
 .end method
 
@@ -13360,6 +13363,8 @@
 
     :cond_7
     monitor-exit p0
+
+    invoke-static {}, Lmeizu/security/FlymePermissionManager;->systemReady()V
 
     const-class v13, Landroid/os/storage/MountServiceInternal;
 

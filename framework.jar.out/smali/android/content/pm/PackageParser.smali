@@ -13355,6 +13355,9 @@
     iput v6, v5, Landroid/content/pm/ApplicationInfo;->flags:I
 
     :cond_5b
+
+    invoke-static/range {p1 .. p1}, Landroid/content/pm/FlymePackageParserInjector;->addFlymeRequestedPermissions(Landroid/content/pm/PackageParser$Package;)V
+
     return-object p1
 .end method
 

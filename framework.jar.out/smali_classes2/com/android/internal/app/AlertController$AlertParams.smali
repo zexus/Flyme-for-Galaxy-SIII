@@ -309,7 +309,7 @@
 
     if-eqz v1, :cond_7
 
-    new-instance v0, Lcom/android/internal/app/AlertController$AlertParams$3;
+    new-instance v0, Lcom/android/internal/app/AlertController$AlertParams$FlymeSimpleCursorAdapter;
 
     iget-object v9, p0, Lcom/android/internal/app/AlertController$AlertParams;->mContext:Landroid/content/Context;
 
@@ -335,11 +335,11 @@
 
     aput v1, v13, v2
 
-    move-object v7, v0
+    move-object v8, v0
 
-    move-object v8, p0
+    move-object v9, p0
 
-    invoke-direct/range {v7 .. v13}, Lcom/android/internal/app/AlertController$AlertParams$3;-><init>(Lcom/android/internal/app/AlertController$AlertParams;Landroid/content/Context;ILandroid/database/Cursor;[Ljava/lang/String;[I)V
+    invoke-direct/range {v8 .. v13}, Lcom/android/internal/app/AlertController$AlertParams$FlymeSimpleCursorAdapter;-><init>(Lcom/android/internal/app/AlertController$AlertParams;ILandroid/database/Cursor;[Ljava/lang/String;[I)V
 
     .restart local v0    # "adapter":Landroid/widget/ListAdapter;
     goto :goto_0
@@ -377,7 +377,9 @@
 
     const v3, #android:id@text1#t
 
-    invoke-direct {v0, v1, v10, v3, v2}, Lcom/android/internal/app/AlertController$CheckedItemAdapter;-><init>(Landroid/content/Context;II[Ljava/lang/CharSequence;)V
+    move-object v1, p0
+
+    invoke-direct {v0, v1, v10, v3, v2}, Lcom/android/internal/app/AlertController$AlertParams$FlymeCheckedItemAdapter;-><init>(Lcom/android/internal/app/AlertController$AlertParams;II[Ljava/lang/CharSequence;)V
 
     .restart local v0    # "adapter":Landroid/widget/ListAdapter;
     goto/16 :goto_0
